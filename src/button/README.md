@@ -19,8 +19,8 @@ outline (boolean : false)
 disabled (boolean : false)
 togglable (boolean : false) - (state controlled by selected attribute [true/false])
 size (String [small, large] default is normal )
-icon (String URL, CSS class, base64)
 text (String)
+icon (String URL, CSS class, base64)
 
 dropdown (child)
 group (parent)
@@ -44,3 +44,7 @@ Styles:
     primary-text-disabled-color
     
 
+//TODO:
+1- build system to buyild each component and all components
+2- finish button
+2.1 - finish each attribute at a time while making sure it's accessable
