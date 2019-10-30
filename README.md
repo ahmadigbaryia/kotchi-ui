@@ -1,3 +1,3 @@
-# Wb Components UI Kit
+# Web Components UI Kit
 
-a POC to create a UI Kit using web components to be ran nativly in any browser
+a POC to create a UI Kit using web components to be used nativly in any browser
