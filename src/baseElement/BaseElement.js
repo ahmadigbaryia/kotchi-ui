@@ -1,0 +1,24 @@
+import { buildShadowRoot, changeHandler } from "../wcUtils.js";
+
+class BaseElement extends HTMLElement {
+	constructor(templateConfig, attributesConfig) {
+		super();
+		buildShadowRoot(templateConfig.template, this);
+		this.attributesConfig = attributesConfig;
+	}
+
+	attributeChangedCallback(attribute, oldValue, newValue) {
+		const attributeConfig = this.attributesConfig[attribute];
+		if (attributeConfig && attributeConfig.attributeChangedHandler) {
+			changeHandler({
+				attributesConfig: this.attributesConfig,
+				attribute,
+				oldValue,
+				newValue,
+				changeHandler: attributeConfig.attributeChangedHandler.bind(this),
+			});
+		}
+	}
+}
+
+export default BaseElement;

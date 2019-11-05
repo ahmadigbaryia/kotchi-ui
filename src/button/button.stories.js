@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/html";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, select } from "@storybook/addon-knobs";
 
 import "./uik-button";
-import { ButtonStyleEnum, ButtonAttributes, ButtonSizeEnum } from "./config";
+import { Style, tagName } from "./config";
 
 import ButtonReadme from "./README.md";
 
@@ -10,9 +10,6 @@ import ButtonReadme from "./README.md";
 const stories = storiesOf("UIK Button", module);
 stories.addParameters({
 	readme: {
-		// Show readme before story
-		content: ButtonReadme,
-		// Show readme at the addons panel
 		sidebar: ButtonReadme,
 	},
 });
@@ -20,9 +17,13 @@ stories.addDecorator(withKnobs);
 
 stories.add("Change button text", () => {
 	const buttonText = text("Button Title", "My Button");
-	return `<uik-button uik-text='${buttonText}'></uik-button>`;
+	return `<${tagName} uik-text='${buttonText}'></${tagName}>`;
 });
+
 stories.add("Change button style", () => {
-	const buttonStyle = text("Button Style", ButtonStyleEnum.Primary);
-	return `<uik-button uik-text='Primary Button' uik-style='${buttonStyle}'></uik-button>`;
+	const label = "Button Style";
+	const defaultValue = Style.Primary;
+	const groupId = "STYLE-GROUP-ID";
+	const buttonStyle = select(label, Style, defaultValue, groupId);
+	return `<${tagName} uik-text='Styled Button' uik-style='${buttonStyle}'></${tagName}>`;
 });

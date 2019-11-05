@@ -1,97 +1,54 @@
-import { isTrue } from "../wcUtils.js";
+import { isTrue, isValueOf } from "../wcUtils.js";
 import isString from "lodash/isString";
 
-export const ButtonStyleEnum = {
-	Default: "DEFAULT",
-	Primary: "PRIMARY",
-	Secondary: "SECONDARY",
-	Information: "INFORMATION",
-	Dangerous: "DANGEROUS",
-	Warning: "WARNING",
-	Success: "SUCCESS",
-	Text: "TEXT",
-	Link: "LINK",
+export const tagName = "uik-button";
+
+export const Style = {
+	Default: "uik-button-default",
+	Primary: "uik-button-primary",
+	Secondary: "uik-button-secondary",
+	Information: "uik-button-information",
+	Dangerous: "uik-button-dangerous",
+	Warning: "uik-button-warning",
+	Success: "uik-button-success",
+	Link: "uik-button-link",
 };
 
-export const ButtonSizeEnum = {
-	Small: "SMALL",
-	Normal: "NORMAL",
-	Large: "LARGE",
+export const Size = {
+	Small: "uik-button-small",
+	Normal: "uik-button-normal",
+	Large: "uik-button-large",
 };
 
-const defaultSetter = function(attribute, value) {
-	if (!ButtonAttributes[attribute].validate(attribute, value)) return false;
-	const transformedValue = applyTransformers(
-		ButtonAttributes[attribute].transformers,
-		value
-	);
-	if (transformedValue) {
-		this.setAttribute(attribute, transformedValue);
-	} else {
-		this.removeAttribute(attribute);
-	}
-};
-const defaultGetter = function(attribute) {
-	return this.getAttribute(attribute);
-};
-const defaultValidate = function(attribute, value) {
-	const { validators } = ButtonAttributes[attribute];
-	if (validators.length > 0) {
-		for (let i = 0; i < validators.length; i++) {
-			if (!validators[i](value)) return false;
-		}
-	}
-	return true;
-};
-const applyTransformers = function(transformers = [], value) {
-	let tv = value;
-	if (transformers.length > 0) {
-		for (let i = 0; i < transformers.length; i++) {
-			tv = transformers[i](tv);
-		}
-	}
-	return tv;
-};
-
-export const ButtonAttributes = {
+export const attributesConfig = {
 	"uik-text": {
 		type: "String",
 		description: "The text of the button",
-		changeHandler: function(oldValue, newValue) {
-			if (!ButtonAttributes["uik-text"].validate("uik-text", newValue)) return false;
-			const transformedValue = applyTransformers(
-				ButtonAttributes["uik-text"].transformers,
-				newValue
-			);
-			this.elements.button.innerText = transformedValue || "";
+		attributeChangedHandler: function({ newValue }) {
+			const { button } = this.elements;
+			button.innerText = newValue || "";
 		},
 		validators: [isString],
-		setter: defaultSetter,
-		getter: defaultGetter,
-		validate: defaultValidate,
 	},
 	"uik-style": {
 		type: "ButtonStyleEnum",
 		description:
-			"The style to apply on the button [Default, Primary, Secondary, Information, Dangerous, Warning, Success, Link, Text]",
-		default: ButtonStyleEnum.Default,
-		changeHandler: function(oldValue, newValue) {
-			// TODO: typecheck first
+			"The style of the button, one of the following values only { Default, Primary, Secondary, Information, Dangerous, Warning, Success, Link }",
+		default: Style.Default,
+		attributeChangedHandler: function({ oldValue, newValue }) {
+			const { button } = this.elements;
+			const defaultStyle = attributesConfig["uik-style"].default;
 			if (newValue) {
 				if (oldValue) {
-					this.elements.container.className.replace(
-						ButtonStyleEnum[oldValue],
-						ButtonStyleEnum[newValue]
-					);
+					button.className = button.className.replace(oldValue, newValue);
+				} else {
+					button.className += ` ${newValue}`;
 				}
-				this.elements.container.className += ` ${ButtonStyleEnum[newValue]}`;
-			} else {
-				this.elements.container.className.replace(
-					ButtonStyleEnum[oldValue],
-					ButtonAttributes["uik-style"].default
-				);
+			} else if (oldValue) {
+				button.className = button.className.replace(oldValue, defaultStyle);
 			}
 		},
+		validators: [isString, isValueOf(Style)],
 	},
 	"uik-outlined": {
 		type: "Boolean",
@@ -106,8 +63,7 @@ export const ButtonAttributes = {
 	},
 	"uik-selected": {
 		type: "Boolean",
-		description:
-			"Is the button selected (applicable only when toggleable is true)",
+		description: "Is the button selected (applicable only when toggleable is true)",
 		default: "false",
 		changeHandler: function(oldValue, newValue) {
 			this.elements.container.className.replace("selected", "");
@@ -146,21 +102,14 @@ export const ButtonAttributes = {
 		default: "Normal",
 		changeHandler: function(oldValue, newValue) {
 			if (newValue) {
-				if (oldValue)
-					this.elements.container.className.replace(
-						ButtonSizeEnum[oldValue],
-						ButtonSizeEnum[newValue]
-					);
-				else
-					this.elements.container.className +=
-						ButtonSizeEnum[newValue];
+				if (oldValue) this.elements.container.className.replace(Size[oldValue], Size[newValue]);
+				else this.elements.container.className += Size[newValue];
 			}
 		},
 	},
 	"uik-icon": {
 		type: "String",
-		description:
-			"Set an icon to the button, can be a CSS class name, URL or base64 encoded icon",
+		description: "Set an icon to the button, can be a CSS class name, URL or base64 encoded icon",
 		default: "",
 		changeHandler: function(oldValue, newValue) {
 			this.elements.container.className.replace("with-icon", "");

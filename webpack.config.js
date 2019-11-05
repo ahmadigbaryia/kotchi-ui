@@ -18,6 +18,10 @@ module.exports = {
 				test: /\.html$/,
 				use: ["html-loader"],
 			},
+			{
+				test: /\.css$/i,
+				use: ["css-to-string-loader", "css-loader"],
+			},
 		],
 	},
 	plugins: [

@@ -1,69 +1,32 @@
-import { buildShadowRoot } from "../wcUtils.js";
 import keys from "lodash/keys";
-import toCamelCase from "lodash/camelCase";
-import { ButtonAttributes } from "./config";
 
-const template = document.createElement("template");
-template.innerHTML = `
-	<div class='container'>
-		<span class='icon'></span>
-		<button class='button'></button>
-	</div>
-`;
+import BaseElement from "../baseElement";
+import { defineCustomElement } from "../wcUtils.js";
+import { attributesConfig, tagName } from "./config";
+import templateConfig from "./template";
 
 /**
  * Button element
- * attributes: [text, style]
  */
-class UIKitButton extends HTMLElement {
+class UIKitButton extends BaseElement {
 	constructor() {
-		super();
-		buildShadowRoot(template, this);
+		super(templateConfig, attributesConfig);
 		this.elements = {
-			button: this.shadowRoot.querySelector("button.button"),
-			container: this.shadowRoot.querySelector("div.container"),
-			icon: this.shadowRoot.querySelector("span.icon"),
+			button: this.shadowRoot.querySelector(
+				templateConfig.selectors.button
+			),
+			icon: this.shadowRoot.querySelector(templateConfig.selectors.icon),
 		};
 	}
 
 	static get observedAttributes() {
-		return keys(ButtonAttributes);
-	}
-
-	attributeChangedCallback(attribute, oldValue, newValue) {
-		if (
-			ButtonAttributes[attribute] &&
-			ButtonAttributes[attribute].changeHandler
-		) {
-			ButtonAttributes[attribute].changeHandler.apply(this, [
-				oldValue,
-				newValue,
-			]);
-		}
+		return keys(attributesConfig);
 	}
 }
-
-//Define a public API for the attributes to be used as properties as well
-UIKitButton.observedAttributes.forEach(function(attribute) {
-	Object.defineProperty(UIKitButton.prototype, toCamelCase(attribute), {
-		set: function(value) {
-			if (ButtonAttributes[attribute].setter) {
-				ButtonAttributes[attribute].setter.apply(this, [
-					attribute,
-					value,
-				]);
-			}
-		},
-		get: function() {
-			if (ButtonAttributes[attribute].getter) {
-				return ButtonAttributes[attribute].getter.apply(this, [
-					attribute,
-				]);
-			}
-			return null;
-		},
-	});
+defineCustomElement({
+	componentClass: UIKitButton,
+	tagName,
+	attributesConfig,
 });
 
-window.customElements.define("uik-button", UIKitButton);
 export default UIKitButton;

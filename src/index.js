@@ -1,1 +1,1 @@
-import "./button/uik-button";
+import "./button";

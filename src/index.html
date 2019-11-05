@@ -5,8 +5,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>UI Kit</title>
+		<style>
+			:root {
+				--uik-button-link-text-decoration: none;
+			}
+		</style>
 	</head>
 	<body>
-		<uik-button uik-text="My Button"></uik-button>
+		<uik-button uik-style="uik-button-default">Default Button</uik-button>
+		<uik-button uik-style="uik-button-primary">Primary Button</uik-button>
+		<uik-button uik-style="uik-button-secondary">Secondary Button</uik-button>
+		<uik-button uik-style="uik-button-information">Information Button</uik-button>
+		<uik-button uik-style="uik-button-dangerous">Dangerous Button</uik-button>
+		<uik-button uik-style="uik-button-warning">Warning Button</uik-button>
+		<uik-button uik-style="uik-button-success">Success Button</uik-button>
+		<uik-button uik-style="uik-button-link">Link Button</uik-button>
 	</body>
 </html>
