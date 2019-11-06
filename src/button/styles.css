@@ -1,9 +1,11 @@
 :host {
 	/* Variables */
 	--line-height: var(--uik-button-line-height, 1.5);
-	--font-size: var(--uik-button-font-size, 1rem);
 	--font-family: var(--uik-button-font-family, "Roboto" ,"sans-serif");
 	--font-weight: var(--uik-button-font-weight, 400);
+	--font-size: var(--uik-button-font-size, 1rem);
+	--font-size-small: var(--uik-button-font-size, 0.75rem);
+	--font-size-large: var(--uik-button-font-size, 1.25rem);
 
 	--padding-left: var(--uik-button-padding-left, 10px);
 	--padding-right: var(--uik-button-padding-right, 10px);
@@ -554,4 +556,13 @@
 .uik-button-link.disabled {
 	color: var(--link-text-color-disabled);
 	pointer-events: none;
+}
+
+/* Small button style */
+.uik-button-small {
+	font-size: var(--font-size-small);
+}
+/* Large button style */
+.uik-button-large {
+	font-size: var(--font-size-large);
 }

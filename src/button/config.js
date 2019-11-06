@@ -15,8 +15,8 @@ export const Style = {
 };
 
 export const Size = {
+	Normal: "",
 	Small: "uik-button-small",
-	Normal: "uik-button-normal",
 	Large: "uik-button-large",
 };
 
@@ -78,14 +78,22 @@ export const attributesConfig = {
 	},
 	"uik-size": {
 		type: "ButtonSizeEnum",
-		description: "The size to apply on the button [Large, Normal, Small]",
-		default: "Normal",
-		changeHandler: function(oldValue, newValue) {
+		description: "The size to apply on the button [Large, Small]",
+		default: Size.Normal,
+		attributeChangedHandler: function({ oldValue, newValue }) {
+			const { button } = this.elements;
+			const defaultSize = attributesConfig["uik-size"].default;
 			if (newValue) {
-				if (oldValue) this.elements.container.className.replace(Size[oldValue], Size[newValue]);
-				else this.elements.container.className += Size[newValue];
+				if (oldValue) {
+					button.className = button.className.replace(oldValue, newValue);
+				} else {
+					button.className += ` ${newValue}`;
+				}
+			} else if (oldValue) {
+				button.className = button.className.replace(oldValue, defaultSize);
 			}
 		},
+		validators: [isString, isValueOf(Size)],
 	},
 	"uik-icon": {
 		type: "String",

@@ -9,6 +9,9 @@
 			:root {
 				--uik-button-link-text-decoration: none;
 			}
+			.button-size-container {
+				--uik-button-margin-bottom: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -46,5 +49,18 @@
 		<uik-button uik-style="uik-button-dangerous" uik-outline uik-disabled>Dangerous</uik-button>
 		<uik-button uik-style="uik-button-success" uik-outline uik-disabled>Success</uik-button>
 		<uik-button uik-style="uik-button-warning" uik-outline uik-disabled>Warning</uik-button>
+		<div class="button-size-container">
+			<h1>Buttons Sizes</h1>
+			<div>
+				<uik-button uik-style="uik-button-primary" uik-size="uik-button-small">Small</uik-button>
+				<uik-button uik-style="uik-button-primary" uik-size="">Default</uik-button>
+				<uik-button uik-style="uik-button-primary" uik-size="uik-button-large">Large</uik-button>
+			</div>
+			<div>
+				<uik-button uik-outline uik-style="uik-button-primary" uik-size="uik-button-small">Small</uik-button>
+				<uik-button uik-outline uik-style="uik-button-primary" uik-size="">Default</uik-button>
+				<uik-button uik-outline uik-style="uik-button-primary" uik-size="uik-button-large">Large</uik-button>
+			</div>
+		</div>					
 	</body>
 </html>
