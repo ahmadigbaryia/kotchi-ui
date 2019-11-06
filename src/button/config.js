@@ -7,7 +7,7 @@ export const Style = {
 	Default: "uik-button-default",
 	Primary: "uik-button-primary",
 	Secondary: "uik-button-secondary",
-	Information: "uik-button-information",
+	Information: "uik-button-info",
 	Dangerous: "uik-button-dangerous",
 	Warning: "uik-button-warning",
 	Success: "uik-button-success",
@@ -53,15 +53,13 @@ export const attributesConfig = {
 	"uik-outline": {
 		type: "Boolean",
 		description: "Should apply the outline style on the button",
-		default: "false",
-		changeHandler: function({ newValue }) {
+		attributeChangedHandler: function({ newValue }) {
 			const { button } = this.elements;
 			button.className = button.className.replace("outline", "");
-			if (isTrue(newValue)) {
+			if (isTrue(newValue) || newValue === "") {
 				button.className += " outline";
 			}
 		},
-
 	},
 	"uik-selected": {
 		type: "Boolean",
