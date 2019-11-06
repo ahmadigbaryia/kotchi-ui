@@ -6,11 +6,15 @@ import _isString from "lodash/isString";
 /**
  * Executes an array of validators one after the other till one fails or all succeed
  */
-function applyValidators({ validators = [], value }) {
+function applyValidators({ attribute, tagName, validators = [], value, isRequired = false }) {
 	if (validators.length > 0) {
+		if (value === null && isRequired) {
+			console.log(`${tagName}.${attribute} is required`);
+			return false;
+		}
 		for (let i = 0; i < validators.length; i++) {
-			if (_isFunction(validators[i]) && !validators[i](value)) {
-				console.log("Validation Error: ", value);
+			if (value && _isFunction(validators[i]) && !validators[i](value)) {
+				console.log(`${tagName}.${attribute} validation error on ${validators[i].name}`);
 				return false;
 			}
 		}
@@ -33,10 +37,10 @@ function applyTransformers({ transformers = [], value }) {
 	return tv;
 }
 
-function beforeChangeValue({ attributesConfig, attribute, value }) {
+function beforeChangeValue({ attributesConfig, attribute, tagName, value }) {
 	const attributeConfig = attributesConfig[attribute];
-	const { validators, transformers } = attributeConfig;
-	if (!applyValidators({ validators, value })) return { isValid: false };
+	const { validators, transformers, isRequired } = attributeConfig;
+	if (!applyValidators({ attribute, tagName, validators, value, isRequired })) return { isValid: false };
 	const transformedValue = applyTransformers({ transformers, value });
 	return { transformedValue, isValid: true };
 }
@@ -65,16 +69,11 @@ export function buildShadowRoot(template, host) {
  * wraps a change handler with the following procedure,
  * first validate the change then apply transformations on the attribute and finaly apply the user's change handler
  */
-export function changeHandler({
-	attributesConfig,
-	attribute,
-	oldValue,
-	newValue,
-	changeHandler,
-}) {
+export function changeHandler({ attributesConfig, attribute, tagName, oldValue, newValue, changeHandler }) {
 	const { transformedValue, isValid } = beforeChangeValue({
 		attributesConfig,
 		attribute,
+		tagName,
 		value: newValue,
 	});
 	if (isValid) {
@@ -85,57 +84,43 @@ export function changeHandler({
 /**
  * Defines a custom element while exposing public API for all the attributes
  */
-export function defineCustomElement({
-	componentClass,
-	attributesConfig,
-	tagName,
-}) {
+export function defineCustomElement({ componentClass, attributesConfig, tagName }) {
 	//Define a public API for the attributes to be used as properties as well
 	componentClass.observedAttributes.forEach(function(attribute) {
-		Object.defineProperty(
-			componentClass.prototype,
-			_toCamelCase(attribute),
-			{
-				set: function(value) {
-					const attributeConfig = attributesConfig[attribute];
-					if (_isFunction(attributeConfig.setter)) {
-						attributeConfig.setter.call(this, {
-							element: this,
-							attributesConfig,
-							attribute,
-							value,
-						});
-					} else if (
-						attributeConfig.setter === true ||
-						_isUndefined(attributeConfig.setter)
-					) {
-						defaultSetter.call(this, {
-							element: this,
-							attributesConfig,
-							attribute,
-							value,
-						});
-					}
-				},
-				get: function() {
-					const attributeConfig = attributesConfig[attribute];
-					if (_isFunction(attributeConfig.getter)) {
-						return attributeConfig.getter.call(this, {
-							attribute,
-						});
-					} else if (
-						attributeConfig.getter === true ||
-						_isUndefined(attributeConfig.getter)
-					) {
-						return defaultGetter.call(this, {
-							element: this,
-							attribute,
-						});
-					}
-					return null;
-				},
-			}
-		);
+		Object.defineProperty(componentClass.prototype, _toCamelCase(attribute), {
+			set: function(value) {
+				const attributeConfig = attributesConfig[attribute];
+				if (_isFunction(attributeConfig.setter)) {
+					attributeConfig.setter.call(this, {
+						element: this,
+						attributesConfig,
+						attribute,
+						value,
+					});
+				} else if (attributeConfig.setter === true || _isUndefined(attributeConfig.setter)) {
+					defaultSetter.call(this, {
+						element: this,
+						attributesConfig,
+						attribute,
+						value,
+					});
+				}
+			},
+			get: function() {
+				const attributeConfig = attributesConfig[attribute];
+				if (_isFunction(attributeConfig.getter)) {
+					return attributeConfig.getter.call(this, {
+						attribute,
+					});
+				} else if (attributeConfig.getter === true || _isUndefined(attributeConfig.getter)) {
+					return defaultGetter.call(this, {
+						element: this,
+						attribute,
+					});
+				}
+				return null;
+			},
+		});
 	});
 	window.customElements.define(tagName, componentClass);
 }
@@ -145,6 +130,6 @@ export function isTrue(str) {
 
 export function isValueOf(map) {
 	return function(value) {
-		return Object.entries(map).filter((pair) => pair[1] === value).length === 1;
+		return Object.entries(map).filter(pair => pair[1] === value).length === 1;
 	};
 }

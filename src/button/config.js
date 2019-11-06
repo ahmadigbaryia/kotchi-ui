@@ -50,16 +50,18 @@ export const attributesConfig = {
 		},
 		validators: [isString, isValueOf(Style)],
 	},
-	"uik-outlined": {
+	"uik-outline": {
 		type: "Boolean",
-		description: "Should apply the outlined style on the button",
+		description: "Should apply the outline style on the button",
 		default: "false",
-		changeHandler: function(oldValue, newValue) {
-			this.elements.container.className.replace("outlined-button", "");
+		changeHandler: function({ newValue }) {
+			const { button } = this.elements;
+			button.className = button.className.replace("outline", "");
 			if (isTrue(newValue)) {
-				this.elements.container.className += "outlined-button";
+				button.className += " outline";
 			}
 		},
+
 	},
 	"uik-selected": {
 		type: "Boolean",
