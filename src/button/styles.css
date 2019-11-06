@@ -249,6 +249,7 @@
 .uik-button-default.outline.disabled,
 .uik-button-default.outline:disabled {
 	color: var(--default-bg-color);
+	border-color: var(--default-border-color-hover);
 	background-color: initial;
 }
 

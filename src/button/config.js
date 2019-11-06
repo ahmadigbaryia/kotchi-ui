@@ -52,7 +52,7 @@ export const attributesConfig = {
 	},
 	"uik-outline": {
 		type: "Boolean",
-		description: "Should apply the outline style on the button",
+		description: "Apply the outline style on the button",
 		attributeChangedHandler: function({ newValue }) {
 			const { button } = this.elements;
 			button.className = button.className.replace("outline", "");
@@ -61,38 +61,18 @@ export const attributesConfig = {
 			}
 		},
 	},
-	"uik-selected": {
-		type: "Boolean",
-		description: "Is the button selected (applicable only when toggleable is true)",
-		default: "false",
-		changeHandler: function(oldValue, newValue) {
-			this.elements.container.className.replace("selected", "");
-			if (isTrue(newValue)) {
-				this.elements.container.className += "selected";
-			}
-		},
-	},
 	"uik-disabled": {
 		type: "Boolean",
-		description: "Is the button disabled",
-		default: "false",
-		changeHandler: function(oldValue, newValue) {
-			this.elements.container.className.replace("disabled", "");
-			this.elements.button.disabled = false;
-			if (isTrue(newValue)) {
-				this.elements.container.className += "disabled";
-				this.elements.button.disabled = true;
-			}
-		},
-	},
-	"uik-toggleable": {
-		type: "Boolean",
-		description: "Is the button toggalble",
-		default: "false",
-		changeHandler: function(oldValue, newValue) {
-			this.elements.container.className.replace("toggleable", "");
-			if (isTrue(newValue)) {
-				this.elements.container.className += "toggleable";
+		description: "Disable the button",
+		attributeChangedHandler: function({ newValue }) {
+			const { button } = this.elements;
+			button.className = button.className.replace("disabled", "");
+			button.disabled = false;
+			button.uikDisabled = false;
+			if (isTrue(newValue) || newValue === "") {
+				button.className += " disabled";
+				button.disabled = true;
+				button.uikDisabled = true;
 			}
 		},
 	},
@@ -116,6 +96,28 @@ export const attributesConfig = {
 			if (newValue) {
 				this.elements.container.className += "with-icon";
 				// this.elements.icon set according the input
+			}
+		},
+	},
+	"uik-toggleable": {
+		type: "Boolean",
+		description: "Is the button toggalble",
+		default: "false",
+		changeHandler: function(oldValue, newValue) {
+			this.elements.container.className.replace("toggleable", "");
+			if (isTrue(newValue)) {
+				this.elements.container.className += "toggleable";
+			}
+		},
+	},
+	"uik-selected": {
+		type: "Boolean",
+		description: "Is the button selected (applicable only when toggleable is true)",
+		default: "false",
+		changeHandler: function(oldValue, newValue) {
+			this.elements.container.className.replace("selected", "");
+			if (isTrue(newValue)) {
+				this.elements.container.className += "selected";
 			}
 		},
 	},
