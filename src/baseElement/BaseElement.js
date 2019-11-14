@@ -1,4 +1,4 @@
-import { buildShadowRoot, changeHandler } from "../wcUtils.js";
+import { buildShadowRoot, changeHandler } from "../utils/wcUtils";
 
 class BaseElement extends HTMLElement {
 	constructor(templateConfig, attributesConfig) {

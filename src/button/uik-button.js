@@ -1,7 +1,7 @@
 import keys from "lodash/keys";
 
 import BaseElement from "../baseElement";
-import { defineCustomElement } from "../wcUtils.js";
+import { defineCustomElement } from "../utils/wcUtils";
 import { attributesConfig, tagName } from "./config";
 import templateConfig from "./template";
 
@@ -15,7 +15,7 @@ class UIKitButton extends BaseElement {
 			button: this.shadowRoot.querySelector(
 				templateConfig.selectors.button
 			),
-			icon: this.shadowRoot.querySelector(templateConfig.selectors.icon),
+			icon: this.shadowRoot.querySelector(templateConfig.selectors.icon)
 		};
 	}
 
@@ -26,7 +26,7 @@ class UIKitButton extends BaseElement {
 defineCustomElement({
 	componentClass: UIKitButton,
 	tagName,
-	attributesConfig,
+	attributesConfig
 });
 
 export default UIKitButton;

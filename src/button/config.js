@@ -1,4 +1,5 @@
-import { isTrue, isValueOf, applyClassName } from "../wcUtils.js";
+import { applyClassName } from "../utils/wcUtils";
+import { isTrue, isValueOf } from "../utils/validators";
 import isString from "lodash/isString";
 
 export const tagName = "uik-button";

@@ -7,6 +7,7 @@ module.exports = {
 	mode: "production",
 	entry: {
 		app: "./src/index.js",
+		button: "./src/button/index.js"
 	},
 	module: {
 		rules: [

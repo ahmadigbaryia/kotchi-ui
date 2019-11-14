@@ -1,7 +1,7 @@
 import _toCamelCase from "lodash/camelCase";
 import _isFunction from "lodash/isFunction";
 import _isUndefined from "lodash/isUndefined";
-import _isString from "lodash/isString";
+
 
 /**
  * Executes an array of validators one after the other till one fails or all succeed
@@ -154,17 +154,7 @@ export function defineCustomElement({
 	});
 	window.customElements.define(tagName, componentClass);
 }
-export function isTrue(str) {
-	return !!str && _isString(str) && str.toLowerCase() === "true";
-}
 
-export function isValueOf(map) {
-	return function(value) {
-		return (
-			Object.entries(map).filter(pair => pair[1] === value).length === 1
-		);
-	};
-}
 export function applyClassName({
 	oldValue,
 	newValue,
