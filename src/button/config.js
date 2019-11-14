@@ -1,4 +1,4 @@
-import { isTrue, isValueOf } from "../wcUtils.js";
+import { isTrue, isValueOf, applyClassName } from "../wcUtils.js";
 import isString from "lodash/isString";
 
 export const tagName = "uik-button";
@@ -11,13 +11,13 @@ export const Style = {
 	Dangerous: "uik-button-dangerous",
 	Warning: "uik-button-warning",
 	Success: "uik-button-success",
-	Link: "uik-button-link",
+	Link: "uik-button-link"
 };
 
 export const Size = {
 	Normal: "",
 	Small: "uik-button-small",
-	Large: "uik-button-large",
+	Large: "uik-button-large"
 };
 
 export const attributesConfig = {
@@ -28,7 +28,7 @@ export const attributesConfig = {
 			const { button } = this.elements;
 			button.innerText = newValue || "";
 		},
-		validators: [isString],
+		validators: [isString]
 	},
 	"uik-style": {
 		type: "ButtonStyleEnum",
@@ -38,17 +38,9 @@ export const attributesConfig = {
 		attributeChangedHandler: function({ oldValue, newValue }) {
 			const { button } = this.elements;
 			const defaultStyle = attributesConfig["uik-style"].default;
-			if (newValue) {
-				if (oldValue) {
-					button.className = button.className.replace(oldValue, newValue);
-				} else {
-					button.className += ` ${newValue}`;
-				}
-			} else if (oldValue) {
-				button.className = button.className.replace(oldValue, defaultStyle);
-			}
+			applyClassName({ oldValue, newValue, element: button, defaultStyle });
 		},
-		validators: [isString, isValueOf(Style)],
+		validators: [isString, isValueOf(Style)]
 	},
 	"uik-outline": {
 		type: "Boolean",
@@ -59,7 +51,7 @@ export const attributesConfig = {
 			if (isTrue(newValue) || newValue === "") {
 				button.className += " outline";
 			}
-		},
+		}
 	},
 	"uik-disabled": {
 		type: "Boolean",
@@ -74,7 +66,7 @@ export const attributesConfig = {
 				button.disabled = true;
 				button.uikDisabled = true;
 			}
-		},
+		}
 	},
 	"uik-size": {
 		type: "ButtonSizeEnum",
@@ -83,50 +75,32 @@ export const attributesConfig = {
 		attributeChangedHandler: function({ oldValue, newValue }) {
 			const { button } = this.elements;
 			const defaultSize = attributesConfig["uik-size"].default;
-			if (newValue) {
-				if (oldValue) {
-					button.className = button.className.replace(oldValue, newValue);
-				} else {
-					button.className += ` ${newValue}`;
-				}
-			} else if (oldValue) {
-				button.className = button.className.replace(oldValue, defaultSize);
-			}
+			applyClassName({ oldValue, newValue, element: button, defaultSize });
 		},
-		validators: [isString, isValueOf(Size)],
-	},
-	"uik-icon": {
-		type: "String",
-		description: "Set an icon to the button, can be a CSS class name, URL or base64 encoded icon",
-		default: "",
-		changeHandler: function(oldValue, newValue) {
-			this.elements.container.className.replace("with-icon", "");
-			if (newValue) {
-				this.elements.container.className += "with-icon";
-				// this.elements.icon set according the input
-			}
-		},
-	},
-	"uik-toggleable": {
-		type: "Boolean",
-		description: "Is the button toggalble",
-		default: "false",
-		changeHandler: function(oldValue, newValue) {
-			this.elements.container.className.replace("toggleable", "");
-			if (isTrue(newValue)) {
-				this.elements.container.className += "toggleable";
-			}
-		},
-	},
-	"uik-selected": {
-		type: "Boolean",
-		description: "Is the button selected (applicable only when toggleable is true)",
-		default: "false",
-		changeHandler: function(oldValue, newValue) {
-			this.elements.container.className.replace("selected", "");
-			if (isTrue(newValue)) {
-				this.elements.container.className += "selected";
-			}
-		},
-	},
+		validators: [isString, isValueOf(Size)]
+	}
+	// 
+	// ,
+	// "uik-toggleable": {
+	// 	type: "Boolean",
+	// 	description: "Is the button toggalble",
+	// 	default: "false",
+	// 	changeHandler: function(oldValue, newValue) {
+	// 		this.elements.container.className.replace("toggleable", "");
+	// 		if (isTrue(newValue)) {
+	// 			this.elements.container.className += "toggleable";
+	// 		}
+	// 	},
+	// },
+	// "uik-selected": {
+	// 	type: "Boolean",
+	// 	description: "Is the button selected (applicable only when toggleable is true)",
+	// 	default: "false",
+	// 	changeHandler: function(oldValue, newValue) {
+	// 		this.elements.container.className.replace("selected", "");
+	// 		if (isTrue(newValue)) {
+	// 			this.elements.container.className += "selected";
+	// 		}
+	// 	},
+	// },
 };

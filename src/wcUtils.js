@@ -6,7 +6,13 @@ import _isString from "lodash/isString";
 /**
  * Executes an array of validators one after the other till one fails or all succeed
  */
-function applyValidators({ attribute, tagName, validators = [], value, isRequired = false }) {
+function applyValidators({
+	attribute,
+	tagName,
+	validators = [],
+	value,
+	isRequired = false
+}) {
 	if (validators.length > 0) {
 		if (value === null && isRequired) {
 			console.log(`${tagName}.${attribute} is required`);
@@ -14,7 +20,9 @@ function applyValidators({ attribute, tagName, validators = [], value, isRequire
 		}
 		for (let i = 0; i < validators.length; i++) {
 			if (value && _isFunction(validators[i]) && !validators[i](value)) {
-				console.log(`${tagName}.${attribute} validation error on ${validators[i].name}`);
+				console.log(
+					`${tagName}.${attribute} validation error on ${validators[i].name}`
+				);
 				return false;
 			}
 		}
@@ -40,7 +48,8 @@ function applyTransformers({ transformers = [], value }) {
 function beforeChangeValue({ attributesConfig, attribute, tagName, value }) {
 	const attributeConfig = attributesConfig[attribute];
 	const { validators, transformers, isRequired } = attributeConfig;
-	if (!applyValidators({ attribute, tagName, validators, value, isRequired })) return { isValid: false };
+	if (!applyValidators({ attribute, tagName, validators, value, isRequired }))
+		return { isValid: false };
 	const transformedValue = applyTransformers({ transformers, value });
 	return { transformedValue, isValid: true };
 }
@@ -49,7 +58,7 @@ function defaultSetter({ element, attributesConfig, attribute, value }) {
 	const { transformedValue, isValid } = beforeChangeValue({
 		attributesConfig,
 		attribute,
-		value,
+		value
 	});
 	if (isValid) {
 		element.setAttribute(attribute, transformedValue);
@@ -69,12 +78,19 @@ export function buildShadowRoot(template, host) {
  * wraps a change handler with the following procedure,
  * first validate the change then apply transformations on the attribute and finaly apply the user's change handler
  */
-export function changeHandler({ attributesConfig, attribute, tagName, oldValue, newValue, changeHandler }) {
+export function changeHandler({
+	attributesConfig,
+	attribute,
+	tagName,
+	oldValue,
+	newValue,
+	changeHandler
+}) {
 	const { transformedValue, isValid } = beforeChangeValue({
 		attributesConfig,
 		attribute,
 		tagName,
-		value: newValue,
+		value: newValue
 	});
 	if (isValid) {
 		changeHandler({ attribute, oldValue, newValue: transformedValue });
@@ -84,43 +100,57 @@ export function changeHandler({ attributesConfig, attribute, tagName, oldValue, 
 /**
  * Defines a custom element while exposing public API for all the attributes
  */
-export function defineCustomElement({ componentClass, attributesConfig, tagName }) {
+export function defineCustomElement({
+	componentClass,
+	attributesConfig,
+	tagName
+}) {
 	//Define a public API for the attributes to be used as properties as well
 	componentClass.observedAttributes.forEach(function(attribute) {
-		Object.defineProperty(componentClass.prototype, _toCamelCase(attribute), {
-			set: function(value) {
-				const attributeConfig = attributesConfig[attribute];
-				if (_isFunction(attributeConfig.setter)) {
-					attributeConfig.setter.call(this, {
-						element: this,
-						attributesConfig,
-						attribute,
-						value,
-					});
-				} else if (attributeConfig.setter === true || _isUndefined(attributeConfig.setter)) {
-					defaultSetter.call(this, {
-						element: this,
-						attributesConfig,
-						attribute,
-						value,
-					});
+		Object.defineProperty(
+			componentClass.prototype,
+			_toCamelCase(attribute),
+			{
+				set: function(value) {
+					const attributeConfig = attributesConfig[attribute];
+					if (_isFunction(attributeConfig.setter)) {
+						attributeConfig.setter.call(this, {
+							element: this,
+							attributesConfig,
+							attribute,
+							value
+						});
+					} else if (
+						attributeConfig.setter === true ||
+						_isUndefined(attributeConfig.setter)
+					) {
+						defaultSetter.call(this, {
+							element: this,
+							attributesConfig,
+							attribute,
+							value
+						});
+					}
+				},
+				get: function() {
+					const attributeConfig = attributesConfig[attribute];
+					if (_isFunction(attributeConfig.getter)) {
+						return attributeConfig.getter.call(this, {
+							attribute
+						});
+					} else if (
+						attributeConfig.getter === true ||
+						_isUndefined(attributeConfig.getter)
+					) {
+						return defaultGetter.call(this, {
+							element: this,
+							attribute
+						});
+					}
+					return null;
 				}
-			},
-			get: function() {
-				const attributeConfig = attributesConfig[attribute];
-				if (_isFunction(attributeConfig.getter)) {
-					return attributeConfig.getter.call(this, {
-						attribute,
-					});
-				} else if (attributeConfig.getter === true || _isUndefined(attributeConfig.getter)) {
-					return defaultGetter.call(this, {
-						element: this,
-						attribute,
-					});
-				}
-				return null;
-			},
-		});
+			}
+		);
 	});
 	window.customElements.define(tagName, componentClass);
 }
@@ -130,6 +160,24 @@ export function isTrue(str) {
 
 export function isValueOf(map) {
 	return function(value) {
-		return Object.entries(map).filter(pair => pair[1] === value).length === 1;
+		return (
+			Object.entries(map).filter(pair => pair[1] === value).length === 1
+		);
 	};
+}
+export function applyClassName({
+	oldValue,
+	newValue,
+	element,
+	defaultValue = ""
+}) {
+	if (newValue) {
+		if (oldValue) {
+			element.className = element.className.replace(oldValue, newValue);
+		} else {
+			element.className += ` ${newValue}`;
+		}
+	} else if (oldValue) {
+		element.className = element.className.replace(oldValue, defaultValue);
+	}
 }
