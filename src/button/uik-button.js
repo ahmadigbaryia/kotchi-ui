@@ -10,7 +10,7 @@ import templateConfig from "./template";
  */
 class UIKitButton extends BaseElement {
 	constructor() {
-		super(templateConfig, attributesConfig);
+		super({ templateConfig, attributesConfig });
 		this.elements = {
 			button: this.shadowRoot.querySelector(
 				templateConfig.selectors.button

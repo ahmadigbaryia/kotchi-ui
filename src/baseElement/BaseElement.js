@@ -1,23 +1,36 @@
-import { buildShadowRoot, changeHandler } from "../utils/wcUtils";
+import {
+	buildShadowRoot,
+	buildComponentContents,
+	changeHandlerWrapper
+} from "../utils/wcUtils";
 
 class BaseElement extends HTMLElement {
-	constructor(templateConfig, attributesConfig) {
+	constructor({ templateConfig, attributesConfig, useShadow = true }) {
 		super();
-		buildShadowRoot(templateConfig.template, this);
+		this.templateConfig = templateConfig;
 		this.attributesConfig = attributesConfig;
+		const { template } = this.templateConfig;
+		if (useShadow) {
+			buildShadowRoot(template, this);
+		} else {
+			buildComponentContents(template, this);
+		}
 	}
 
 	attributeChangedCallback(attribute, oldValue, newValue) {
-		const attributeConfig = this.attributesConfig[attribute];
-		const { tagName } = this;
-		if (attributeConfig && attributeConfig.attributeChangedHandler) {
-			changeHandler({
-				attributesConfig: this.attributesConfig,
+		const { tagName, attributesConfig } = this;
+		const attributeChangedHandler =
+			attributesConfig[attribute] &&
+			attributesConfig[attribute].attributeChangedHandler &&
+			attributesConfig[attribute].attributeChangedHandler.bind(this);
+		if (attributeChangedHandler) {
+			changeHandlerWrapper({
+				attributesConfig,
 				attribute,
 				tagName,
 				oldValue,
 				newValue,
-				changeHandler: attributeConfig.attributeChangedHandler.bind(this),
+				attributeChangedHandler
 			});
 		}
 	}

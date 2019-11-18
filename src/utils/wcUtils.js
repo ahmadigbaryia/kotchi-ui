@@ -70,21 +70,28 @@ function defaultGetter({ element, attribute }) {
 }
 
 export function buildShadowRoot(template, host) {
+	window.ShadyCSS && window.ShadyCSS.styleElement(host);
 	host.attachShadow({ mode: "open" });
 	host.shadowRoot.appendChild(template.content.cloneNode(true));
+}
+
+export function buildComponentContents(template, host) {
+	window.ShadyCSS && window.ShadyCSS.styleElement(host);
+	host.innerHTML = "";
+	host.appendChild(template.content.cloneNode(true));
 }
 
 /**
  * wraps a change handler with the following procedure,
  * first validate the change then apply transformations on the attribute and finaly apply the user's change handler
  */
-export function changeHandler({
+export function changeHandlerWrapper({
 	attributesConfig,
 	attribute,
 	tagName,
 	oldValue,
 	newValue,
-	changeHandler
+	attributeChangedHandler
 }) {
 	const { transformedValue, isValid } = beforeChangeValue({
 		attributesConfig,
@@ -93,7 +100,7 @@ export function changeHandler({
 		value: newValue
 	});
 	if (isValid) {
-		changeHandler({ attribute, oldValue, newValue: transformedValue });
+		attributeChangedHandler({ attribute, oldValue, newValue: transformedValue });
 	}
 }
 

@@ -8,8 +8,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 module.exports = {
 	mode: "development",
 	entry: {
-		app: "./src/index.js",
-		button: "./src/button/index.js"
+		app: "./src/index.js"
 	},
 	devtool: "inline-source-map",
 	devServer: {
