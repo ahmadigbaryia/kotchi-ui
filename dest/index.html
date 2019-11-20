@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Polyfill for older browsers and those who don't support web components -->
+		<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.4.0/webcomponents-loader.js"></script>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>UI Kit</title>
+		<style>
+			:root {
+				--uik-button-link-text-decoration: none;
+			}
+			.button-size-container {
+				--uik-button-margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Buttons</h1>
+		<uik-button uik-style="uik-button-default">Default</uik-button>
+		<uik-button uik-style="uik-button-primary">Primary</uik-button>
+		<uik-button uik-style="uik-button-secondary">Secondary</uik-button>
+		<uik-button uik-style="uik-button-info">Information</uik-button>
+		<uik-button uik-style="uik-button-dangerous">Dangerous</uik-button>
+		<uik-button uik-style="uik-button-success">Success</uik-button>
+		<uik-button uik-style="uik-button-warning">Warning</uik-button>
+		<uik-button uik-style="uik-button-link">Link</uik-button>
+		<h1>Outline Buttons</h1>
+		<uik-button uik-style="uik-button-default" uik-outline>Default</uik-button>
+		<uik-button uik-style="uik-button-primary" uik-outline>Primary</uik-button>
+		<uik-button uik-style="uik-button-secondary" uik-outline>Secondary</uik-button>
+		<uik-button uik-style="uik-button-info" uik-outline>Information</uik-button>
+		<uik-button uik-style="uik-button-dangerous" uik-outline>Dangerous</uik-button>
+		<uik-button uik-style="uik-button-success" uik-outline>Success</uik-button>
+		<uik-button uik-style="uik-button-warning" uik-outline>Warning</uik-button>
+		<h1>Disable Buttons</h1>
+		<uik-button uik-style="uik-button-default" uik-disabled>Default</uik-button>
+		<uik-button uik-style="uik-button-primary" uik-disabled>Primary</uik-button>
+		<uik-button uik-style="uik-button-secondary" uik-disabled>Secondary</uik-button>
+		<uik-button uik-style="uik-button-info" uik-disabled>Information</uik-button>
+		<uik-button uik-style="uik-button-dangerous" uik-disabled>Dangerous</uik-button>
+		<uik-button uik-style="uik-button-success" uik-disabled>Success</uik-button>
+		<uik-button uik-style="uik-button-warning" uik-disabled>Warning</uik-button>
+		<uik-button uik-style="uik-button-link" uik-disabled>Link</uik-button>
+		<h1>Disable Outline Buttons</h1>
+		<uik-button uik-style="uik-button-default" uik-outline uik-disabled>Default</uik-button>
+		<uik-button uik-style="uik-button-primary" uik-outline uik-disabled>Primary</uik-button>
+		<uik-button uik-style="uik-button-secondary" uik-outline uik-disabled>Secondary</uik-button>
+		<uik-button uik-style="uik-button-info" uik-outline uik-disabled>Information</uik-button>
+		<uik-button uik-style="uik-button-dangerous" uik-outline uik-disabled>Dangerous</uik-button>
+		<uik-button uik-style="uik-button-success" uik-outline uik-disabled>Success</uik-button>
+		<uik-button uik-style="uik-button-warning" uik-outline uik-disabled>Warning</uik-button>
+		<div class="button-size-container">
+			<h1>Buttons Sizes</h1>
+			<div>
+				<uik-button uik-style="uik-button-primary" uik-size="uik-button-small">Small</uik-button>
+				<uik-button uik-style="uik-button-primary" uik-size="">Default</uik-button>
+				<uik-button uik-style="uik-button-primary" uik-size="uik-button-large">Large</uik-button>
+			</div>
+			<div>
+				<uik-button uik-outline uik-style="uik-button-primary" uik-size="uik-button-small">Small</uik-button>
+				<uik-button uik-outline uik-style="uik-button-primary" uik-size="">Default</uik-button>
+				<uik-button uik-outline uik-style="uik-button-primary" uik-size="uik-button-large">Large</uik-button>
+			</div>
+		</div>
+
+		<h1>Icons</h1>
+		<uik-icon uik-icon-name="fa-camera" uik-label="Take a picture"></uik-icon>
+	<script type="text/javascript" src="app.min.js"></script></body>
+</html>

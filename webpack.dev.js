@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 	.BundleAnalyzerPlugin;
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
 	mode: "development",
@@ -32,10 +33,13 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			title: "UI Kit",
 			template: "./src/index.html"
-		})
+		}),
+		new CopyPlugin([
+			{ from: "dest/app.bundle.js", to: "docs/js/app.min.js" }
+		])
 	],
 	output: {
 		filename: "[name].bundle.js",
-		path: path.resolve(__dirname, "dist")
+		path: path.resolve(__dirname, "dest")
 	}
 };
