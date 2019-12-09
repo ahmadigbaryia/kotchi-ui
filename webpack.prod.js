@@ -2,7 +2,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+const WebpackCopyAfterBuildPlugin = require("webpack-copy-after-build-plugin");
 
 module.exports = {
 	mode: "production",
@@ -13,26 +13,26 @@ module.exports = {
 		rules: [
 			{
 				test: /\.html$/,
-				use: ["html-loader"],
+				use: ["html-loader"]
 			},
 			{
 				test: /\.css$/i,
-				use: ["css-to-string-loader", "css-loader"],
-			},
-		],
+				use: ["css-to-string-loader", "css-loader"]
+			}
+		]
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			title: "UI Kit",
-			template: "./src/index.html",
+			template: "./src/index.html"
 		}),
-		new CopyPlugin([
-			{ from: "dest/*.js", to: "docs/js/", context: path.resolve(__dirname, "") }
-		])
+		// new WebpackCopyAfterBuildPlugin({
+		// 	app: "../docs/js/app.min.js"
+		// })
 	],
 	output: {
 		filename: "[name].min.js",
-		path: path.resolve(__dirname, "dest"),
-	},
+		path: path.resolve(__dirname, "dest")
+	}
 };

@@ -1,2 +1,2 @@
-import "./button";
-import "./icon";
+import "./components/button";
+import "./components/icon";

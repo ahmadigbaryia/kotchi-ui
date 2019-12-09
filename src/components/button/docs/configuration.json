@@ -1,0 +1,18 @@
+{
+    "id": "button",
+    "category": "components",
+	"title": "Button",
+	"subtitle": "Use Kotchi UI custom buttons that are built upon Bootstrap’s button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.",
+	"cards": [
+		{
+			"title": "Basic Examples",
+			"subtitle": "With Kotchi UI you can easily create buttons with configurable predefined styles",
+			"contents": "basic-examples.html"
+		},
+		{
+			"title": "Outline buttons",
+			"subtitle": "In need of a button, but not the hefty background colors they bring? add the 'uik-outline' attribute to remove all background images and colors on any button.",
+			"contents": "outline-examples.html"
+		}
+	]
+}

@@ -1,0 +1,220 @@
+<head>
+        <title>Kotchi UI - Accordion</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Vendor styles  -->
+        <link rel="stylesheet" href="vendors/animate.css/animate.min.css">
+        <link rel="stylesheet" href="vendors/jquery-scrollbar/jquery.scrollbar.css">
+        <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+        
+        <!-- App styles -->
+        <link rel="stylesheet" href="css/prism.css">
+        <link rel="stylesheet" href="css/docs.app.min.css">
+    </head>
+
+    <body data-ma-theme="green">
+        <main class="main">
+            <div class="page-loader">
+                <div class="page-loader__spinner">
+                    <svg viewBox="25 25 50 50">
+                        <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <header class="header">
+                <div class="navigation-trigger hidden-xl-up" data-ma-action="aside-open" data-ma-target=".sidebar">
+                    <div class="navigation-trigger__inner">
+                        <i class="navigation-trigger__line"></i>
+                        <i class="navigation-trigger__line"></i>
+                        <i class="navigation-trigger__line"></i>
+                    </div>
+                </div>
+
+                <div class="header__logo hidden-sm-down">
+                    <h1><a id="main_header_link" href="index.html">Kotchi UI Documentation</a></h1>
+                </div>
+            </header>
+            
+            <!-- Main Menu -->
+            <aside class="sidebar">
+                <div class="scrollbar-inner">
+                    <ul class="navigation">
+                        <!-- add "navigation__sub--active" class name to the active <li> element-->
+                        <li id="getting_started" class="navigation__sub navigation__sub--toggled">
+                            <a href="index.html"><i class="zmdi zmdi-home"></i> Getting Started</a>
+                            <ul id="getting_started_menu" style="display: block;">
+                                <!-- add "navigation__active" class name to the active <li> element-->
+                                <!-- <li id="introduction"><a href="index.html">Introduction</a></li> -->
+                            </ul>
+                        </li>
+                        <li id="components" class="navigation__sub navigation__sub--toggled navigation__sub--active">
+                            <a href=""><i class="zmdi zmdi-widgets"></i>Components</a>
+                            <ul id="components_menu" style="display: block;">
+                                <!-- <li id="button"><a href="button.html">Button</a></li> -->
+                            <li id="accordion" class=" navigation__sub--active"><a href="accordion.html">Accordion</a></li><li id="button" class=""><a href="button.html">Button</a></li></ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <section class="content">
+                <header class="content__title">
+                    <h1 id="content_title">Accordion</h1>
+                    <small id="content_subtitle">Use Kotchi UI custom accordion to bla bla bla ...</small>
+                </header>
+                <div id="cards_container"><body><div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Basic Examples</h4>
+        <h6 class="card-subtitle">With Kotchi UI you can easily create buttons with configurable predefined styles</h6>
+        <div id="additional_info"></div>
+        <div class="tab-container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item nav-link">
+                    <a id="preview_0-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_0" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    </a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a id="markup_0-tab" class="nav-item nav-link" data-toggle="tab" href="markup_0" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="preview_0" role="tabpanel" aria-labelledby="preview_0-tab">
+	<uik-button uik-style="uik-button-default">Default</uik-button>
+	<uik-button uik-style="uik-button-primary">Primary</uik-button>
+	<uik-button uik-style="uik-button-secondary">Secondary</uik-button>
+	<uik-button uik-style="uik-button-info">Information</uik-button>
+	<uik-button uik-style="uik-button-dangerous">Dangerous</uik-button>
+	<uik-button uik-style="uik-button-success">Success</uik-button>
+	<uik-button uik-style="uik-button-warning">Warning</uik-button>
+	<uik-button uik-style="uik-button-link">Link</uik-button>
+</div>
+                <div class="tab-pane fade" id="markup_0" role="tabpanel" aria-labelledby="markup_0-tab">
+                    <pre class="language-html">						<code class="language-html">
+	&lt;uik-button uik-style="uik-button-default"&gt;Default&lt;/uik-button&gt;
+	&lt;uik-button uik-style="uik-button-primary"&gt;Primary&lt;/uik-button&gt;
+	&lt;uik-button uik-style="uik-button-secondary"&gt;Secondary&lt;/uik-button&gt;
+	&lt;uik-button uik-style="uik-button-info"&gt;Information&lt;/uik-button&gt;
+	&lt;uik-button uik-style="uik-button-dangerous"&gt;Dangerous&lt;/uik-button&gt;
+	&lt;uik-button uik-style="uik-button-success"&gt;Success&lt;/uik-button&gt;
+	&lt;uik-button uik-style="uik-button-warning"&gt;Warning&lt;/uik-button&gt;
+	&lt;uik-button uik-style="uik-button-link"&gt;Link&lt;/uik-button&gt;
+</code>
+					</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Outline buttons</h4>
+        <h6 class="card-subtitle">In need of a button, but not the hefty background colors they bring? add the 'uik-outline' attribute to remove all background images and colors on any button.</h6>
+        <div id="additional_info"></div>
+        <div class="tab-container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item nav-link">
+                    <a id="preview_1-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_1" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    </a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a id="markup_1-tab" class="nav-item nav-link" data-toggle="tab" href="markup_1" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="preview_1" role="tabpanel" aria-labelledby="preview_1-tab">
+	<uik-button uik-style="uik-button-default" uik-outline="">Default</uik-button>
+	<uik-button uik-style="uik-button-primary" uik-outline="">Primary</uik-button>
+	<uik-button uik-style="uik-button-secondary" uik-outline="">Secondary</uik-button>
+	<uik-button uik-style="uik-button-info" uik-outline="">Information</uik-button>
+	<uik-button uik-style="uik-button-dangerous" uik-outline="">Dangerous</uik-button>
+	<uik-button uik-style="uik-button-success" uik-outline="">Success</uik-button>
+	<uik-button uik-style="uik-button-warning" uik-outline="">Warning</uik-button>
+</div>
+                <div class="tab-pane fade" id="markup_1" role="tabpanel" aria-labelledby="markup_1-tab">
+                    <pre class="language-html">						<code class="language-html">
+	&lt;pre&gt;        &lt;code&gt;
+&lt;uik-button uik-style="uik-button-default" uik-outline=""&gt;Default&lt;/uik-button&gt;
+&lt;uik-button uik-style="uik-button-primary" uik-outline=""&gt;Primary&lt;/uik-button&gt;
+&lt;uik-button uik-style="uik-button-secondary" uik-outline=""&gt;Secondary&lt;/uik-button&gt;
+&lt;uik-button uik-style="uik-button-info" uik-outline=""&gt;Information&lt;/uik-button&gt;
+&lt;uik-button uik-style="uik-button-dangerous" uik-outline=""&gt;Dangerous&lt;/uik-button&gt;
+&lt;uik-button uik-style="uik-button-success" uik-outline=""&gt;Success&lt;/uik-button&gt;
+&lt;uik-button uik-style="uik-button-warning" uik-outline=""&gt;Warning&lt;/uik-button&gt;
+        &lt;/code&gt;
+    &lt;/pre&gt;
+</code>
+					</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body></div>
+                <footer class="footer hidden-xs-down">
+                    <p>© Kotchi UI. All rights reserved.</p>
+                    <ul class="nav footer__nav">
+                        <a class="nav-link" href="">Github Page</a>
+                        <a class="nav-link" href="">Issues</a>
+                        <a class="nav-link" href="">Release Notes</a>
+                        <a class="nav-link" href="">Contacts</a>
+                    </ul>
+                </footer>
+            </section>
+        </main>
+
+        <!-- Older IE warning message -->
+            <!--[if IE]>
+                <div class="ie-warning">
+                    <h1>Warning!!</h1>
+                    <p>You are using an outdated version of Internet Explorer, please upgrade to any of the following web browsers to access this website.</p>
+
+                    <div class="ie-warning__downloads">
+                        <a href="http://www.google.com/chrome">
+                            <img src="img/browsers/chrome.png" alt="">
+                        </a>
+
+                        <a href="https://www.mozilla.org/en-US/firefox/new">
+                            <img src="img/browsers/firefox.png" alt="">
+                        </a>
+
+                        <a href="http://www.opera.com">
+                            <img src="img/browsers/opera.png" alt="">
+                        </a>
+
+                        <a href="https://support.apple.com/downloads/safari">
+                            <img src="img/browsers/safari.png" alt="">
+                        </a>
+
+                        <a href="https://www.microsoft.com/en-us/windows/microsoft-edge">
+                            <img src="img/browsers/edge.png" alt="">
+                        </a>
+
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="img/browsers/ie.png" alt="">
+                        </a>
+                    </div>
+                    <p>Sorry for the inconvenience!</p>
+                </div>
+            <![endif]-->
+
+        <!-- Javascript -->
+        <!-- Vendors -->
+        <script src="vendors/jquery/jquery.min.js"></script>
+        <script src="vendors/popper.js/popper.min.js"></script>
+        <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendors/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="vendors/jquery-scrollLock/jquery-scrollLock.min.js"></script>
+
+        <!-- App functions and actions -->
+        <script src="js/docs.app.min.js"></script>
+        <script src="js/prism.js"></script>
+        <!-- Add your project code script here -->
+        <script id="project_entrypoint" src="js/app.min.js"></script>
+        
+    
+</body>
