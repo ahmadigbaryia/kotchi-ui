@@ -14,8 +14,7 @@ class UIKitButton extends BaseElement {
 		this.elements = {
 			button: this.shadowRoot.querySelector(
 				templateConfig.selectors.button
-			),
-			icon: this.shadowRoot.querySelector(templateConfig.selectors.icon)
+			)
 		};
 	}
 

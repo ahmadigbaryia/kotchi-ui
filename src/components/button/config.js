@@ -18,7 +18,8 @@ export const Style = {
 export const Size = {
 	Normal: "",
 	Small: "uik-button-small",
-	Large: "uik-button-large"
+	Large: "uik-button-large",
+	Block: "uik-button-block"
 };
 
 export const attributesConfig = {
@@ -51,12 +52,10 @@ export const attributesConfig = {
 		attributeChangedHandler: function({ newValue }) {
 			const { button } = this.elements;
 			button.className = button.className.replace("disabled", "");
-			button.disabled = false;
-			button.uikDisabled = false;
+			button.disabled = button.uikDisabled = false;
 			if (isTrue(newValue) || newValue === "") {
 				button.className += " disabled";
-				button.disabled = true;
-				button.uikDisabled = true;
+				button.disabled = button.uikDisabled = true;
 			}
 		}
 	},

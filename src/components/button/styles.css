@@ -566,3 +566,9 @@
 .uik-button-large {
 	font-size: var(--font-size-large);
 }
+
+/* Block button style */
+.uik-button-block {
+	display: block;
+	width: 100%;
+}
