@@ -2,7 +2,7 @@ import keys from "lodash/keys";
 
 import BaseElement from "../../baseElement";
 import { defineCustomElement } from "../../utils/wcUtils.js";
-import { attributesConfig, tagName } from "./config";
+import { attributesConfig, tagName, faVersion } from "./config";
 import templateConfig from "./template";
 
 /**
@@ -31,7 +31,7 @@ class UIKitIcon extends BaseElement {
 		const styleId = "font-awesome-ff";
 		if (!document.head.querySelector(`style[id="${styleId}"]`)) {
 			const fontAwesomeCDN =
-				"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts";
+				`https://cdnjs.cloudflare.com/ajax/libs/font-awesome/${faVersion}/webfonts`;
 			const fontFaceCss = document.createTextNode(`
 			@font-face {
 				font-family: "Font Awesome 5 Free";

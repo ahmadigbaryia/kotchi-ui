@@ -21,8 +21,7 @@ class BaseElement extends HTMLElement {
 		const { tagName, attributesConfig } = this;
 		const attributeChangedHandler =
 			attributesConfig[attribute] &&
-			attributesConfig[attribute].attributeChangedHandler &&
-			attributesConfig[attribute].attributeChangedHandler.bind(this);
+			attributesConfig[attribute].attributeChangedHandler;
 		if (attributeChangedHandler) {
 			changeHandlerWrapper({
 				attributesConfig,

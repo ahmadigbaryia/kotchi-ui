@@ -24,24 +24,24 @@ export const Size = {
 
 export const attributesConfig = {
 	"uik-text": {
-		attributeChangedHandler: function({ newValue }) {
-			const { button } = this.elements;
+		attributeChangedHandler: function({ newValue, component }) {
+			const { button } = component.elements;
 			button.innerText = newValue || "";
 		},
 		validators: [isString]
 	},
 	"uik-style": {
 		default: Style.Default,
-		attributeChangedHandler: function({ oldValue, newValue }) {
-			const { button } = this.elements;
+		attributeChangedHandler: function({ oldValue, newValue, component }) {
+			const { button } = component.elements;
 			const defaultStyle = attributesConfig["uik-style"].default;
 			applyClassName({ oldValue, newValue, element: button, defaultStyle });
 		},
 		validators: [isString, isValueOf(Style)]
 	},
 	"uik-outline": {
-		attributeChangedHandler: function({ newValue }) {
-			const { button } = this.elements;
+		attributeChangedHandler: function({ newValue, component }) {
+			const { button } = component.elements;
 			button.className = button.className.replace("outline", "");
 			if (isTrue(newValue) || newValue === "") {
 				button.className += " outline";
@@ -49,8 +49,8 @@ export const attributesConfig = {
 		}
 	},
 	"uik-disabled": {
-		attributeChangedHandler: function({ newValue }) {
-			const { button } = this.elements;
+		attributeChangedHandler: function({ newValue, component }) {
+			const { button } = component.elements;
 			button.className = button.className.replace("disabled", "");
 			button.disabled = button.uikDisabled = false;
 			if (isTrue(newValue) || newValue === "") {
@@ -61,8 +61,8 @@ export const attributesConfig = {
 	},
 	"uik-size": {
 		default: Size.Normal,
-		attributeChangedHandler: function({ oldValue, newValue }) {
-			const { button } = this.elements;
+		attributeChangedHandler: function({ oldValue, newValue, component }) {
+			const { button } = component.elements;
 			const defaultSize = attributesConfig["uik-size"].default;
 			applyClassName({ oldValue, newValue, element: button, defaultSize });
 		},

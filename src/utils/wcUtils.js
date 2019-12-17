@@ -54,19 +54,19 @@ function beforeChangeValue({ attributesConfig, attribute, tagName, value }) {
 	return { transformedValue, isValid: true };
 }
 
-function defaultSetter({ element, attributesConfig, attribute, value }) {
+function defaultSetter({ component, attributesConfig, attribute, value }) {
 	const { transformedValue, isValid } = beforeChangeValue({
 		attributesConfig,
 		attribute,
 		value
 	});
 	if (isValid) {
-		element.setAttribute(attribute, transformedValue);
+		component.setAttribute(attribute, transformedValue);
 	}
 }
 
-function defaultGetter({ element, attribute }) {
-	return element.getAttribute(attribute);
+function defaultGetter({ component, attribute }) {
+	return component.getAttribute(attribute);
 }
 
 export function buildShadowRoot(template, host) {
@@ -91,7 +91,8 @@ export function changeHandlerWrapper({
 	tagName,
 	oldValue,
 	newValue,
-	attributeChangedHandler
+	attributeChangedHandler, 
+	component
 }) {
 	const { transformedValue, isValid } = beforeChangeValue({
 		attributesConfig,
@@ -100,7 +101,7 @@ export function changeHandlerWrapper({
 		value: newValue
 	});
 	if (isValid) {
-		attributeChangedHandler({ attribute, oldValue, newValue: transformedValue });
+		attributeChangedHandler({ attribute, oldValue, newValue: transformedValue, component });
 	}
 }
 
@@ -122,7 +123,7 @@ export function defineCustomElement({
 					const attributeConfig = attributesConfig[attribute];
 					if (_isFunction(attributeConfig.setter)) {
 						attributeConfig.setter.call(this, {
-							element: this,
+							component: this,
 							attributesConfig,
 							attribute,
 							value
@@ -132,7 +133,7 @@ export function defineCustomElement({
 						_isUndefined(attributeConfig.setter)
 					) {
 						defaultSetter.call(this, {
-							element: this,
+							component: this,
 							attributesConfig,
 							attribute,
 							value
@@ -143,6 +144,8 @@ export function defineCustomElement({
 					const attributeConfig = attributesConfig[attribute];
 					if (_isFunction(attributeConfig.getter)) {
 						return attributeConfig.getter.call(this, {
+							component: this,
+							attributesConfig,
 							attribute
 						});
 					} else if (
@@ -150,7 +153,7 @@ export function defineCustomElement({
 						_isUndefined(attributeConfig.getter)
 					) {
 						return defaultGetter.call(this, {
-							element: this,
+							component: this,
 							attribute
 						});
 					}
