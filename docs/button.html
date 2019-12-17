@@ -65,23 +65,73 @@
                 </header>
                 <div id="cards_container"><body><div class="card">
     <div class="card-body">
+        <h4 class="card-title">Configurations and Attributes</h4>
+        <h6 class="card-subtitle">Kotchi UI buttons are very flexable to configure and control</h6>
+        <div id="additional_info">
+
+	<table class="table table-bordered">
+		<thead>
+			<tr class="text-uppercase">
+				<th>Attribute</th>
+				<th>Type</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>uik-text</td>
+				<td>String</td>
+				<td>The text of the button</td>
+			</tr>
+			<tr>
+				<td>uik-style</td>
+				<td>ButtonStyleEnum</td>
+				<td>Applies a different look to the button</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+        <div class="tab-container" style="display: none;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item nav-link">
+                    <a id="preview-tab" class="nav-item nav-link active" data-toggle="tab" href="#preview" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    </a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a id="markup-tab" class="nav-item nav-link" data-toggle="tab" href="#markup" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="preview" role="tabpanel"></div>
+                <div class="tab-pane fade" id="markup" role="tabpanel">
+                    <pre class="language-html">						<code class="language-html"></code>
+					</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card">
+    <div class="card-body">
         <h4 class="card-title">Basic Examples</h4>
         <h6 class="card-subtitle">With Kotchi UI you can easily create buttons with configurable predefined styles</h6>
         <div id="additional_info"></div>
         <div class="tab-container">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item nav-link">
-                    <a id="preview_0-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_0" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    <a id="preview_1-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_1" role="tab" aria-controls="preview" aria-selected="true">Preview
                     </a>
                 </li>
                 <li class="nav-item nav-link">
-                    <a id="markup_0-tab" class="nav-item nav-link" data-toggle="tab" href="markup_0" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    <a id="markup_1-tab" class="nav-item nav-link" data-toggle="tab" href="markup_1" role="tab" aria-controls="markup" aria-selected="false">Markup
                     </a>
                 </li>
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="preview_0" role="tabpanel" aria-labelledby="preview_0-tab">
+                <div class="tab-pane fade show active" id="preview_1" role="tabpanel" aria-labelledby="preview_1-tab">
 	<uik-button uik-style="uik-button-default">Default</uik-button>
 	<uik-button uik-style="uik-button-primary">Primary</uik-button>
 	<uik-button uik-style="uik-button-secondary">Secondary</uik-button>
@@ -91,7 +141,7 @@
 	<uik-button uik-style="uik-button-warning">Warning</uik-button>
 	<uik-button uik-style="uik-button-link">Link</uik-button>
 </div>
-                <div class="tab-pane fade" id="markup_0" role="tabpanel" aria-labelledby="markup_0-tab">
+                <div class="tab-pane fade" id="markup_1" role="tabpanel" aria-labelledby="markup_1-tab">
                     <pre class="language-html">						<code class="language-html">
 	&lt;uik-button uik-style="uik-button-default"&gt;Default&lt;/uik-button&gt;
 	&lt;uik-button uik-style="uik-button-primary"&gt;Primary&lt;/uik-button&gt;
@@ -116,17 +166,17 @@
         <div class="tab-container">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item nav-link">
-                    <a id="preview_1-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_1" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    <a id="preview_2-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_2" role="tab" aria-controls="preview" aria-selected="true">Preview
                     </a>
                 </li>
                 <li class="nav-item nav-link">
-                    <a id="markup_1-tab" class="nav-item nav-link" data-toggle="tab" href="markup_1" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    <a id="markup_2-tab" class="nav-item nav-link" data-toggle="tab" href="markup_2" role="tab" aria-controls="markup" aria-selected="false">Markup
                     </a>
                 </li>
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="preview_1" role="tabpanel" aria-labelledby="preview_1-tab">
+                <div class="tab-pane fade show active" id="preview_2" role="tabpanel" aria-labelledby="preview_2-tab">
 	<uik-button uik-style="uik-button-default" uik-outline="">Default</uik-button>
 	<uik-button uik-style="uik-button-primary" uik-outline="">Primary</uik-button>
 	<uik-button uik-style="uik-button-secondary" uik-outline="">Secondary</uik-button>
@@ -135,7 +185,7 @@
 	<uik-button uik-style="uik-button-success" uik-outline="">Success</uik-button>
 	<uik-button uik-style="uik-button-warning" uik-outline="">Warning</uik-button>
 </div>
-                <div class="tab-pane fade" id="markup_1" role="tabpanel" aria-labelledby="markup_1-tab">
+                <div class="tab-pane fade" id="markup_2" role="tabpanel" aria-labelledby="markup_2-tab">
                     <pre class="language-html">						<code class="language-html">
 	&lt;pre&gt;        &lt;code&gt;
 &lt;uik-button uik-style="uik-button-default" uik-outline=""&gt;Default&lt;/uik-button&gt;

@@ -1,8 +1,8 @@
 {
-    "id": "accordion",
+    "id": "icon",
     "category": "components",
-	"title": "Accordion",
-	"subtitle": "Use Kotchi UI custom accordion to bla bla bla ...",
+	"title": "Icon",
+	"subtitle": "Use Kotchi UI FontAwesome icons controled with attributes",
 	"cards": [
 		{
 			"title": "Basic Examples",
