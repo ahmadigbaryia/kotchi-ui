@@ -4,8 +4,8 @@
 	--font-family: var(--uik-button-font-family, "Roboto" ,"sans-serif");
 	--font-weight: var(--uik-button-font-weight, 400);
 	--font-size: var(--uik-button-font-size, 1.25rem);
-	--font-size-small: var(--uik-button-font-size, 0.75rem);
-	--font-size-large: var(--uik-button-font-size, 1.25rem);
+	--font-size-small: var(--uik-button-small-font-size, 0.75rem);
+	--font-size-large: var(--uik-button-large-font-size, 1.25rem);
 
 	--padding-left: var(--uik-button-padding-left, 10px);
 	--padding-right: var(--uik-button-padding-right, 10px);
