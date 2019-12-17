@@ -18,6 +18,16 @@
 			"title": "Outline buttons",
 			"subtitle": "In need of a button, but not the hefty background colors they bring? add the 'uik-outline' attribute to remove all background images and colors on any button.",
 			"contents": "outline-examples.html"
+		},
+		{
+			"title": "Disabled state",
+			"subtitle": "Make buttons look inactive by adding the uik-disabled boolean attribute to any &lt;uik-button&gt; element.",
+			"contents": "disabled-examples.html"
+		},
+		{
+			"title": "Button Different Sizes",
+			"subtitle": "In need for different button sizes, no worries we have 4 different sizes for your convenient.",
+			"contents": "sizes-examples.html"
 		}
 	]
 }

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <div id="additional_info">
-
+	<p>
+		Here is a list of the available attributes for the uik-button that can be used
+	</p>
 	<table class="table table-bordered">
 		<thead>
 			<tr class="text-uppercase">
 				<th>Attribute</th>
 				<th>Type</th>
+				<th>Default value</th>
 				<th>Description</th>
 			</tr>
 		</thead>
@@ -13,12 +16,32 @@
 			<tr>
 				<td>uik-text</td>
 				<td>String</td>
+				<td></td>
 				<td>The text of the button</td>
 			</tr>
 			<tr>
 				<td>uik-style</td>
-				<td>ButtonStyleEnum</td>
+				<td>Style</td>
+				<td>Style.Default (uik-button-default)</td>
 				<td>Applies a different look to the button</td>
+			</tr>
+			<tr>
+				<td>uik-outline</td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>Applies the outline style to the button</td>
+			</tr>
+			<tr>
+				<td>uik-disabled</td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>Applies the disabled state to the button</td>
+			</tr>
+			<tr>
+				<td>uik-size</td>
+				<td>Size</td>
+				<td>Size.Normal (no class needed)</td>
+				<td>Applies a different size to the button</td>
 			</tr>
 		</tbody>
 	</table>
