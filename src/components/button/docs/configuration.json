@@ -5,7 +5,7 @@
 	"subtitle": "Use Kotchi UI custom buttons that are built upon Bootstrap’s button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.",
 	"cards": [
 		{
-			"title": "Configurations and Attributes",
+			"title": "Attributes Configurations",
 			"subtitle": "Kotchi UI buttons are very flexable to configure and control",
 			"contents": "conf-attr.html"
 		},
@@ -28,6 +28,11 @@
 			"title": "Button Different Sizes",
 			"subtitle": "In need for different button sizes, no worries we have 4 different sizes for your convenient.",
 			"contents": "sizes-examples.html"
+		},
+		{
+			"title": "Style Configurations",
+			"subtitle": "Styling Kotchi UI buttons is very configurable with CSS variables",
+			"contents": "conf-css.html"
 		}
 	]
 }
