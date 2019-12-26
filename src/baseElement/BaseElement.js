@@ -29,7 +29,8 @@ class BaseElement extends HTMLElement {
 				tagName,
 				oldValue,
 				newValue,
-				attributeChangedHandler
+				attributeChangedHandler,
+				component: this
 			});
 		}
 	}

@@ -1,2 +1,2 @@
-import "./components/button";
-import "./components/icon";
+export { default as UIKButton }from "./components/button";
+export { default as UIKIcon } from "./components/icon";

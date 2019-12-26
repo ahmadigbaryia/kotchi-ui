@@ -2,7 +2,7 @@ import keys from "lodash/keys";
 
 import BaseElement from "../../baseElement";
 import { defineCustomElement } from "../../utils/wcUtils";
-import { attributesConfig, tagName } from "./config";
+import { attributesConfig, tagName, Style, Size } from "./config";
 import templateConfig from "./template";
 
 /**
@@ -21,7 +21,17 @@ class UIKitButton extends BaseElement {
 	static get observedAttributes() {
 		return keys(attributesConfig);
 	}
+
+	static get Style() {
+		return Style;
+	}
+
+	static get Size() {
+		return Size;
+	}
+
 }
+
 defineCustomElement({
 	componentClass: UIKitButton,
 	tagName,

@@ -1,0 +1,11 @@
+#Keep only the library files
+.build/
+.vscode/
+dist/
+docs/
+src/
+
+.eslintrc.js
+.prettierrc
+webpack*
+*.tgz

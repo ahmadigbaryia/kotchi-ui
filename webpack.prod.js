@@ -1,38 +1,52 @@
 /* eslint-disable no-undef */
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const WebpackCopyAfterBuildPlugin = require("webpack-copy-after-build-plugin");
+const { promises: fs } = require("fs");
 
-module.exports = {
-	mode: "production",
-	entry: {
-		app: "./src/index.js"
-	},
-	module: {
-		rules: [
-			{
-				test: /\.html$/,
-				use: ["html-loader"]
-			},
-			{
-				test: /\.css$/i,
-				use: ["css-to-string-loader", "css-loader"]
+const buildConf = async () => {
+	const conf = {
+		mode: "production",
+		entry: await addComponentsEntries(),
+		module: {
+			rules: [
+				{
+					test: /\.html$/,
+					use: ["html-loader"]
+				},
+				{
+					test: /\.css$/i,
+					use: ["css-to-string-loader", "css-loader"]
+				}
+			]
+		},
+		plugins: [new CleanWebpackPlugin()],
+		output: {
+			path: path.resolve(__dirname, "dist"),
+			filename: "kotchi-[name].js",
+			library: ["kotchiUI", "UIK[name]"],
+			libraryTarget: "umd"
+		},
+		externals: {
+			lodash: {
+				commonjs: "lodash",
+				commonjs2: "lodash",
+				amd: "lodash",
+				root: "_"
 			}
-		]
-	},
-	plugins: [
-		new CleanWebpackPlugin(),
-		new HtmlWebpackPlugin({
-			title: "UI Kit",
-			template: "./src/index.html"
-		}),
-		// new WebpackCopyAfterBuildPlugin({
-		// 	app: "../docs/js/app.min.js"
-		// })
-	],
-	output: {
-		filename: "[name].min.js",
-		path: path.resolve(__dirname, "dest")
-	}
+		}
+	};
+	return conf;
 };
+
+async function addComponentsEntries() {
+	const entries = {
+		ui: "./src/index.js"
+	};
+	const dirents = await fs.readdir("./src/components", { withFileTypes: true });
+	for (let i = 0; i < dirents.length; i++) {
+		entries[dirents[i].name] = `./src/components/${dirents[i].name}/index.js`;
+	}
+	return entries;
+}
+
+module.exports = buildConf;

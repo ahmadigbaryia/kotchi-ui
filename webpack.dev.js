@@ -1,20 +1,21 @@
 /* eslint-disable no-undef */
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-	.BundleAnalyzerPlugin;
-const WebpackCopyAfterBuildPlugin = require("webpack-copy-after-build-plugin");
-
-
-module.exports = {
+module.exports = ["inline-source-map"].map(devtool => ({
 	mode: "development",
 	entry: {
-		app: "./src/index.js"
+		ui: "./src/index.js",
+		button: "./src/components/button/index.js",
+		icon: "./src/components/icon/index.js",
 	},
-	devtool: "inline-source-map",
-	devServer: {
-		contentBase: "./dist"
+	output: {
+		path: path.resolve(__dirname, "dist"),
+		filename: "kotchi-[name].js",
+		library: ["kotchiUI", "UIK[name]"],
+		libraryTarget: "umd"
+	},
+	devtool,
+	optimization: {
+		runtimeChunk: true
 	},
 	module: {
 		rules: [
@@ -27,20 +28,5 @@ module.exports = {
 				use: ["css-to-string-loader", "css-loader"]
 			}
 		]
-	},
-	plugins: [
-		new BundleAnalyzerPlugin(),
-		new CleanWebpackPlugin(),
-		new HtmlWebpackPlugin({
-			title: "UI Kit",
-			template: "./src/index.html"
-		}),
-		new WebpackCopyAfterBuildPlugin({
-			app: "../docs/js/app.bundle.js"
-		})
-	],
-	output: {
-		filename: "[name].bundle.js",
-		path: path.resolve(__dirname, "dest")
 	}
-};
+}));
