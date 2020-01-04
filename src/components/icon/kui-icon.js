@@ -8,7 +8,7 @@ import templateConfig from "./template";
 /**
  * Icon element
  */
-class UIKitIcon extends BaseElement {
+class KUIIcon extends BaseElement {
 	constructor() {
 		super({ templateConfig, attributesConfig });
 		this.elements = {
@@ -45,6 +45,18 @@ class UIKitIcon extends BaseElement {
 					url("${fontAwesomeCDN}/fa-solid-900.ttf") format("truetype"),
 					url("${fontAwesomeCDN}/fa-solid-900.svg#fontawesome") format("svg");
 			}
+			@font-face {
+				font-family: "Font Awesome 5 Brands";
+				font-style: normal;
+				font-weight: 900;
+				font-display: auto;
+				src: url("${fontAwesomeCDN}/fa-brands-400.eot");
+				src: url("${fontAwesomeCDN}/fa-brands-400.eot?#iefix") format("embedded-opentype"),
+					url("${fontAwesomeCDN}/fa-brands-400.woff2") format("woff2"),
+					url("${fontAwesomeCDN}/fa-brands-400.woff") format("woff"),
+					url("${fontAwesomeCDN}/fa-brands-400.ttf") format("truetype"),
+					url("${fontAwesomeCDN}/fa-brands-400.svg#fontawesome") format("svg");
+			}
 		`);
 			const faStyleElement = document.createElement("style");
 			faStyleElement.setAttribute("type", "text/css");
@@ -55,9 +67,9 @@ class UIKitIcon extends BaseElement {
 	}
 }
 defineCustomElement({
-	componentClass: UIKitIcon,
+	componentClass: KUIIcon,
 	tagName,
 	attributesConfig
 });
 
-export default UIKitIcon;
+export default KUIIcon;

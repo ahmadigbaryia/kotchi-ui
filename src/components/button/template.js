@@ -6,7 +6,7 @@ template.innerHTML = `
 	<style>
 		${style}
 	</style>
-	<button class="uik-button">
+	<button class="kui-button">
 		<slot></slot>
 	</button>
 `;
@@ -15,6 +15,6 @@ window.ShadyCSS && window.ShadyCSS.prepareTemplate(template, tagName);
 export default {
 	template,
 	selectors: {
-		button: "button.uik-button"
+		button: "button.kui-button"
 	}
 };

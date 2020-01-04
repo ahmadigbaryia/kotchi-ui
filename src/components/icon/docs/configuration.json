@@ -1,18 +1,24 @@
 {
-    "id": "icon",
-    "category": "components",
+	"id": "icon",
+	"category": "components",
 	"title": "Icon",
-	"subtitle": "Use Kotchi UI FontAwesome icons controled with attributes",
+	"subtitle": "You can place KotchiUI Font Awesome icons just about anywhere using the custom element &lt;kui-icon&gt; and the icon’s name as the attribute value.",
 	"cards": [
 		{
-			"title": "Basic Examples",
-			"subtitle": "With Kotchi UI you can easily create buttons with configurable predefined styles",
-			"contents": "basic-examples.html"
+			"title": "Attributes Configurations",
+			"subtitle": "Kotchi UI Font Awesome icons are very flexable to configure and control",
+			"contents": "conf-attr.html"
 		},
 		{
-			"title": "Outline buttons",
-			"subtitle": "In need of a button, but not the hefty background colors they bring? add the 'uik-outline' attribute to remove all background images and colors on any button.",
-			"contents": "outline-examples.html"
+			"title": "Basic Usage",
+			"subtitle": "KotchiUI Font Awesome icons basic usage",
+			"contents": "icon-example.html"
+		},
+		{
+			"title": "Accessability",
+			"subtitle": "KotchiUI Font Awesome icons are accessable, just add the kui-label attribute and that's it.",
+			"contents": "label-example.html"
 		}
+		
 	]
 }

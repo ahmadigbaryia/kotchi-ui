@@ -2,74 +2,89 @@ import { applyClassName } from "../../utils/wcUtils";
 import { isValueOf } from "../../utils/validators";
 import isString from "lodash/isString";
 
-export const tagName = "uik-icon";
+export const tagName = "kui-icon";
 
+export const PullDirection = {
+	Left: "fa-pull-left",
+	Right: "fa-pull-right",
+};
+
+export const Rotate = {
+	Rotate90: "fa-rotate-90",
+	Rotate180: "fa-rotate-180",
+	Rotate270: "fa-rotate-270"
+};
+
+export const Flip = {
+	FlipVer: "fa-flip-vertical",
+	FlipHor: "fa-flip-horizontal",
+	FlipBoth: "fa-flip-both"
+};
+
+export const Animate = {
+	Spin: "fa-spin",
+	Pulse: "fa-pulse",
+};
 export const Size = {
 	Normal: "",
-	Small: "uik-button-small",
-	Large: "uik-button-large"
+	XSmall: "fa-xs",
+	Small: "fa-sm",
+	Large: "fa-lg",
+	X2: "fa-2x",
+	X3: "fa-3x",
+	X4: "fa-4x",
+	X5: "fa-5x",
+	X6: "fa-6x",
+	X7: "fa-7x",
+	X8: "fa-8x",
+	X9: "fa-9x",
+	X10: "fa-10x"
 };
 
 export const faVersion = "5.11.2";
 
 export const attributesConfig = {
-	"uik-label": {
-		type: "String",
-		description: "The icon's label",
+	"kui-label": {
 		attributeChangedHandler: function({ newValue, component }) {
 			component.addScreenReaderSupport({ label: newValue });
-		}
+		},
+		validators: [isString]
 	},
-	"uik-icon": {
-		type: "String",
-		description: "The icon to be used from the available fontawesome icons",
+	"kui-icon": {
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { icon } = component.elements;
 			applyClassName({ oldValue, newValue, element: icon });
 		},
 		validators: [isString]
 	},
-	"uik-size": {
-		type: "Size",
-		description: "The size of the icon",
+	"kui-size": {
 		default: Size.Normal,
-		attributeChangedHandler: function({ oldValue, newValue, component }) {},
+		attributeChangedHandler: function({ oldValue, newValue, component }) {
+			const { icon } = component.elements;
+			applyClassName({ oldValue, newValue, element: icon });
+		},
 		validators: [isString, isValueOf(Size)]
 	},
-	"uik-fixed-width": {
-		type: "Boolean",
-		description: "Apply the fixed width style on the icon",
+	"kui-fixed-width": {
 		attributeChangedHandler: function({ newValue, component }) {}
 	},
-	"uik-list-icon": {
-		type: "Boolean",
-		description: "Replace default bullets in unordered lists",
+	"kui-list-icon": {
 		attributeChangedHandler: function({ newValue, component }) {}
 	},
-	"uik-bordered": {
-		type: "Boolean",
-		description: "Adds a border arround the icon",
+	"kui-bordered": {
 		attributeChangedHandler: function({ newValue, component }) {}
 	},
-	"uik-pull": {
-		type: "['Right', 'Left']",
-		description: "Pull quotes or article icons",
+	"kui-pulled": {
 		default: "Left",
 		attributeChangedHandler: function({ oldValue, newValue, component }) {}
 	},
-	"uik-animated": {
-		type: "Boolean",
-		description: "Makes the icon spins",
+	"kui-animated": {
 		attributeChangedHandler: function({ newValue, component }) {}
 	},
-	"uik-rotate": {
-		type: "['90', '180', '270']",
-		description: "Rotates the icon",
+	"kui-rotate": {
 		attributeChangedHandler: function({ oldValue, newValue, component }) {}
 	},
-	"uik-flip": {
-		type: "['h', 'v']",
-		description: "Filps the icon horizontaly or vertically",
+	"kui-flip": {
 		attributeChangedHandler: function({ oldValue, newValue, component }) {}
 	}
 };

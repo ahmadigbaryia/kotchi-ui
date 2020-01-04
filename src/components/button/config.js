@@ -2,44 +2,44 @@ import { applyClassName } from "../../utils/wcUtils";
 import { isTrue, isValueOf } from "../../utils/validators";
 import isString from "lodash/isString";
 
-export const tagName = "uik-button";
+export const tagName = "kui-button";
 
 export const Style = {
-	Default: "uik-button-default",
-	Primary: "uik-button-primary",
-	Secondary: "uik-button-secondary",
-	Information: "uik-button-info",
-	Dangerous: "uik-button-dangerous",
-	Warning: "uik-button-warning",
-	Success: "uik-button-success",
-	Link: "uik-button-link"
+	Default: "kui-button-default",
+	Primary: "kui-button-primary",
+	Secondary: "kui-button-secondary",
+	Information: "kui-button-info",
+	Dangerous: "kui-button-dangerous",
+	Warning: "kui-button-warning",
+	Success: "kui-button-success",
+	Link: "kui-button-link"
 };
 
 export const Size = {
 	Normal: "",
-	Small: "uik-button-small",
-	Large: "uik-button-large",
-	Block: "uik-button-block"
+	Small: "kui-button-small",
+	Large: "kui-button-large",
+	Block: "kui-button-block"
 };
 
 export const attributesConfig = {
-	"uik-text": {
+	"kui-text": {
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
 			button.innerText = newValue || "";
 		},
 		validators: [isString]
 	},
-	"uik-style": {
+	"kui-style": {
 		default: Style.Default,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { button } = component.elements;
-			const defaultStyle = attributesConfig["uik-style"].default;
+			const defaultStyle = attributesConfig["kui-style"].default;
 			applyClassName({ oldValue, newValue, element: button, defaultStyle });
 		},
 		validators: [isString, isValueOf(Style)]
 	},
-	"uik-outline": {
+	"kui-outline": {
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
 			button.className = button.className.replace("outline", "");
@@ -48,22 +48,22 @@ export const attributesConfig = {
 			}
 		}
 	},
-	"uik-disabled": {
+	"kui-disabled": {
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
 			button.className = button.className.replace("disabled", "");
-			button.disabled = button.uikDisabled = false;
+			button.disabled = button.kuiDisabled = false;
 			if (isTrue(newValue) || newValue === "") {
 				button.className += " disabled";
-				button.disabled = button.uikDisabled = true;
+				button.disabled = button.kuiDisabled = true;
 			}
 		}
 	},
-	"uik-size": {
+	"kui-size": {
 		default: Size.Normal,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { button } = component.elements;
-			const defaultSize = attributesConfig["uik-size"].default;
+			const defaultSize = attributesConfig["kui-size"].default;
 			applyClassName({ oldValue, newValue, element: button, defaultSize });
 		},
 		validators: [isString, isValueOf(Size)]

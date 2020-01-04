@@ -1,1 +1,1 @@
-export { default } from "./uik-button";
+export { default } from "./kui-button";

@@ -5,10 +5,10 @@
 	"main": "kotchi-ui.js",
 	"scripts": {
 		"build": "webpack --config webpack.prod.js",
-		"build-w-docs": "webpack --config webpack.prod.js && npm run docs-builder",
+		"build-w-docs": "webpack --config webpack.prod.js && npm run build-docs",
 		"build-dev": "webpack --config webpack.dev.js",
 		"start": "webpack-dev-server --open --config webpack.dev.js",
-		"docs-builder": "docs-builder --projectName \"Kotchi UI\" --scriptPath \"dist/kotchi-ui.js\"",
+		"build-docs": "docs-builder --projectName \"Kotchi UI\" --scriptPath \"dist/kotchi-ui.js\"",
 		"prepack": "node .build/prepack.js",
 		"postpack": "node .build/postpack.js",
 		"test": "echo \"Error: no test specified\" && exit 1"

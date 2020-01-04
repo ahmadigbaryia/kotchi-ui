@@ -8,7 +8,7 @@ import templateConfig from "./template";
 /**
  * Button element
  */
-class UIKitButton extends BaseElement {
+class KUIButton extends BaseElement {
 	constructor() {
 		super({ templateConfig, attributesConfig });
 		this.elements = {
@@ -33,9 +33,9 @@ class UIKitButton extends BaseElement {
 }
 
 defineCustomElement({
-	componentClass: UIKitButton,
+	componentClass: KUIButton,
 	tagName,
 	attributesConfig
 });
 
-export default UIKitButton;
+export default KUIButton;

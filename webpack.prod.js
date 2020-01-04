@@ -23,7 +23,7 @@ const buildConf = async () => {
 		output: {
 			path: path.resolve(__dirname, "dist"),
 			filename: "kotchi-[name].js",
-			library: ["kotchiUI", "UIK[name]"],
+			library: ["kotchiUI", "KUI[name]"],
 			libraryTarget: "umd"
 		},
 		externals: {

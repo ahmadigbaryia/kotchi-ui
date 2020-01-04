@@ -1,1 +1,1 @@
-export { default } from "./uik-icon";
+export { default } from "./kui-icon";

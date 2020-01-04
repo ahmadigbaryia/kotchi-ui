@@ -16,12 +16,12 @@
 		},
 		{
 			"title": "Outline buttons",
-			"subtitle": "In need of a button, but not the hefty background colors they bring? add the 'uik-outline' attribute to remove all background images and colors on any button.",
+			"subtitle": "In need of a button, but not the hefty background colors they bring? add the 'kui-outline' attribute to remove all background images and colors on any button.",
 			"contents": "outline-examples.html"
 		},
 		{
 			"title": "Disabled state",
-			"subtitle": "Make buttons look inactive by adding the uik-disabled boolean attribute to any &lt;uik-button&gt; element.",
+			"subtitle": "Make buttons look inactive by adding the kui-disabled boolean attribute to any &lt;kui-button&gt; element.",
 			"contents": "disabled-examples.html"
 		},
 		{

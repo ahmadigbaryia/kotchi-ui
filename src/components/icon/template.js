@@ -4,7 +4,7 @@ import { tagName } from "./config";
 const template = document.createElement("template");
 template.innerHTML = `
   <style>${style}</style>
-  <i class="fas"></i>
+  <i class=""></i>
 `;
 
 window.ShadyCSS && window.ShadyCSS.prepareTemplate(template, tagName);
