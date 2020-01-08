@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { promises: fs } = require("fs");

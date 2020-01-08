@@ -10,6 +10,7 @@ template.innerHTML = `
 		<slot></slot>
 	</button>
 `;
+
 window.ShadyCSS && window.ShadyCSS.prepareTemplate(template, tagName);
 
 export default {
