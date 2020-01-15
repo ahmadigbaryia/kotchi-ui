@@ -1,5 +1,5 @@
 import { applyClassName } from "../../utils/wcUtils";
-import { isTrue, isValueOf } from "../../utils/validators";
+import { Types, isTrue, isValueOf, isBooleanAttribute } from "../../utils/validators";
 import isString from "lodash/isString";
 
 export const tagName = "kui-button";
@@ -24,6 +24,7 @@ export const Size = {
 
 export const attributesConfig = {
 	"kui-text": {
+		type: Types.STRING,
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
 			button.innerText = newValue || "";
@@ -31,6 +32,7 @@ export const attributesConfig = {
 		validators: [isString]
 	},
 	"kui-style": {
+		type: Types.STRING,
 		default: Style.Default,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { button } = component.elements;
@@ -40,26 +42,37 @@ export const attributesConfig = {
 		validators: [isString, isValueOf(Style)]
 	},
 	"kui-outline": {
+		type: Types.BOOLEAN,
+		default: false,
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
-			button.className = button.className.replace("outline", "");
 			if (isTrue(newValue) || newValue === "") {
-				button.className += " outline";
+				button.className = button.className.replace("outline", "") + " outline";
+			} else {
+				button.className = button.className.replace("outline", "");
+				component.removeAttribute("kui-outline");
 			}
-		}
+		},
+		validators: [isBooleanAttribute]
 	},
 	"kui-disabled": {
+		type: Types.BOOLEAN,
+		default: false,
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
-			button.className = button.className.replace("disabled", "");
-			button.disabled = button.kuiDisabled = false;
 			if (isTrue(newValue) || newValue === "") {
-				button.className += " disabled";
-				button.disabled = button.kuiDisabled = true;
+				button.className = button.className.replace("disabled", "") + " disabled";
+				button.setAttribute("disabled", "");
+			} else {
+				button.className = button.className.replace("disabled", "");
+				button.removeAttribute("disabled");
+				component.removeAttribute("kui-disabled");
 			}
-		}
+		},
+		validators: [isBooleanAttribute]
 	},
 	"kui-size": {
+		type: Types.STRING,
 		default: Size.Normal,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { button } = component.elements;

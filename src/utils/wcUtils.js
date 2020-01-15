@@ -1,7 +1,7 @@
 import _toCamelCase from "lodash/camelCase";
 import _isFunction from "lodash/isFunction";
 import _isUndefined from "lodash/isUndefined";
-
+import { Types, isTrue, isFalse } from "./validators";
 
 /**
  * Executes an array of validators one after the other till one fails or all succeed
@@ -55,17 +55,39 @@ function beforeChangeValue({ attributesConfig, attribute, tagName, value }) {
 }
 
 function defaultSetter({ component, attributesConfig, attribute, value }) {
-	const { transformedValue, isValid } = beforeChangeValue({
-		attributesConfig,
-		attribute,
-		value
-	});
-	if (isValid) {
-		component.setAttribute(attribute, transformedValue);
+	if(noChange({component, attributesConfig, attribute, value})) return;
+	const { tagName } = component;
+	const { validators, isRequired, type } = attributesConfig[attribute];
+	const valid = applyValidators({ attribute, tagName, validators, value, isRequired });
+	if (valid) {
+		setterByType({component, attribute, value , type });
 	}
 }
 
-function defaultGetter({ component, attribute }) {
+function setterByType({ component, attribute, value, type }) {
+	switch (type) {
+	case Types.BOOLEAN:
+		//The attribute value shouold be empty string if it's a boolean and removed if it's a false 
+		isTrue(value) ? component.setAttribute(attribute, "") : component.removeAttribute(attribute);
+		break;
+	default: 
+		component.setAttribute(attribute, value);
+		break;
+	}
+}
+
+function noChange({component, attributesConfig, attribute, value}) {
+	const { type } = attributesConfig[attribute];
+	return component.getAttribute(attribute) === value ||
+	(type === Types.BOOLEAN && component.hasAttribute(attribute) && isTrue(value) ) ||
+	(type === Types.BOOLEAN && !component.hasAttribute(attribute) && isFalse(value));
+}
+
+function defaultGetter({ component, attribute, defaultValue = "" }) {
+	if (!component.getAttribute(attribute)) {
+		// Making sure the default value is always set
+		component.setAttribute(attribute, defaultValue);
+	}
 	return component.getAttribute(attribute);
 }
 
@@ -91,7 +113,7 @@ export function changeHandlerWrapper({
 	tagName,
 	oldValue,
 	newValue,
-	attributeChangedHandler, 
+	attributeChangedHandler,
 	component
 }) {
 	const { transformedValue, isValid } = beforeChangeValue({
@@ -101,7 +123,16 @@ export function changeHandlerWrapper({
 		value: newValue
 	});
 	if (isValid) {
-		attributeChangedHandler({ attribute, oldValue, newValue: transformedValue, component });
+		attributeChangedHandler({
+			attribute,
+			oldValue,
+			newValue: transformedValue,
+			component
+		});
+	} else if(!oldValue && oldValue !== "") {
+		component.removeAttribute(attribute);
+	} else {
+		component.setAttribute(attribute, oldValue);
 	}
 }
 
@@ -154,10 +185,11 @@ export function defineCustomElement({
 					) {
 						return defaultGetter.call(this, {
 							component: this,
-							attribute
+							attribute,
+							defaultValue: attributesConfig[attribute].default
 						});
 					}
-					return null;
+					return attributesConfig[attribute].default;
 				}
 			}
 		);

@@ -1,11 +1,26 @@
 import _isString from "lodash/isString";
 
+export const Types = {
+	STRING: "String",
+	BOOLEAN: "Boolean",
+	DATE: "Date",
+	NUMBER: "Number"
+};
+
 /**
  * Check if the value is a string representation of the Boolean.TRUE
  * @param {String} str the value to test
  */
 export function isTrue(str) {
-	return !!str && _isString(str) && str.toLowerCase() === "true";
+	return str === true || (!!str && _isString(str) && str.toLowerCase() === "true");
+}
+
+/**
+ * Check if the value is a string representation of the Boolean.FALSE
+ * @param {String} str the value to test
+ */
+export function isFalse(str) {
+	return str === false || (!!str && _isString(str) && str.toLowerCase() === "false");
 }
 
 /**
@@ -18,4 +33,8 @@ export function isValueOf(map) {
 			Object.entries(map).filter(pair => pair[1] === value).length === 1
 		);
 	};
+}
+
+export function isBooleanAttribute(str) {
+	return str === "" || isTrue(str) || isFalse(str);
 }
