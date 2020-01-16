@@ -150,6 +150,7 @@ export function defineCustomElement({
 			componentClass.prototype,
 			_toCamelCase(attribute),
 			{
+				enumerable: true,
 				set: function(value) {
 					const attributeConfig = attributesConfig[attribute];
 					if (_isFunction(attributeConfig.setter)) {

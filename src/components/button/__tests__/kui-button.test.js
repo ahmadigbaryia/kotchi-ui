@@ -9,135 +9,94 @@ beforeEach(() => {
 	document.body.innerHTML ="<kui-button id=\"my-kui-button\">My Button</kui-button>";
 	kuiButton = document.querySelector("#my-kui-button");
 });
-
 describe("Make sure component is created", () => {
-	test("’Make sure <kui-button> is defined as a custom element with shadowRoot", () => {
+	test("Make sure <kui-button> is defined as a custom element with shadowRoot", () => {
 		expect(kuiButton).not.toBeNull();
 		expect(kuiButton.shadowRoot).not.toBeNull();
 	});
-
-	test("’Make sure <kui-button> has the elements as an attribute with the button on it", () => {
+	test("Make sure <kui-button> has the elements as an attribute with the button on it", () => {
 		expect(kuiButton.elements).not.toBeNull();
 		expect(kuiButton.elements.button).not.toBeNull();
 	});
-});
-
-describe("Make sure component has all the attributes configured", () => {
-	test("Make sure the kui-style attribute has the default value set", () => {
-		expect(kuiButton.kuiStyle).toBe(KUIButton.Style.Default);
-		expect(
-			kuiButton.elements.button.classList.contains(
-				KUIButton.Style.Default
-			)
-		).toBe(true);
-	});
-
-	test("Updating kuiStyle property updates the attribute and is reflected in the style", () => {
-		kuiButton.kuiStyle = KUIButton.Style.Primary;
-		expect(
-			kuiButton.elements.button.classList.contains(
-				KUIButton.Style.Primary
-			)
-		).toBe(true);
-		expect(kuiButton.getAttribute("kui-style")).toBe(
-			KUIButton.Style.Primary
-		);
+	test("Make sure component attributes are also reflected on object properties", () => {
+		expect("kuiStyle" in kuiButton).toBe(true);
+		expect("kuiSize" in kuiButton).toBe(true);
+		expect("kuiDisabled" in kuiButton).toBe(true);
+		expect("kuiOutline" in kuiButton).toBe(true);
 	});
 });
-
-// test(`Set ${propertyName} property to true -> adds 'disabled' attribute to the inner <button> element`, () => {
-// 	kuiButton[propertyName] = true;
-// 	expect(kuiButton.elements.button.getAttribute("disabled")).toBe("");
-// });
-// test(`Set ${attributeName} attribute to true -> adds 'disabled' attribute to the inner <button> element`, () => {
-// 	kuiButton.setAttribute(attributeName, "");
-// 	expect(kuiButton.elements.button.getAttribute("disabled")).toBe("");
-// });
-// test("Set kuiDisabled property to false -> adds 'disabled' attribute to the inner <button> element", () => {
-// 	kuiButton[propertyName] = false;
-// 	expect(kuiButton.elements.button.getAttribute("disabled")).toBeNull();
-// });
-// test("Set ${attributeName} attribute to false -> adds 'disabled' attribute to the inner <button> element", () => {
-// 	kuiButton.setAttribute(attributeName, "false");
-// 	expect(kuiButton.elements.button.getAttribute("disabled")).toBeNull();
-// });
-// test("Set kuiDisabled property to wrong value -> keeps the previous state of 'kui-disabled' attribute on the inner <button> element", () => {
-// 	kuiButton[propertyName] = true;
-// 	kuiButton[propertyName] = "Wrong value";
-// 	expect(kuiButton.elements.button.getAttribute("disabled")).toBe("");
-// 	kuiButton[propertyName] = false;
-// 	kuiButton[propertyName] = "Wrong value";
-// 	expect(kuiButton.elements.button.getAttribute("disabled")).toBeNull();
-// });
-// test("Set ${attributeName} attribute to wrong value -> keeps the previous state of 'kui-disabled' attribute on the inner <button> element", () => {
-// 	kuiButton.setAttribute(attributeName, "");
-// 	kuiButton.setAttribute(attributeName, "wrong value");
-// 	expect(kuiButton.elements.button.getAttribute("disabled")).toBe("");
-// 	kuiButton.setAttribute(attributeName, "false");
-// 	kuiButton.setAttribute(attributeName, "wrong value");
-// 	expect(kuiButton.elements.button.getAttribute("disabled")).toBeNull();
-// });
-
-describe.each([
-	["kui-outline", "kuiOutline", "outline"], 
-	["kui-disabled", "kuiDisabled", "disabled"]
-])("Testing <kui-button> boolean attribute %s", (attributeName, propertyName, className) => {
-	describe("Giving the attribute/property value of true", () => {
-		test(`Set ${propertyName} property to true -> adds '${attributeName}' attribute to the <kui-button> element`, () => {
-			kuiButton[propertyName] = true;
-			expect(kuiButton.hasAttribute(attributeName)).toBe(true);
+describe("Testing <kui-button> attributes", () => {
+	describe.each([
+		["kui-style", "kuiStyle", KUIButton.Style.Default, KUIButton.Style.Primary],
+		["kui-size", "kuiSize", KUIButton.Size.Normal, KUIButton.Size.Large]
+	])("Testing %s attribute", (attributeName, propertyName, defaultValue, otherValue)=>{
+		test(`Make sure the ${attributeName} attribute has the default value set`, () => {
+			expect(kuiButton[propertyName]).toBe(defaultValue);
+			expect(kuiButton.getAttribute(attributeName)).toBe(defaultValue);		
 		});
-		test(`Set ${propertyName} property to true -> adds className '${className}' to inner <button> element`, () => {
-			kuiButton[propertyName] = true;
-			expect(kuiButton.elements.button.classList.contains(className)).toBe(true);
+		test(`Updating ${propertyName} property updates the attribute with the same value`, () => {
+			kuiButton[propertyName] = otherValue;
+			expect(kuiButton.getAttribute(attributeName)).toBe(otherValue);
 		});
-		test(`Set ${attributeName} attribute to true -> adds className '${className}' to the inner <button> element`, () => {
-			kuiButton.setAttribute(attributeName, "");
-			expect(kuiButton.elements.button.classList.contains(className)).toBe(true);
+		test(`Updating ${attributeName} attribute updates the property with the same value`, () => {
+			kuiButton.setAttribute(attributeName, otherValue);
+			expect(kuiButton[propertyName]).toBe(otherValue);
+		});
+		test(`Updating the ${attributeName} attribute updates the inner <button> element's class names`, () => {
+			kuiButton.setAttribute(attributeName, otherValue);
+			expect(kuiButton.elements.button.classList.contains(otherValue)).toBe(true);
 		});
 	});
-	describe("Giving the attribute/property value of false", () => {
-		test(`Set ${propertyName} property to false -> removes '${attributeName}' attribute from the <kui-button> element`, () => {
-			kuiButton[propertyName] = false;
-			expect(kuiButton.hasAttribute(attributeName)).toBe(false);
+	describe.each([
+		["kui-outline", "kuiOutline", "outline", true], 
+		["kui-outline", "kuiOutline", "outline", false], 
+		["kui-disabled", "kuiDisabled", "disabled", true],
+		["kui-disabled", "kuiDisabled", "disabled", false]
+	])("Testing %s attribute", (attributeName, propertyName, className, value) => {
+		test(`Set ${propertyName} property to ${value} -> ${value ? "adds" : "removes"} '${attributeName}' attribute to the <kui-button> element`, () => {
+			kuiButton[propertyName] = value;
+			expect(kuiButton.hasAttribute(attributeName)).toBe(value);
 		});
-		test(`Set ${propertyName} property to false -> removes className '${className}' from inner <button> element`, () => {
-			kuiButton[propertyName] = false;
-			expect(kuiButton.elements.button.classList.contains(className)).toBe(false);
+		test(`Set ${propertyName} property to ${value} -> ${value ? "adds" : "removes"} className '${className}' to inner <button> element`, () => {
+			kuiButton[propertyName] = value;
+			expect(kuiButton.elements.button.classList.contains(className)).toBe(value);
 		});
-		test(`Set ${attributeName} attribute to false -> removes '${attributeName}' attribute from the <kui-button> element`, () => {
-			kuiButton.setAttribute(attributeName, "false");
-			expect(kuiButton.hasAttribute(attributeName)).toBe(false);
+		test(`Set ${attributeName} attribute to ${value} -> ${value ? "adds" : "removes"} className '${className}' to the inner <button> element`, () => {
+			kuiButton.setAttribute(attributeName, `${value}`);
+			expect(kuiButton.elements.button.classList.contains(className)).toBe(value);
 		});
-		test(`Set ${attributeName} attribute to false -> removes className '${className}' from the inner <button> element`, () => {
-			kuiButton.setAttribute(attributeName, "false");
-			expect(kuiButton.elements.button.classList.contains(className)).toBe(false);
+		test(`Set ${attributeName} attribute to ${value} -> ${value ? "adds" : "removes"} '${attributeName}' attribute from the <kui-button> element`, () => {
+			kuiButton.setAttribute(attributeName, `${value}`);
+			expect(kuiButton.hasAttribute(attributeName)).toBe(value);
 		});
 	});
-	describe("Giving the attribute/property an invalid value", () => {
-		test(`Set ${propertyName} property to wrong value -> keeps the previous state of '${attributeName}' attribute on the <kui-button> element`, () => {
-			kuiButton[propertyName] = true;
-			kuiButton[propertyName] = "Wrong value";
-			expect(kuiButton.hasAttribute(attributeName)).toBe(true);
-			kuiButton[propertyName] = false;
-			kuiButton[propertyName] = "Wrong value";
-			expect(kuiButton.hasAttribute(attributeName)).toBe(false);
+	describe.each([
+		["kui-outline", "kuiOutline", "invalid"], 
+		["kui-disabled", "kuiDisabled", "invalid"],
+		["kui-style", "kuiStyle", "invalid" ],
+		["kui-size", "kuiSize", "invalid"]
+	])("Testing invalid value handeling for %s", (attributeName, propertyName, invalidValue) => {
+		test(`Tesing invalid value for ${attributeName} attribute`, () => {
+			const spy = jest.spyOn(kuiButton.attributesConfig[attributeName], "attributeChangedHandler");
+			kuiButton.setAttribute(attributeName, invalidValue);
+			expect(spy).not.toHaveBeenCalled();
+			spy.mockRestore();
 		});
-		test(`Set ${attributeName} attribute to wrong value -> keeps the previous state of '${attributeName}' attribute on the <kui-button> element`, () => {
-			kuiButton.setAttribute(attributeName, "");
-			kuiButton.setAttribute(attributeName, "wrong value");
-			expect(kuiButton.hasAttribute(attributeName)).toBe(true);
-			kuiButton.setAttribute(attributeName, "false");
-			kuiButton.setAttribute(attributeName, "wrong value");
-			expect(kuiButton.hasAttribute(attributeName)).toBe(false);
+		test(`Tesing invalid value for ${propertyName} property`, () => {
+			const spy = jest.spyOn(kuiButton.attributesConfig[attributeName], "attributeChangedHandler");
+			kuiButton[propertyName] = invalidValue;
+			expect(spy).not.toHaveBeenCalled();
+			spy.mockRestore();
 		});
-		test(`Set ${attributeName} attribute to wrong value -> keeps the previous state of classNames of the inner <button> element`, () => {
-			kuiButton.setAttribute(attributeName, "");
-			kuiButton.setAttribute(attributeName, "wrong value");
-			expect(kuiButton.elements.button.classList.contains(className)).toBe(true);
-			kuiButton.setAttribute(attributeName, "false");
-			kuiButton.setAttribute(attributeName, "wrong value");
-			expect(kuiButton.elements.button.classList.contains(className)).toBe(false);
-		});
+	});
+});
+describe.each([[true], [false]])("Tesing the disabled state on the inner <button> element", (value) => {
+	test(`Set kuiDisabled property to ${value} -> ${value ? "adds" : "removes"} 'disabled' attribute of the inner <button> element`, () => {
+		kuiButton.kuiDisabled = value;
+		expect(kuiButton.elements.button.hasAttribute("disabled")).toBe(value);
+	});
+	test(`Set kui-disabled attribute to ${value} -> ${value ? "adds" : "removes"} 'disabled' attribute of the inner <button> element`, () => {
+		kuiButton.setAttribute("kui-disabled", `${value}`);
+		expect(kuiButton.elements.button.hasAttribute("disabled")).toBe(value);
 	});
 });
