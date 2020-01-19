@@ -1,4 +1,5 @@
 import keys from "lodash/keys";
+import _isFunction from "lodash/isFunction";
 
 import BaseElement from "../../baseElement";
 import { defineCustomElement } from "../../utils/wcUtils";
@@ -30,6 +31,17 @@ class KUIButton extends BaseElement {
 		return Size;
 	}
 
+	addClickHandler(handler) {
+		if(_isFunction(handler)) {
+			this.elements.button.addEventListener("click", handler);
+		}
+	}
+
+	removeClickHandler(handler) {
+		if(handler) {
+			this.elements.button.removeEventListener("click", handler);
+		}
+	}
 }
 
 defineCustomElement({

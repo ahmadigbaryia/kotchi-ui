@@ -100,3 +100,27 @@ describe.each([[true], [false]])("Tesing the disabled state on the inner <button
 		expect(kuiButton.elements.button.hasAttribute("disabled")).toBe(value);
 	});
 });
+
+describe("Test public API", () => {
+	test("make sure addClickHandler is a public function", () => {
+		expect(typeof kuiButton.addClickHandler).toBe("function");
+	});
+	test("make sure addClickHandler adds a click listener on the button", () => {
+		const handler = jest.fn();
+		const clickEvent = new MouseEvent("click");
+		kuiButton.addClickHandler(handler);
+		kuiButton.elements.button.dispatchEvent(clickEvent);
+		expect(handler).toHaveBeenCalledTimes(1);
+	});
+	test("make sure removeClickHandler is a public function", () => {
+		expect(typeof kuiButton.removeClickHandler).toBe("function");
+	});
+	test("make sure removeClickHandler removes the click listener from the button", () => {
+		const handler = jest.fn();
+		const clickEvent = new MouseEvent("click");
+		kuiButton.addClickHandler(handler);
+		kuiButton.removeClickHandler(handler);
+		kuiButton.elements.button.dispatchEvent(clickEvent);
+		expect(handler).toHaveBeenCalledTimes(0);
+	});
+});
