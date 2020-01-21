@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head>
-        <title>Kotchi UI - Icon</title>
+        <title>Kotchi UI - Icon &amp;lt;kui-icon&amp;gt;</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -53,15 +53,15 @@
                             <a href=""><i class="zmdi zmdi-widgets"></i>Components</a>
                             <ul id="components_menu" style="display: block;">
                                 <!-- <li id="button"><a href="button.html">Button</a></li> -->
-                            <li id="button" class=""><a href="button.html">Button</a></li><li id="icon" class=" navigation__sub--active"><a href="icon.html">Icon</a></li></ul>
+                            <li id="button" class=""><a href="button.html">Button</a></li><li id="icon" class=" navigation__sub--active"><a href="icon.html">Icon &lt;kui-icon&gt;</a></li></ul>
                         </li>
                     </ul>
                 </div>
             </aside>
             <section class="content">
                 <header class="content__title">
-                    <h1 id="content_title">Icon</h1>
-                    <small id="content_subtitle">You can place KotchiUI Font Awesome icons just about anywhere using the custom element &lt;kui-icon&gt; and the icon’s name as the attribute value.</small>
+                    <h1 id="content_title">Icon &lt;kui-icon&gt;</h1>
+                    <small id="content_subtitle">You can place KotchiUI Font Awesome icons just about anywhere using the custom element &lt;kui-icon&gt;</small>
                 </header>
                 <div id="cards_container"><body><div class="card">
     <div class="card-body">
@@ -163,8 +163,16 @@
 </body><body><div class="card">
     <div class="card-body">
         <h4 class="card-title">Basic Usage</h4>
-        <h6 class="card-subtitle">KotchiUI Font Awesome icons basic usage</h6>
-        <div id="additional_info"></div>
+        <h6 class="card-subtitle">KotchiUI Font Awesome icons are accessable, fully controled as regular font awesome icons</h6>
+        <div id="additional_info">
+	<p>
+		KotchiUI wraps Font Awesome free plan icons, <a href="https://fontawesome.com/icons?d=gallery&amp;s=solid&amp;m=free">Solid</a> and <a href="https://fontawesome.com/icons?s=brands&amp;m=free">Brands</a>.
+	</p>
+	<p>
+		To start using this element, just spesify the icon you want to use as the value of the kui-icon attribute, see examples below.
+		When you want the icon to meet the accessability requirements, add the kui-label attribute with the label you want.
+	</p>
+</div>
         <div class="tab-container">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item nav-link">
@@ -179,15 +187,15 @@
 
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="preview_1" role="tabpanel" aria-labelledby="preview_1-tab">
-	<kui-icon kui-icon="fas fa-camera" kui-size="fa-lg" kui-label="Take a picture"></kui-icon>
-	<kui-icon kui-icon="fab fa-android" kui-size="fa-lg" kui-label="I use Android"></kui-icon>
-	<kui-icon kui-icon="fab fa-apple" kui-size="fa-lg" kui-label="And I prefare Apple products"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-3x" kui-label="Take a picture"></kui-icon>
+	<kui-icon kui-icon="fab fa-android" kui-size="fa-3x" kui-label="I use Android"></kui-icon>
+	<kui-icon kui-icon="fab fa-apple" kui-size="fa-3x" kui-label="And I prefare Apple products"></kui-icon>
 </div>
                 <div class="tab-pane fade" id="markup_1" role="tabpanel" aria-labelledby="markup_1-tab">
                     <pre class="language-html">						<code class="language-html">
-	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-lg" kui-label="Take a picture"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fab fa-android" kui-size="fa-lg" kui-label="I use Android"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fab fa-apple" kui-size="fa-lg" kui-label="And I prefare Apple products"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-3x" kui-label="Take a picture"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fab fa-android" kui-size="fa-3x" kui-label="I use Android"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fab fa-apple" kui-size="fa-3x" kui-label="And I prefare Apple products"&gt;&lt;/kui-icon&gt;
 </code>
 					</pre>
                 </div>
@@ -197,9 +205,16 @@
 </div>
 </body><body><div class="card">
     <div class="card-body">
-        <h4 class="card-title">Accessability</h4>
-        <h6 class="card-subtitle">KotchiUI Font Awesome icons are accessable, just add the kui-label attribute and that's it.</h6>
-        <div id="additional_info"></div>
+        <h4 class="card-title">Sizing Icons</h4>
+        <h6 class="card-subtitle">KotchiUI gives some basic controls for sizing icons in the context of your page’s UI.</h6>
+        <div id="additional_info">
+	<p>
+		Icons inherit the font-size of their parent container which allow them
+		to match any text you might use with them. we can increase or decrease
+		the size of icons relative to that inherited font-size using the
+		kui-size attribute.
+	</p>
+</div>
         <div class="tab-container">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item nav-link">
@@ -214,11 +229,277 @@
 
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="preview_2" role="tabpanel" aria-labelledby="preview_2-tab">
-	<kui-icon kui-icon="fas fa-camera" kui-label="Take a picture"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-xs"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-sm"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-sm"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size=""></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-lg"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-2x"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-3x"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-5x"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-7x"></kui-icon>
+	<kui-icon kui-icon="fas fa-camera" kui-size="fa-10x"></kui-icon>
 </div>
                 <div class="tab-pane fade" id="markup_2" role="tabpanel" aria-labelledby="markup_2-tab">
                     <pre class="language-html">						<code class="language-html">
-&lt;kui-icon kui-icon="fas fa-camera" kui-label="Take a picture"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-xs"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-sm"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-lg"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-2x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-3x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-5x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-7x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-10x"&gt;&lt;/kui-icon&gt;
+</code>
+					</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Fixed Width Icons</h4>
+        <h6 class="card-subtitle">Need to vertically align a series of icons, like in a list or navigation menu? We’ve included a fixed-width support styling for just those cases.</h6>
+        <div id="additional_info">
+	<p>
+		set the attribute kui-fixed-width to true on the kui-icon element to set
+		one or more icons to the same fixed width. This is great to use when
+		varying icon widths (e.g. a tall but skinny icon atop a wide but short
+		icon) would throw off vertical alignment. For clarity in the following
+		example, we've added a background color on the icon so you can see the
+		fixed width and also bumped up the font-size of the parent element.
+	</p>
+</div>
+        <div class="tab-container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item nav-link">
+                    <a id="preview_3-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_3" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    </a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a id="markup_3-tab" class="nav-item nav-link" data-toggle="tab" href="markup_3" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="preview_3" role="tabpanel" aria-labelledby="preview_3-tab">
+	<div style="font-size: 2rem;">
+		<div><kui-icon kui-icon="fas fa-skating" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Skating</div>
+		<div><kui-icon kui-icon="fas fa-skiing" kui-fixed-width="" style="background:SkyBlue"></kui-icon> Skiing</div>
+		<div><kui-icon kui-icon="fas fa-skiing-nordic" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Nordic Skiing</div>
+		<div><kui-icon kui-icon="fas fa-snowboarding" kui-fixed-width="" style="background:SkyBlue"></kui-icon> Snowboarding</div>
+		<div><kui-icon kui-icon="fas fa-snowplow" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Snowplow</div>
+	</div>
+</div>
+                <div class="tab-pane fade" id="markup_3" role="tabpanel" aria-labelledby="markup_3-tab">
+                    <pre class="language-html">						<code class="language-html">
+&lt;div style="font-size: 2rem;"&gt;
+	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skating" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Skating&lt;/div&gt;
+	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Skiing&lt;/div&gt;
+	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing-nordic" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Nordic Skiing&lt;/div&gt;
+	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowboarding" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Snowboarding&lt;/div&gt;
+	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowplow" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Snowplow&lt;/div&gt;
+&lt;/div&gt;
+</code>
+					</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Pulled Icons</h4>
+        <h6 class="card-subtitle">Occasionally you might want to wrap text around an icon.</h6>
+        <div id="additional_info">
+	<p>
+		Use kui-pulled attribute to pull the icon eaither left or right for easy
+		quotes or article icons
+	</p>
+</div>
+        <div class="tab-container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item nav-link">
+                    <a id="preview_4-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_4" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    </a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a id="markup_4-tab" class="nav-item nav-link" data-toggle="tab" href="markup_4" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="preview_4" role="tabpanel" aria-labelledby="preview_4-tab">
+	<kui-icon kui-icon="fas fa-quote-left" kui-size="fa-2x" kui-pulled="fa-pull-left"></kui-icon>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae neque at
+	nulla interdum gravida. Maecenas tempor viverra varius. Aenean vitae
+	facilisis odio. Pellentesque faucibus vitae neque sit amet accumsan.
+	Phasellus mattis mi nec ligula scelerisque faucibus et id purus. Vestibulum
+	convallis, dolor ut malesuada dignissim, elit erat dignissim neque, a
+	consequat odio quam in diam. Vestibulum orci urna, accumsan sed nibh ut,
+	laoreet placerat tortor. Sed ac elit nec diam tincidunt sollicitudin.
+	Phasellus facilisis lorem varius ipsum vehicula, quis tristique nunc dictum.
+	Vestibulum dictum augue nec urna rhoncus cursus. Ut aliquet arcu id velit
+	malesuada sagittis sit amet dapibus lorem. Pellentesque habitant morbi
+	tristique senectus et netus et malesuada fames ac turpis egestas.
+</div>
+                <div class="tab-pane fade" id="markup_4" role="tabpanel" aria-labelledby="markup_4-tab">
+                    <pre class="language-html">						<code class="language-html">
+	&lt;kui-icon kui-icon="fas fa-quote-left" kui-size="fa-2x" kui-pulled="fa-pull-left"&gt;&lt;/kui-icon&gt;
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae neque at
+	nulla interdum gravida. Maecenas tempor viverra varius. Aenean vitae
+	facilisis odio. Pellentesque faucibus vitae neque sit amet accumsan.
+	Phasellus mattis mi nec ligula scelerisque faucibus et id purus. Vestibulum
+	convallis, dolor ut malesuada dignissim, elit erat dignissim neque, a
+	consequat odio quam in diam. Vestibulum orci urna, accumsan sed nibh ut,
+	laoreet placerat tortor. Sed ac elit nec diam tincidunt sollicitudin.
+	Phasellus facilisis lorem varius ipsum vehicula, quis tristique nunc dictum.
+	Vestibulum dictum augue nec urna rhoncus cursus. Ut aliquet arcu id velit
+	malesuada sagittis sit amet dapibus lorem. Pellentesque habitant morbi
+	tristique senectus et netus et malesuada fames ac turpis egestas.
+</code>
+					</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Bordered Icons</h4>
+        <h6 class="card-subtitle">Occasionally you might want to give icons some visual distinction with a border.</h6>
+        <div id="additional_info">
+	<p>
+		When using kui-bordered attribute the icon is given a border.
+	</p>
+</div>
+        <div class="tab-container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item nav-link">
+                    <a id="preview_5-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_5" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    </a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a id="markup_5-tab" class="nav-item nav-link" data-toggle="tab" href="markup_5" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="preview_5" role="tabpanel" aria-labelledby="preview_5-tab">
+	<kui-icon kui-icon="fas fa-arrow-left" kui-size="fa-2x" kui-bordered=""></kui-icon>
+	<kui-icon kui-icon="fas fa-arrow-right" kui-size="fa-2x" kui-bordered=""></kui-icon>
+</div>
+                <div class="tab-pane fade" id="markup_5" role="tabpanel" aria-labelledby="markup_5-tab">
+                    <pre class="language-html">						<code class="language-html">
+Next &lt;kui-icon kui-icon="fas fa-arrow-right" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
+</code>
+					</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Animating Icons</h4>
+        <h6 class="card-subtitle">Enable animation on icons to simulate loading or communicating state</h6>
+        <div id="additional_info">
+	<p>
+		Use the kui-animate attribute with KUIIcon.Animate.Spin value to get any
+		icon to rotate, and use KUIIcon.Animate.Pulse to have it rotate with 8
+		steps. Works especially well with fa-spinner &amp; everything in the
+		<a href="https://fontawesome.com/icons?c=spinners">spinner icons category
+		</a>.
+	</p>
+</div>
+        <div class="tab-container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item nav-link">
+                    <a id="preview_6-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_6" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    </a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a id="markup_6-tab" class="nav-item nav-link" data-toggle="tab" href="markup_6" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="preview_6" role="tabpanel" aria-labelledby="preview_6-tab">
+	<div style="font-size: 3rem;">
+		<kui-icon kui-icon="fas fa-spinner" kui-animate="fa-spin"></kui-icon>
+		<kui-icon kui-icon="fas fa-circle-notch" kui-animate="fa-spin"></kui-icon>
+		<kui-icon kui-icon="fas fa-sync" kui-animate="fa-spin"></kui-icon>
+		<kui-icon kui-icon="fas fa-cog" kui-animate="fa-spin"></kui-icon>
+		<kui-icon kui-icon="fas fa-spinner" kui-animate="fa-pulse"></kui-icon>
+		<kui-icon kui-icon="fas fa-stroopwafel" kui-animate="fa-spin"></kui-icon>
+	  </div>
+</div>
+                <div class="tab-pane fade" id="markup_6" role="tabpanel" aria-labelledby="markup_6-tab">
+                    <pre class="language-html">						<code class="language-html">
+	&lt;div style="font-size: 3rem;"&gt;
+		&lt;kui-icon kui-icon="fas fa-spinner" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-circle-notch" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-sync" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-cog" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-spinner" kui-animate="fa-pulse"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-stroopwafel" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+	  &lt;/div&gt;
+</code>
+					</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Rotating and Flipping Icons</h4>
+        <h6 class="card-subtitle">Sometimes you need to rotate, flip, or mirror an icon for it to work in your project or design.</h6>
+        <div id="additional_info">
+	<p>
+		To arbitrarily rotate and flip icons, set the kui-roatate attribute to fa-rotate-* and fa-flip-* values.
+	</p>
+</div>
+        <div class="tab-container">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item nav-link">
+                    <a id="preview_7-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_7" role="tab" aria-controls="preview" aria-selected="true">Preview
+                    </a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a id="markup_7-tab" class="nav-item nav-link" data-toggle="tab" href="markup_7" role="tab" aria-controls="markup" aria-selected="false">Markup
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="preview_7" role="tabpanel" aria-labelledby="preview_7-tab">
+	<div style="font-size: 3rem;">
+		<kui-icon kui-icon="fas fa-snowboarding"></kui-icon>
+		<kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-90"></kui-icon>
+		<kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-180"></kui-icon>
+		<kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-270"></kui-icon>
+		<kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-horizontal"></kui-icon>
+		<kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-vertical"></kui-icon>
+		<kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-both"></kui-icon>
+	</div>
+</div>
+                <div class="tab-pane fade" id="markup_7" role="tabpanel" aria-labelledby="markup_7-tab">
+                    <pre class="language-html">						<code class="language-html">
+&lt;div style="font-size: 3rem;"&gt;
+	&lt;kui-icon kui-icon="fas fa-snowboarding"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-90"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-180"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-270"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-horizontal"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-vertical"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-both"&gt;&lt;/kui-icon&gt;
+&lt;/div&gt;
 </code>
 					</pre>
                 </div>
