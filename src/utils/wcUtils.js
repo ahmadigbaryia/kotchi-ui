@@ -1,7 +1,7 @@
 import _toCamelCase from "lodash/camelCase";
 import _isFunction from "lodash/isFunction";
 import _isUndefined from "lodash/isUndefined";
-import { Types, isTrue, isFalse } from "./validators";
+import { isTrue, isFalse } from "./validators";
 
 /**
  * Executes an array of validators one after the other till one fails or all succeed
@@ -20,9 +20,7 @@ function applyValidators({
 		}
 		for (let i = 0; i < validators.length; i++) {
 			if (value && _isFunction(validators[i]) && !validators[i](value)) {
-				console.log(
-					`${tagName}.${attribute} validation error on ${validators[i].name}`
-				);
+				console.error(`${tagName}.${attribute}:\nvalue:'${value}' failed ${validators[i].name} validation`);
 				return false;
 			}
 		}
@@ -55,32 +53,12 @@ function beforeChangeValue({ attributesConfig, attribute, tagName, value }) {
 }
 
 function defaultSetter({ component, attributesConfig, attribute, value }) {
-	if(noChange({component, attributesConfig, attribute, value})) return;
 	const { tagName } = component;
-	const { validators, isRequired, type } = attributesConfig[attribute];
+	const { validators, isRequired } = attributesConfig[attribute];
 	const valid = applyValidators({ attribute, tagName, validators, value, isRequired });
 	if (valid) {
-		setterByType({component, attribute, value , type });
-	}
-}
-
-function setterByType({ component, attribute, value, type }) {
-	switch (type) {
-	case Types.BOOLEAN:
-		//The attribute value shouold be empty string if it's a boolean and removed if it's a false 
-		isTrue(value) ? component.setAttribute(attribute, "") : component.removeAttribute(attribute);
-		break;
-	default: 
 		component.setAttribute(attribute, value);
-		break;
 	}
-}
-
-function noChange({component, attributesConfig, attribute, value}) {
-	const { type } = attributesConfig[attribute];
-	return component.getAttribute(attribute) === value ||
-	(type === Types.BOOLEAN && component.hasAttribute(attribute) && isTrue(value) ) ||
-	(type === Types.BOOLEAN && !component.hasAttribute(attribute) && isFalse(value));
 }
 
 function defaultGetter({ component, attribute, defaultValue = "" }) {
@@ -89,6 +67,10 @@ function defaultGetter({ component, attribute, defaultValue = "" }) {
 		component.setAttribute(attribute, defaultValue);
 	}
 	return component.getAttribute(attribute);
+}
+
+export function booleanSetter({ component, attribute, value }) {
+	isTrue(value) ? component.setAttribute(attribute, "") : component.removeAttribute(attribute);
 }
 
 export function buildShadowRoot(template, host) {
@@ -130,8 +112,10 @@ export function changeHandlerWrapper({
 			component
 		});
 	} else if(!oldValue && oldValue !== "") {
+		// The attribute is a boolean one and the old value was falsy
 		component.removeAttribute(attribute);
 	} else {
+		// Set back the old value back
 		component.setAttribute(attribute, oldValue);
 	}
 }
@@ -204,13 +188,14 @@ export function applyClassName({
 	element,
 	defaultValue = ""
 }) {
+	const { classList } = element;
 	if (newValue) {
 		if (oldValue) {
-			element.className = element.className.replace(oldValue, newValue);
-		} else {
-			element.className += ` ${newValue}`;
+			classList.remove.apply(classList, oldValue.split(" "));
 		}
+		classList.add.apply(classList, newValue.split(" "));
 	} else if (oldValue) {
-		element.className = element.className.replace(oldValue, defaultValue);
+		classList.remove.apply(classList, oldValue.split(" "));
+		classList.add.apply(classList, defaultValue.split(" "));
 	}
 }

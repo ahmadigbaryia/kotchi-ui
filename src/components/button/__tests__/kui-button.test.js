@@ -100,7 +100,6 @@ describe.each([[true], [false]])("Tesing the disabled state on the inner <button
 		expect(kuiButton.elements.button.hasAttribute("disabled")).toBe(value);
 	});
 });
-
 describe("Test public API", () => {
 	test("make sure addClickHandler is a public function", () => {
 		expect(typeof kuiButton.addClickHandler).toBe("function");

@@ -2,7 +2,7 @@ import keys from "lodash/keys";
 
 import BaseElement from "../../baseElement";
 import { defineCustomElement } from "../../utils/wcUtils.js";
-import { attributesConfig, tagName, faVersion } from "./config";
+import { attributesConfig, tagName, faVersion, Size, Bordered, FixedWidth, Animate, Flip, Rotate, PullDirection } from "./config";
 import templateConfig from "./template";
 
 /**
@@ -23,9 +23,6 @@ class KUIIcon extends BaseElement {
 			this.shadowRoot.appendChild(screenReaderSpan);
 		}
 		screenReaderSpan.innerText = label;
-	}
-	static get observedAttributes() {
-		return keys(attributesConfig);
 	}
 	connectedCallback() {
 		const styleId = "font-awesome-ff";
@@ -64,6 +61,31 @@ class KUIIcon extends BaseElement {
 			faStyleElement.appendChild(fontFaceCss);
 			document.head.appendChild(faStyleElement);
 		}
+	}
+
+	static get observedAttributes() {
+		return keys(attributesConfig);
+	}
+	static get PullDirection() {
+		return PullDirection;
+	}
+	static get Rotate() {
+		return Rotate;
+	}
+	static get Flip() {
+		return Flip;
+	}
+	static get Animate() {
+		return Animate;
+	}
+	static get Size() {
+		return Size;
+	}
+	static get FixedWidth() {
+		return FixedWidth;
+	}
+	static get Bordered() {
+		return Bordered;
 	}
 }
 defineCustomElement({

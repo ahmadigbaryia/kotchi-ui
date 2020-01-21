@@ -1,12 +1,5 @@
 import _isString from "lodash/isString";
 
-export const Types = {
-	STRING: "String",
-	BOOLEAN: "Boolean",
-	DATE: "Date",
-	NUMBER: "Number"
-};
-
 /**
  * Check if the value is a string representation of the Boolean.TRUE
  * @param {String} str the value to test
@@ -28,7 +21,7 @@ export function isFalse(str) {
  * @param {Object} map The map containing the values
  */
 export function isValueOf(map) {
-	return function(value) {
+	return function isValueOfMap(value) {
 		return (
 			Object.entries(map).filter(pair => pair[1] === value).length === 1
 		);

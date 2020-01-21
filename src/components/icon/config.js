@@ -1,5 +1,6 @@
-import { applyClassName } from "../../utils/wcUtils";
-import { isValueOf } from "../../utils/validators";
+import { applyClassName, booleanSetter } from "../../utils/wcUtils";
+import { isTrue, isValueOf, isBooleanAttribute } from "../../utils/validators";
+
 import isString from "lodash/isString";
 
 export const tagName = "kui-icon";
@@ -41,6 +42,9 @@ export const Size = {
 	X10: "fa-10x"
 };
 
+export const FixedWidth = "fa-fw";
+export const Bordered = "fa-border";
+
 export const faVersion = "5.11.2";
 
 export const attributesConfig = {
@@ -58,7 +62,6 @@ export const attributesConfig = {
 		validators: [isString]
 	},
 	"kui-size": {
-		default: Size.Normal,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { icon } = component.elements;
 			applyClassName({ oldValue, newValue, element: icon });
@@ -66,25 +69,59 @@ export const attributesConfig = {
 		validators: [isString, isValueOf(Size)]
 	},
 	"kui-fixed-width": {
-		attributeChangedHandler: function({ newValue, component }) {}
-	},
-	"kui-list-icon": {
-		attributeChangedHandler: function({ newValue, component }) {}
+		default: false,
+		setter: booleanSetter,
+		attributeChangedHandler: function({ newValue, component }) {
+			const { icon } = component.elements;
+			if (isTrue(newValue) || newValue === "") {
+				icon.classList.add(FixedWidth);
+			} else {
+				icon.classList.remove(FixedWidth);
+				component.removeAttribute("kui-fixed-width");
+			}
+		},
+		validators: [isBooleanAttribute]
 	},
 	"kui-bordered": {
-		attributeChangedHandler: function({ newValue, component }) {}
+		default: false,
+		setter: booleanSetter,
+		attributeChangedHandler: function({ newValue, component }) {
+			const { icon } = component.elements;
+			if (isTrue(newValue) || newValue === "") {
+				icon.classList.add(Bordered);
+			} else {
+				icon.classList.remove(Bordered);
+				component.removeAttribute("kui-bordered");
+			}
+		},
+		validators: [isBooleanAttribute]
 	},
 	"kui-pulled": {
-		default: "Left",
-		attributeChangedHandler: function({ oldValue, newValue, component }) {}
+		attributeChangedHandler: function({ oldValue, newValue, component }) {
+			const { icon } = component.elements;
+			applyClassName({ oldValue, newValue, element: icon });
+		},
+		validators: [isString, isValueOf(PullDirection)]
 	},
-	"kui-animated": {
-		attributeChangedHandler: function({ newValue, component }) {}
+	"kui-animate": {
+		attributeChangedHandler: function({ oldValue, newValue, component }) {
+			const { icon } = component.elements;
+			applyClassName({ oldValue, newValue, element: icon });
+		},
+		validators: [isString, isValueOf(Animate)]
 	},
 	"kui-rotate": {
-		attributeChangedHandler: function({ oldValue, newValue, component }) {}
+		attributeChangedHandler: function({ oldValue, newValue, component }) {
+			const { icon } = component.elements;
+			applyClassName({ oldValue, newValue, element: icon });
+		},
+		validators: [isString, isValueOf(Rotate)]
 	},
 	"kui-flip": {
-		attributeChangedHandler: function({ oldValue, newValue, component }) {}
+		attributeChangedHandler: function({ oldValue, newValue, component }) {
+			const { icon } = component.elements;
+			applyClassName({ oldValue, newValue, element: icon });
+		},
+		validators: [isString, isValueOf(Flip)]
 	}
 };

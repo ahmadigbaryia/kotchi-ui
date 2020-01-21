@@ -7,6 +7,7 @@
 		"build": "webpack --config webpack.prod.js",
 		"build-w-docs": "webpack --config webpack.prod.js && npm run build-docs",
 		"build-dev": "webpack --config webpack.dev.js",
+		"build-dev-w-docs": "webpack --config webpack.dev.js && npm run build-docs",
 		"start": "webpack-dev-server --open --config webpack.dev.js",
 		"build-docs": "docs-builder --projectName \"Kotchi UI\" --scriptPath \"dist/kotchi-ui.js\"",
 		"prepack": "node .build/prepack.js",
