@@ -1,28 +1,10 @@
-import { applyClassName, booleanSetter } from "../../utils/wcUtils";
-import { isTrue, isValueOf, isBooleanAttribute } from "../../utils/validators";
 import isString from "lodash/isString";
 
-export const tagName = "kui-button";
+import { applyClassName, booleanSetter } from "../../utils/wcUtils";
+import { isTrue, isValueOf, isBooleanAttribute } from "../../utils/validators";
+import { Style, Size } from "./kui-button";
 
-export const Style = {
-	Default: "kui-button-default",
-	Primary: "kui-button-primary",
-	Secondary: "kui-button-secondary",
-	Information: "kui-button-info",
-	Dangerous: "kui-button-dangerous",
-	Warning: "kui-button-warning",
-	Success: "kui-button-success",
-	Link: "kui-button-link"
-};
-
-export const Size = {
-	Normal: "",
-	Small: "kui-button-small",
-	Large: "kui-button-large",
-	Block: "kui-button-block"
-};
-
-export const attributesConfig = {
+const attributesConfig = {
 	"kui-text": {
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
@@ -79,3 +61,5 @@ export const attributesConfig = {
 		validators: [isBooleanAttribute]
 	}
 };
+
+export default attributesConfig;

@@ -1,7 +1,7 @@
 import style from "./styles.css";
-import { tagName } from "./config";
-const template = document.createElement("template");
+import { tagName } from "./kui-button";
 
+const template = document.createElement("template");
 template.innerHTML = `
 	<style>
 		${style}

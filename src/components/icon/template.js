@@ -1,5 +1,5 @@
 import style from "./faStyle.css";
-import { tagName } from "./config";
+import { tagName } from "./kui-icon";
 
 const template = document.createElement("template");
 template.innerHTML = `

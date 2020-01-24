@@ -1,7 +1,7 @@
 import _toCamelCase from "lodash/camelCase";
 import _isFunction from "lodash/isFunction";
 import _isUndefined from "lodash/isUndefined";
-import { isTrue, isFalse } from "./validators";
+import { isTrue } from "./validators";
 
 /**
  * Executes an array of validators one after the other till one fails or all succeed
