@@ -62,7 +62,7 @@ kuiButton.addClickHandler(function(e) {/* Your Handler Code */});
 ```
 
 # Development
-So you want to contribute? That's Great, please follow this [contribution guide](https://github.com/ahmadigbaryia/kotchi-ui/CONTRIBUTING.md).
+So you want to contribute? That's Great, please follow this [contribution guide](https://github.com/ahmadigbaryia/kotchi-ui/blob/master/CONTRIBUTING.md).
 
 # License
 
