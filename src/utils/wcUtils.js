@@ -61,11 +61,7 @@ function defaultSetter({ component, attributesConfig, attribute, value }) {
 	}
 }
 
-function defaultGetter({ component, attribute, defaultValue = "" }) {
-	if (!component.getAttribute(attribute)) {
-		// Making sure the default value is always set
-		component.setAttribute(attribute, defaultValue);
-	}
+function defaultGetter({ component, attribute }) {
 	return component.getAttribute(attribute);
 }
 

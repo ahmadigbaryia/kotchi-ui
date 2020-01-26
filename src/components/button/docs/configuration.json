@@ -1,7 +1,7 @@
 {
     "id": "button",
     "category": "components",
-	"title": "Button",
+	"title": "Button <kui-button>",
 	"subtitle": "Use Kotchi UI custom buttons that are built upon Bootstrap’s button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.",
 	"cards": [
 		{
