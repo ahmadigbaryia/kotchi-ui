@@ -1,47 +1,12 @@
 import keys from "lodash/keys";
 
 import BaseElement from "../../baseElement";
-import attributesConfig from "./config";
 import templateConfig from "./template";
+import attributesConfig, { Animate, Flip, PullDirection, Rotate, Size, FixedWidth, Bordered } from "./config";
 import { defineCustomElement } from "../../utils/wcUtils.js";
 
-export const Animate = {
-	Spin: "fa-spin",
-	Pulse: "fa-pulse",
-};
-export const Flip = {
-	FlipVer: "fa-flip-vertical",
-	FlipHor: "fa-flip-horizontal",
-	FlipBoth: "fa-flip-both"
-};
-export const PullDirection = {
-	Left: "fa-pull-left",
-	Right: "fa-pull-right",
-};
-export const Rotate = {
-	Rotate90: "fa-rotate-90",
-	Rotate180: "fa-rotate-180",
-	Rotate270: "fa-rotate-270"
-};
-export const Size = {
-	Normal: "",
-	XSmall: "fa-xs",
-	Small: "fa-sm",
-	Large: "fa-lg",
-	X2: "fa-2x",
-	X3: "fa-3x",
-	X4: "fa-4x",
-	X5: "fa-5x",
-	X6: "fa-6x",
-	X7: "fa-7x",
-	X8: "fa-8x",
-	X9: "fa-9x",
-	X10: "fa-10x"
-};
-export const tagName = "kui-icon";
-export const FixedWidth = "fa-fw";
-export const Bordered = "fa-border";
-export const faVersion = "5.11.2";
+const tagName = "kui-icon";
+const faVersion = "5.11.2";
 
 /**
  * Icon element
@@ -125,11 +90,15 @@ class KUIIcon extends BaseElement {
 	static get Bordered() {
 		return Bordered;
 	}
+	static defineCustomElement() {
+		if(!KUIIcon.defined){
+			defineCustomElement({
+				componentClass: KUIIcon,
+				tagName,
+				attributesConfig
+			});
+			KUIIcon.defined = true;
+		}
+	}
 }
-defineCustomElement({
-	componentClass: KUIIcon,
-	tagName,
-	attributesConfig
-});
-
-export default KUIIcon;
+export {KUIIcon as default, tagName};

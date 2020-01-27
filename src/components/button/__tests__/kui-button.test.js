@@ -1,5 +1,5 @@
 import { Window } from "happy-dom";
-import KUIButton from "../kui-button";
+import KUIButton from "../";
 
 const window = new Window();
 const document = window.document;

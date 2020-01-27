@@ -2,7 +2,24 @@ import isString from "lodash/isString";
 
 import { applyClassName, booleanSetter } from "../../utils/wcUtils";
 import { isTrue, isValueOf, isBooleanAttribute } from "../../utils/validators";
-import { Style, Size } from "./kui-button";
+
+const Style = {
+	Default: "kui-button-default",
+	Primary: "kui-button-primary",
+	Secondary: "kui-button-secondary",
+	Information: "kui-button-info",
+	Dangerous: "kui-button-dangerous",
+	Warning: "kui-button-warning",
+	Success: "kui-button-success",
+	Link: "kui-button-link"
+};
+
+const Size = {
+	Normal: "",
+	Small: "kui-button-small",
+	Large: "kui-button-large",
+	Block: "kui-button-block"
+};
 
 const attributesConfig = {
 	"kui-text": {
@@ -13,7 +30,7 @@ const attributesConfig = {
 		validators: [isString]
 	},
 	"kui-style": {
-		default: Style.Default,
+		defaultValue: Style.Default,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { button } = component.elements;
 			const defaultValue = attributesConfig["kui-style"].default;
@@ -22,7 +39,7 @@ const attributesConfig = {
 		validators: [isString, isValueOf(Style)]
 	},
 	"kui-size": {
-		default: Size.Normal,
+		defaultValue: Size.Normal,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { button } = component.elements;
 			const defaultValue = attributesConfig["kui-size"].default;
@@ -31,7 +48,7 @@ const attributesConfig = {
 		validators: [isString, isValueOf(Size)]
 	},
 	"kui-outline": {
-		default: false,
+		defaultValue: false,
 		setter: booleanSetter,
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
@@ -45,7 +62,7 @@ const attributesConfig = {
 		validators: [isBooleanAttribute]
 	},
 	"kui-disabled": {
-		default: false,
+		defaultValue: false,
 		setter: booleanSetter,
 		attributeChangedHandler: function({ newValue, component }) {
 			const { button } = component.elements;
@@ -62,4 +79,4 @@ const attributesConfig = {
 	}
 };
 
-export default attributesConfig;
+export {attributesConfig as default, Style, Size};

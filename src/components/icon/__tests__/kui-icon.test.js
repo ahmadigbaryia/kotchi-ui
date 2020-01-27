@@ -1,5 +1,5 @@
 import { Window } from "happy-dom";
-import KUIIcon from "../kui-icon";
+import KUIIcon from "../";
 
 const window = new Window();
 const document = window.document;

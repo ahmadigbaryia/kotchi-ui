@@ -1,6 +1,7 @@
 import _toCamelCase from "lodash/camelCase";
 import _isFunction from "lodash/isFunction";
 import _isUndefined from "lodash/isUndefined";
+import _isNull from "lodash/isNull";
 import { isTrue } from "./validators";
 
 /**
@@ -61,8 +62,12 @@ function defaultSetter({ component, attributesConfig, attribute, value }) {
 	}
 }
 
-function defaultGetter({ component, attribute }) {
-	return component.getAttribute(attribute);
+function defaultGetter({ component, attribute, defaultValue }) {
+	if(component.getAttribute(attribute) === null && 
+		!(_isUndefined(defaultValue) || _isNull(defaultValue))) {
+		component.setAttribute(attribute, defaultValue);
+	}
+	return component.getAttribute(attribute);	
 }
 
 export function booleanSetter({ component, attribute, value }) {
@@ -167,10 +172,10 @@ export function defineCustomElement({
 						return defaultGetter.call(this, {
 							component: this,
 							attribute,
-							defaultValue: attributesConfig[attribute].default
+							defaultValue: attributesConfig[attribute].defaultValue
 						});
 					}
-					return attributesConfig[attribute].default;
+					return attributesConfig[attribute].defaultValue;
 				}
 			}
 		);

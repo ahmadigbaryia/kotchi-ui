@@ -2,30 +2,11 @@ import keys from "lodash/keys";
 import _isFunction from "lodash/isFunction";
 
 import BaseElement from "../../baseElement";
-import { defineCustomElement } from "../../utils/wcUtils";
-import attributesConfig from "./config";
+import attributesConfig, { Size, Style } from "./config";
 import templateConfig from "./template";
+import { defineCustomElement } from "../../utils/wcUtils";
 
-export const tagName = "kui-button";
-
-export const Style = {
-	Default: "kui-button-default",
-	Primary: "kui-button-primary",
-	Secondary: "kui-button-secondary",
-	Information: "kui-button-info",
-	Dangerous: "kui-button-dangerous",
-	Warning: "kui-button-warning",
-	Success: "kui-button-success",
-	Link: "kui-button-link"
-};
-
-export const Size = {
-	Normal: "",
-	Small: "kui-button-small",
-	Large: "kui-button-large",
-	Block: "kui-button-block"
-};
-
+const tagName = "kui-button";
 /**
  * Button element
  */
@@ -47,22 +28,25 @@ class KUIButton extends BaseElement {
 	static get Size() {
 		return Size;
 	}
+	static defineCustomElement() {
+		if(!KUIButton.defined){
+			defineCustomElement({
+				componentClass: KUIButton,
+				tagName,
+				attributesConfig
+			});
+			KUIButton.defined = true;
+		}
+	}
 	addClickHandler(handler) {
-		if(_isFunction(handler)) {
+		if (_isFunction(handler)) {
 			this.elements.button.addEventListener("click", handler);
 		}
 	}
 	removeClickHandler(handler) {
-		if(handler) {
+		if (handler) {
 			this.elements.button.removeEventListener("click", handler);
 		}
 	}
 }
-
-defineCustomElement({
-	componentClass: KUIButton,
-	tagName,
-	attributesConfig
-});
-
-export default KUIButton;
+export { KUIButton as default, tagName };

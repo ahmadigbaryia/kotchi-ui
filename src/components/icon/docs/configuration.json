@@ -1,7 +1,8 @@
 {
 	"id": "icon",
 	"category": "components",
-	"title": "Icon &lt;kui-icon&gt;",
+	"title": "Icon",
+	"tagName": "kui-icon",
 	"subtitle": "You can place KotchiUI Font Awesome icons just about anywhere in the page",
 	"cards": [
 		{

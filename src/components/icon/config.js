@@ -1,7 +1,44 @@
 import isString from "lodash/isString";
+
 import { applyClassName, booleanSetter } from "../../utils/wcUtils";
 import { isTrue, isValueOf, isBooleanAttribute } from "../../utils/validators";
-import {Animate, Bordered, Flip, PullDirection, Rotate, Size, FixedWidth } from "./kui-icon";
+
+const Animate = {
+	Spin: "fa-spin",
+	Pulse: "fa-pulse",
+};
+const Flip = {
+	FlipVer: "fa-flip-vertical",
+	FlipHor: "fa-flip-horizontal",
+	FlipBoth: "fa-flip-both"
+};
+const PullDirection = {
+	Left: "fa-pull-left",
+	Right: "fa-pull-right",
+};
+const Rotate = {
+	Rotate90: "fa-rotate-90",
+	Rotate180: "fa-rotate-180",
+	Rotate270: "fa-rotate-270"
+};
+const Size = {
+	Normal: "",
+	XSmall: "fa-xs",
+	Small: "fa-sm",
+	Large: "fa-lg",
+	X2: "fa-2x",
+	X3: "fa-3x",
+	X4: "fa-4x",
+	X5: "fa-5x",
+	X6: "fa-6x",
+	X7: "fa-7x",
+	X8: "fa-8x",
+	X9: "fa-9x",
+	X10: "fa-10x"
+};
+const FixedWidth = "fa-fw";
+const Bordered = "fa-border";
+
 
 const attributesConfig = {
 	"kui-label": {
@@ -25,7 +62,7 @@ const attributesConfig = {
 		validators: [isString, isValueOf(Size)]
 	},
 	"kui-fixed-width": {
-		default: false,
+		defaultValue: false,
 		setter: booleanSetter,
 		attributeChangedHandler: function({ newValue, component }) {
 			const { icon } = component.elements;
@@ -39,7 +76,7 @@ const attributesConfig = {
 		validators: [isBooleanAttribute]
 	},
 	"kui-bordered": {
-		default: false,
+		defaultValue: false,
 		setter: booleanSetter,
 		attributeChangedHandler: function({ newValue, component }) {
 			const { icon } = component.elements;
@@ -82,4 +119,4 @@ const attributesConfig = {
 	}
 };
 
-export default attributesConfig;
+export { attributesConfig as default, Animate, Flip, PullDirection, Rotate, Size, FixedWidth, Bordered };
