@@ -47,13 +47,15 @@
                             <a href="index.html"><i class="zmdi zmdi-home"></i> Getting Started</a>
                             <ul id="getting_started_menu" style="display: block;">
                                 <!-- add "navigation__active" class name to the active <li> element-->
+                                <!-- Example -->
                                 <!-- <li id="introduction"><a href="index.html">Introduction</a></li> -->
                             </ul>
                         </li>
                         <li id="components" class="navigation__sub navigation__sub--toggled navigation__sub--active">
                             <a href=""><i class="zmdi zmdi-widgets"></i>Components</a>
                             <ul id="components_menu" style="display: block;">
-                                <!-- <li id="button"><a href="button.html">Button</a></li> -->
+                                <!-- Example -->
+                                <!--  <li id="button"><a href="button.html">Button</a></li> -->
                             <li id="button" class=" navigation__sub--active"><a href="button.html">Button <code class="info-tag-name">&lt;kui-button&gt;</code></a></li><li id="icon" class=""><a href="icon.html">Icon <code class="info-tag-name">&lt;kui-icon&gt;</code></a></li></ul>
                         </li>
                     </ul>
@@ -116,23 +118,18 @@
 		</tbody>
 	</table>
 </div>
-        <div class="tab-container" style="display: none;">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item nav-link">
-                    <a id="preview-tab" class="nav-item nav-link active" data-toggle="tab" href="#preview" role="tab" aria-controls="preview" aria-selected="true">Preview
-                    </a>
-                </li>
-                <li class="nav-item nav-link">
-                    <a id="markup-tab" class="nav-item nav-link" data-toggle="tab" href="#markup" role="tab" aria-controls="markup" aria-selected="false">Markup
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="preview" role="tabpanel"></div>
-                <div class="tab-pane fade" id="markup" role="tabpanel">
-                    <pre class="language-html">						<code class="language-html"></code>
-					</pre>
+        <div class="example-container" style="display: none;">
+            <div class="example-preview"></div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html"></code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
                 </div>
             </div>
         </div>
@@ -143,20 +140,8 @@
         <h4 class="card-title">Basic Examples</h4>
         <h6 class="card-subtitle">With Kotchi UI you can easily create buttons with configurable predefined styles</h6>
         <div id="additional_info"></div>
-        <div class="tab-container">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item nav-link">
-                    <a id="preview_1-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_1" role="tab" aria-controls="preview" aria-selected="true">Preview
-                    </a>
-                </li>
-                <li class="nav-item nav-link">
-                    <a id="markup_1-tab" class="nav-item nav-link" data-toggle="tab" href="markup_1" role="tab" aria-controls="markup" aria-selected="false">Markup
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="preview_1" role="tabpanel" aria-labelledby="preview_1-tab">
+        <div class="example-container">
+            <div class="example-preview">
 	<kui-button kui-style="kui-button-default">Default</kui-button>
 	<kui-button kui-style="kui-button-primary">Primary</kui-button>
 	<kui-button kui-style="kui-button-secondary">Secondary</kui-button>
@@ -166,18 +151,25 @@
 	<kui-button kui-style="kui-button-warning">Warning</kui-button>
 	<kui-button kui-style="kui-button-link">Link</kui-button>
 </div>
-                <div class="tab-pane fade" id="markup_1" role="tabpanel" aria-labelledby="markup_1-tab">
-                    <pre class="language-html">						<code class="language-html">
-	&lt;kui-button kui-style="kui-button-default"&gt;Default&lt;/kui-button&gt;
-	&lt;kui-button kui-style="kui-button-primary"&gt;Primary&lt;/kui-button&gt;
-	&lt;kui-button kui-style="kui-button-secondary"&gt;Secondary&lt;/kui-button&gt;
-	&lt;kui-button kui-style="kui-button-info"&gt;Information&lt;/kui-button&gt;
-	&lt;kui-button kui-style="kui-button-dangerous"&gt;Dangerous&lt;/kui-button&gt;
-	&lt;kui-button kui-style="kui-button-success"&gt;Success&lt;/kui-button&gt;
-	&lt;kui-button kui-style="kui-button-warning"&gt;Warning&lt;/kui-button&gt;
-	&lt;kui-button kui-style="kui-button-link"&gt;Link&lt;/kui-button&gt;
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
+&lt;kui-button kui-style="kui-button-default"&gt;Default&lt;/kui-button&gt;
+&lt;kui-button kui-style="kui-button-primary"&gt;Primary&lt;/kui-button&gt;
+&lt;kui-button kui-style="kui-button-secondary"&gt;Secondary&lt;/kui-button&gt;
+&lt;kui-button kui-style="kui-button-info"&gt;Information&lt;/kui-button&gt;
+&lt;kui-button kui-style="kui-button-dangerous"&gt;Dangerous&lt;/kui-button&gt;
+&lt;kui-button kui-style="kui-button-success"&gt;Success&lt;/kui-button&gt;
+&lt;kui-button kui-style="kui-button-warning"&gt;Warning&lt;/kui-button&gt;
+&lt;kui-button kui-style="kui-button-link"&gt;Link&lt;/kui-button&gt;
 </code>
-					</pre>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
                 </div>
             </div>
         </div>
@@ -188,20 +180,8 @@
         <h4 class="card-title">Outline buttons</h4>
         <h6 class="card-subtitle">In need of a button, but not the hefty background colors they bring? add the <code>kui-outline</code> attribute to remove all background images and colors on any button.</h6>
         <div id="additional_info"></div>
-        <div class="tab-container">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item nav-link">
-                    <a id="preview_2-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_2" role="tab" aria-controls="preview" aria-selected="true">Preview
-                    </a>
-                </li>
-                <li class="nav-item nav-link">
-                    <a id="markup_2-tab" class="nav-item nav-link" data-toggle="tab" href="markup_2" role="tab" aria-controls="markup" aria-selected="false">Markup
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="preview_2" role="tabpanel" aria-labelledby="preview_2-tab">
+        <div class="example-container">
+            <div class="example-preview">
 	<kui-button kui-style="kui-button-default" kui-outline="">Default</kui-button>
 	<kui-button kui-style="kui-button-primary" kui-outline="">Primary</kui-button>
 	<kui-button kui-style="kui-button-secondary" kui-outline="">Secondary</kui-button>
@@ -210,9 +190,9 @@
 	<kui-button kui-style="kui-button-success" kui-outline="">Success</kui-button>
 	<kui-button kui-style="kui-button-warning" kui-outline="">Warning</kui-button>
 </div>
-                <div class="tab-pane fade" id="markup_2" role="tabpanel" aria-labelledby="markup_2-tab">
-                    <pre class="language-html">						<code class="language-html">
-	&lt;pre&gt;        &lt;code&gt;
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
 &lt;kui-button kui-style="kui-button-default" kui-outline=""&gt;Default&lt;/kui-button&gt;
 &lt;kui-button kui-style="kui-button-primary" kui-outline=""&gt;Primary&lt;/kui-button&gt;
 &lt;kui-button kui-style="kui-button-secondary" kui-outline=""&gt;Secondary&lt;/kui-button&gt;
@@ -220,10 +200,14 @@
 &lt;kui-button kui-style="kui-button-dangerous" kui-outline=""&gt;Dangerous&lt;/kui-button&gt;
 &lt;kui-button kui-style="kui-button-success" kui-outline=""&gt;Success&lt;/kui-button&gt;
 &lt;kui-button kui-style="kui-button-warning" kui-outline=""&gt;Warning&lt;/kui-button&gt;
-        &lt;/code&gt;
-    &lt;/pre&gt;
 </code>
-					</pre>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
                 </div>
             </div>
         </div>
@@ -234,32 +218,24 @@
         <h4 class="card-title">Disabled state</h4>
         <h6 class="card-subtitle">Make buttons look inactive by adding the kui-disabled boolean attribute to any <code>&lt;kui-button&gt;</code> element.</h6>
         <div id="additional_info"></div>
-        <div class="tab-container">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item nav-link">
-                    <a id="preview_3-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_3" role="tab" aria-controls="preview" aria-selected="true">Preview
-                    </a>
-                </li>
-                <li class="nav-item nav-link">
-                    <a id="markup_3-tab" class="nav-item nav-link" data-toggle="tab" href="markup_3" role="tab" aria-controls="markup" aria-selected="false">Markup
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="preview_3" role="tabpanel" aria-labelledby="preview_3-tab">
+        <div class="example-container">
+            <div class="example-preview">
         <kui-button kui-style="kui-button-default" kui-outline="" kui-disabled="">Default outline disabled</kui-button>
 	<kui-button kui-style="kui-button-primary" kui-disabled="">Primary disabled</kui-button>
 </div>
-                <div class="tab-pane fade" id="markup_3" role="tabpanel" aria-labelledby="markup_3-tab">
-                    <pre class="language-html">						<code class="language-html">
-	&lt;pre&gt;        &lt;code&gt;
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
 &lt;kui-button kui-style="kui-button-default" kui-outline="" kui-disabled=""&gt;Default outline disabled&lt;/kui-button&gt;
 &lt;kui-button kui-style="kui-button-primary" kui-disabled=""&gt;Primary disabled&lt;/kui-button&gt;
-        &lt;/code&gt;
-    &lt;/pre&gt;
 </code>
-					</pre>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
                 </div>
             </div>
         </div>
@@ -270,41 +246,32 @@
         <h4 class="card-title">Button Different Sizes</h4>
         <h6 class="card-subtitle">In need for different button sizes, no worries we have 4 different sizes for your convenient.</h6>
         <div id="additional_info"></div>
-        <div class="tab-container">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item nav-link">
-                    <a id="preview_4-tab" class="nav-item nav-link active" data-toggle="tab" href="preview_4" role="tab" aria-controls="preview" aria-selected="true">Preview
-                    </a>
-                </li>
-                <li class="nav-item nav-link">
-                    <a id="markup_4-tab" class="nav-item nav-link" data-toggle="tab" href="markup_4" role="tab" aria-controls="markup" aria-selected="false">Markup
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="preview_4" role="tabpanel" aria-labelledby="preview_4-tab">
-		<style>
+        <div class="example-container">
+            <div class="example-preview">
+	<style>
                 kui-button[kui-size="kui-button-block"] {
                         --margin-top: 10px;
                         --margin-bottom: 10px;
                 }
         </style>
-        
 	<kui-button kui-style="kui-button-default" kui-outline="" kui-size="kui-button-small">Small Default outline button</kui-button>
 	<kui-button kui-style="kui-button-primary" kui-disabled="" kui-size="kui-button-large">Large Primary disabled button</kui-button>
 	<kui-button kui-style="kui-button-info" kui-size="kui-button-block">Full width button</kui-button>
 </div>
-                <div class="tab-pane fade" id="markup_4" role="tabpanel" aria-labelledby="markup_4-tab">
-                    <pre class="language-html">						<code class="language-html">
-	&lt;pre&gt;        &lt;code&gt;
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
 &lt;kui-button kui-style="kui-button-default" kui-outline="" kui-size="kui-button-small"&gt;Small Default outline button&lt;/kui-button&gt;
 &lt;kui-button kui-style="kui-button-primary" kui-disabled="" kui-size="kui-button-large"&gt;Large Primary disabled button&lt;/kui-button&gt;
 &lt;kui-button kui-style="kui-button-info" kui-size="kui-button-block"&gt;Full width button&lt;/kui-button&gt;
-        &lt;/code&gt;
-    &lt;/pre&gt;
 </code>
-					</pre>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
                 </div>
             </div>
         </div>
@@ -817,23 +784,18 @@
 		</tbody>
 	</table>
 </div>
-        <div class="tab-container" style="display: none;">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item nav-link">
-                    <a id="preview-tab" class="nav-item nav-link active" data-toggle="tab" href="#preview" role="tab" aria-controls="preview" aria-selected="true">Preview
-                    </a>
-                </li>
-                <li class="nav-item nav-link">
-                    <a id="markup-tab" class="nav-item nav-link" data-toggle="tab" href="#markup" role="tab" aria-controls="markup" aria-selected="false">Markup
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="preview" role="tabpanel"></div>
-                <div class="tab-pane fade" id="markup" role="tabpanel">
-                    <pre class="language-html">						<code class="language-html"></code>
-					</pre>
+        <div class="example-container" style="display: none;">
+            <div class="example-preview"></div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html"></code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
                 </div>
             </div>
         </div>
