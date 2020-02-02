@@ -56,7 +56,6 @@ const attributesConfig = {
 				button.classList.add("outline");
 			} else {
 				button.classList.remove("outline");
-				component.removeAttribute("kui-outline");
 			}
 		},
 		validators: [isBooleanAttribute]
@@ -72,7 +71,6 @@ const attributesConfig = {
 			} else {
 				button.classList.remove("disabled");
 				button.removeAttribute("disabled");
-				component.removeAttribute("kui-disabled");
 			}
 		},
 		validators: [isBooleanAttribute]

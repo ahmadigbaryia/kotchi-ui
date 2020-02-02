@@ -12,7 +12,8 @@
 		"build-docs": "docs-builder --projectName \"Kotchi UI\" --scriptPath \"dist/kotchi-ui.js\"",
 		"prepack": "node .build/prepack.js",
 		"postpack": "node .build/postpack.js",
-		"test": "jest --env=jest-environment-happy-dom -i"
+		"test": "jest --env=jest-environment-happy-dom -i",
+		"create-component": "node cli/createComponent.js"
 	},
 	"author": "Ahmad Igbariya <ahmad.rida.igbariya@gmail.com>",
 	"license": "MIT",
@@ -28,6 +29,7 @@
 		"documentation-builder": "^1.0.0",
 		"eslint": "^6.7.2",
 		"eslint-plugin-node": "^10.0.0",
+		"handlebars": "^4.7.2",
 		"happy-dom": "^0.10.5",
 		"html-loader": "^0.5.5",
 		"jest": "^24.9.0",

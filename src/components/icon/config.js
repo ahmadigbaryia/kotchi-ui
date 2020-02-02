@@ -70,7 +70,6 @@ const attributesConfig = {
 				icon.classList.add(FixedWidth);
 			} else {
 				icon.classList.remove(FixedWidth);
-				component.removeAttribute("kui-fixed-width");
 			}
 		},
 		validators: [isBooleanAttribute]
@@ -84,7 +83,6 @@ const attributesConfig = {
 				icon.classList.add(Bordered);
 			} else {
 				icon.classList.remove(Bordered);
-				component.removeAttribute("kui-bordered");
 			}
 		},
 		validators: [isBooleanAttribute]

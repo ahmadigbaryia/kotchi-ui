@@ -1,0 +1,8 @@
+{
+    "id": "{{tagName name}}",
+    "category": "components",
+	"title": "{{componentName name}}",
+	"tagName": "{{tagName name}}",
+	"subtitle": "",
+	"cards": []
+}

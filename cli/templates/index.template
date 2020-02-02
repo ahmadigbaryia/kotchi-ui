@@ -1,0 +1,3 @@
+import {{className name}}, { tagName } from "./{{tagName name}}";
+{{className name}}.defineCustomElement();
+export { {{className name}} as default, tagName };

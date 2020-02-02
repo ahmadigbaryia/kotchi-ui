@@ -1,0 +1,98 @@
+import { Window } from "happy-dom";
+import "../";
+
+const window = new Window();
+const document = window.document;
+let {{varName name}};
+
+beforeEach(() => {
+	document.body.innerHTML ="<{{tagName name}} id=\"my-{{tagName name}}\">My Component</{{tagName name}}>";
+	{{varName name}} = document.querySelector("#my-{{tagName name}}");
+});
+describe("Make sure component is created", () => {
+	test("Make sure <{{tagName name}}> is defined as a custom element with shadowRoot", () => {
+		expect({{varName name}}).not.toBeNull();
+		expect({{varName name}}.shadowRoot).not.toBeNull();
+	});
+	test("Make sure <{{tagName name}}> has the elements as an attribute with the button on it", () => {
+		expect({{varName name}}.elements).not.toBeNull();
+		//check the elements properties existance here
+	});
+	test("Make sure component attributes are also reflected on object properties", () => {
+		{{#each attributes}}
+		expect("{{toProperty name}}" in {{varName ../name}}).toBe(true);
+		{{/each}}
+	});
+});
+describe("Testing <{{tagName name}}> attributes", () => {
+	describe.each([
+		{{#each attributes}}
+		{{#unless this.isBoolean}}
+		["{{name}}", "{{toProperty name}}", ""],
+		{{/unless}}
+		{{/each}}
+	])("Testing %s attribute", (attributeName, propertyName, otherValue)=>{
+		test(`Updating ${propertyName} property updates the attribute with the same value`, () => {
+			{{varName name}}[propertyName] = otherValue;
+			expect({{varName name}}.getAttribute(attributeName)).toBe(otherValue);
+		});
+		test(`Updating ${attributeName} attribute updates the property with the same value`, () => {
+			{{varName name}}.setAttribute(attributeName, otherValue);
+			expect({{varName name}}[propertyName]).toBe(otherValue);
+		});
+	});
+	{{#hasBooleanAttribute attributes}}
+	//Boolean attributes
+	describe.each([
+		{{#each attributes}}
+		{{#if this.isBoolean}}
+		["{{name}}", "{{toProperty name}}", true], 
+		["{{name}}", "{{toProperty name}}", false],
+		{{/if}}
+		{{/each}}		
+	])("Testing %s attribute", (attributeName, propertyName, value) => {
+		test(`Set ${propertyName} property to ${value} -> ${value ? "adds" : "removes"} '${attributeName}' attribute to the <{{tagName name}}> element`, () => {
+			{{varName name}}[propertyName] = value;
+			expect({{varName name}}.hasAttribute(attributeName)).toBe(value);
+		});
+		test(`Set ${attributeName} attribute to ${value} -> ${value ? "adds" : "removes"} '${attributeName}' attribute from the <{{tagName name}}> element`, () => {
+			{{varName name}}.setAttribute(attributeName, `${value}`);
+			expect({{varName name}}.hasAttribute(attributeName)).toBe(value);
+		});
+	});
+	{{/hasBooleanAttribute}}
+//Invalid values
+//	describe.each([
+//		{{#each attributes}}
+//		{{#unless this.isBoolean}}
+//		["{{name}}", "{{toProperty name}}", "INVALID_VALUE"],
+//		{{/unless}}
+//		{{/each}}
+//	])("Testing invalid value handeling for %s", (attributeName, propertyName, invalidValue) => {
+//		test(`Tesing invalid value for ${attributeName} attribute`, () => {
+//			const spy = jest.spyOn({{varName name}}.attributesConfig[attributeName], "attributeChangedHandler");
+//			{{varName name}}.setAttribute(attributeName, invalidValue);
+//			expect(spy).not.toHaveBeenCalled();
+//			spy.mockRestore();
+//		});
+//		test(`Tesing invalid value for ${propertyName} property`, () => {
+//			const spy = jest.spyOn({{varName name}}.attributesConfig[attributeName], "attributeChangedHandler");
+//			{{varName name}}[propertyName] = invalidValue;
+//			expect(spy).not.toHaveBeenCalled();
+//			spy.mockRestore();
+//		});
+//	});
+});
+// Test the public API
+//describe("Test public API", () => {
+//	test("make sure addClickHandler is a public function", () => {
+//		expect(typeof kuiButton.addClickHandler).toBe("function");
+//	});
+//	test("make sure addClickHandler adds a click listener on the button", () => {
+//		const handler = jest.fn();
+//		const clickEvent = new MouseEvent("click");
+//		kuiButton.addClickHandler(handler);
+//		kuiButton.elements.button.dispatchEvent(clickEvent);
+//		expect(handler).toHaveBeenCalledTimes(1);
+//	});
+//});

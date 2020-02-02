@@ -1,0 +1,20 @@
+import style from "./styles.css";
+import { tagName } from "./";
+
+const template = document.createElement("template");
+template.innerHTML = `
+	<style>
+		${style}
+	</style>
+    <!-- YOUR HTML TEMPLATE GOES HERE -->
+`;
+
+//This is for cross-browser compatibility 
+window.ShadyCSS && window.ShadyCSS.prepareTemplate(template, tagName);
+
+export default {
+	template,
+	selectors: {
+		/* Add selectors here to be accessable in the class file*/
+	}
+};

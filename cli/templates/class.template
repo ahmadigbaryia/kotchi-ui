@@ -1,0 +1,32 @@
+import keys from "lodash/keys";
+
+import BaseElement from "../../baseElement";
+import attributesConfig from "./config";
+import templateConfig from "./template";
+import { defineCustomElement } from "../../utils/wcUtils";
+
+const tagName = "{{tagName name}}";
+
+/**
+ * {{componentName name}} element
+ */
+class {{className name}} extends BaseElement {
+	constructor() {
+		super({ templateConfig, attributesConfig });
+		this.elements = {};
+	}
+	static get observedAttributes() {
+		return keys(attributesConfig);
+	}
+	static defineCustomElement() {
+		if(!{{className name}}.defined){
+			defineCustomElement({
+				componentClass: {{className name}},
+				tagName,
+				attributesConfig
+			});
+			{{className name}}.defined = true;
+		}
+	}
+}
+export { {{className name}} as default, tagName };

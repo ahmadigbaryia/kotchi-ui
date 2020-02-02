@@ -1,0 +1,29 @@
+//Here you can add and export any enums you find useful for this component
+{{#hasBooleanAttribute attributes}}
+import { booleanSetter } from "../../utils/wcUtils";
+import { isBooleanAttribute } from "../../utils/validators";
+{{/hasBooleanAttribute}}
+
+const attributesConfig = {
+//	"ATTRIBUTE_NAME": {
+//		defaultValue: "",
+//      setter: function to be called when elm.setAttribute is called,
+//      getter: function to be called when elm.getAttribute or elm.ATTRIBUTE_NAME is called,
+//		attributeChangedHandler: function({ oldValue, newValue, component }) {
+//          // When ever the attribute changes this method get called
+//		},
+//		validators: [] // a list of validators to be called before handeling the change
+//	},
+{{#each attributes}}
+	"{{name}}": {
+		{{#if isBoolean}}
+		defaultValue: false,
+		setter: booleanSetter,
+		validators: [isBooleanAttribute],
+		{{/if}}
+		attributeChangedHandler: function({ oldValue, newValue, component }) {}
+	},
+{{/each}}
+};
+
+export {attributesConfig as default};

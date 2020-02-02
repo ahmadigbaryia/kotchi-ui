@@ -25,3 +25,29 @@ src/components/COMPONENT_NAME/
 └── template.html
 */
 
+(async () => {
+	const path = require("path");
+	const args = require("minimist")(process.argv.slice(2));
+	const Utils = require("./utils");
+
+	const componentConfig = await Utils.readConfigurationFile(args["config"]);
+	const { name } = componentConfig;
+
+	const templatesPath = `${__dirname}${path.sep}templates`;
+	const targetComponentsFolder = args["componentsPath"] || "src/components";
+	const targetComponentPath = `${targetComponentsFolder}${path.sep}${name}${path.sep}`;
+	console.log("Generating files ...");
+	const startTime = new Date().getTime();
+	await Promise.all([
+		Utils.generateUnitTest({ componentConfig, targetComponentPath, templatesPath }),
+		Utils.generateDocs({ componentConfig, targetComponentPath, templatesPath }),
+		Utils.generateComponentConfig({ componentConfig, targetComponentPath, templatesPath }),
+		Utils.generateComponentIndex({ componentConfig, targetComponentPath, templatesPath }),
+		Utils.generateComponentClass({ componentConfig, targetComponentPath, templatesPath }),
+		Utils.generateComponentReadMe({ componentConfig, targetComponentPath, templatesPath }),
+		Utils.generateComponentStyle({ componentConfig, targetComponentPath, templatesPath }),
+		Utils.generateComponentTemplate({ componentConfig, targetComponentPath, templatesPath })
+	]);
+	const endTime = new Date().getTime();
+	console.log(`Finished in ${endTime - startTime}ms`);
+})();

@@ -17,5 +17,6 @@ module.exports = {
 	},
 
 	// The test environment that will be used for testing
-	testEnvironment: "jest-environment-happy-dom"
+	testEnvironment: "jest-environment-happy-dom",
+	setupFilesAfterEnv: ["<rootDir>/__mocks__/jest-preload.js"]
 };

@@ -2,7 +2,7 @@ import _toCamelCase from "lodash/camelCase";
 import _isFunction from "lodash/isFunction";
 import _isUndefined from "lodash/isUndefined";
 import _isNull from "lodash/isNull";
-import { isTrue } from "./validators";
+import { isTrue, isFalse } from "./validators";
 
 /**
  * Executes an array of validators one after the other till one fails or all succeed
@@ -21,7 +21,7 @@ function applyValidators({
 		}
 		for (let i = 0; i < validators.length; i++) {
 			if (value && _isFunction(validators[i]) && !validators[i](value)) {
-				console.error(`${tagName}.${attribute}:\nvalue:'${value}' failed ${validators[i].name} validation`);
+				console.log(`${tagName}.${attribute}:\nvalue:'${value}' failed ${validators[i].name} validation`);
 				return false;
 			}
 		}
@@ -112,6 +112,9 @@ export function changeHandlerWrapper({
 			newValue: transformedValue,
 			component
 		});
+		if(isFalse(transformedValue)) {
+			component.removeAttribute(attribute);		
+		}
 	} else if(!oldValue && oldValue !== "") {
 		// The attribute is a boolean one and the old value was falsy
 		component.removeAttribute(attribute);
