@@ -1,9 +1,9 @@
 import keys from "lodash/keys";
 
-import BaseElement from "../../baseElement";
+import BaseElement from "Base/baseElement";
 import templateConfig from "./template";
 import attributesConfig, { Animate, Flip, PullDirection, Rotate, Size, FixedWidth, Bordered } from "./config";
-import { defineCustomElement } from "../../utils/wcUtils.js";
+import { defineCustomElement } from "Utils/wcUtils.js";
 
 const tagName = "kui-icon";
 const faVersion = "5.11.2";

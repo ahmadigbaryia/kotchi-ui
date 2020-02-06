@@ -1,17 +1,42 @@
 # KotchiUI
+KotchiUI is a lightweight UI kit that can be used with any framework on any browser, it's fully accessabile and mobile compatible.
+Each KotchiUI component is a web component that is treated as a native HTML element.
 
-KotchiUI is a lightweight UI kit that is cross-browser, accessabile and mobile compatible.
-The web components of KotchiUI can be used with all JavaScript libraries and frameworks such Angular, Vue and React.
+The components have public API to access the composing inner elements and to control the style via CSS variables.
 
-# New Features!
+# Components
+  - Alerts (Soon, contribute)
+  - Accordion (Soon)
+  - Badge (Soon)
+  - Breadcrumb (Soon)
+  - [Button](https://ahmadigbaryia.github.io/kotchi-ui/button.html)
+  - Button Group (Soon)
+  - Cards (Soon)
+  - Checkbox (Soon)
+  - Carousel (Soon)
+  - Dropdowns (Soon)
+  - [FontAwesome Icon](https://ahmadigbaryia.github.io/kotchi-ui/icon.html)
+  - Forms (Soon)
+  - Grid (Soon)
+  - Input Group (Soon)
+  - Images (Soon)
+  - Figures (Soon)
+  - List Group (Soon)
+  - Modal (Soon)
+  - Navs (Soon)
+  - Navbar (Soon)
+  - Overlays (Soon)
+  - Pagination (Soon)
+  - Popovers (Soon)
+  - Progress (Soon)
+  - Radio Button (Soon)
+  - Spinners (Soon)
+  - Switch (Soon)
+  - Table (Soon)
+  - Tabs (Soon)
+  - Tooltips (Soon)
+  - Toasts (Soon)
 
-Ready to use components
-  - [Button Component](https://ahmadigbaryia.github.io/kotchi-ui/button.html)
-  - [FontAwesome Icon Component](https://ahmadigbaryia.github.io/kotchi-ui/icon.html)
-
-With each component:
-  - Get access to the inner HTML element for more control
-  - Control the style and colors via CSS variables
 
 # Used Technology
 KotchiUI is built with [Web Component technology](https://www.webcomponents.org/) using the native browser API, the elements are extendable and configurable.
@@ -65,4 +90,7 @@ kuiButton.addClickHandler(function(e) {/* Your Handler Code */});
 So you want to contribute? That's Great, please follow this [contribution guide](https://github.com/ahmadigbaryia/kotchi-ui/blob/master/CONTRIBUTING.md).
 
 # License
+MIT
 
+
+[contribute]: https://ahmadigbaryia.github.io/kotchi-ui/button.html

@@ -1,10 +1,10 @@
 import keys from "lodash/keys";
 import _isFunction from "lodash/isFunction";
 
-import BaseElement from "../../baseElement";
+import BaseElement from "Base/baseElement";
 import attributesConfig, { Size, Style } from "./config";
 import templateConfig from "./template";
-import { defineCustomElement } from "../../utils/wcUtils";
+import { defineCustomElement } from "Utils/wcUtils";
 
 const tagName = "kui-button";
 /**

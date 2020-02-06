@@ -2,7 +2,7 @@ import {
 	buildShadowRoot,
 	buildComponentContents,
 	changeHandlerWrapper
-} from "../utils/wcUtils";
+} from "Utils/wcUtils";
 
 class BaseElement extends HTMLElement {
 	constructor({ templateConfig, attributesConfig, useShadow = true }) {

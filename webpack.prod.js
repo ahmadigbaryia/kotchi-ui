@@ -6,11 +6,22 @@ const buildConf = async () => {
 	const conf = {
 		mode: "production",
 		entry: await addComponentsEntries(),
+		resolve: {
+			alias: {
+				Base: path.resolve(__dirname, "src/base/"),
+				Components: path.resolve(__dirname, "src/components/"),
+				Utils: path.resolve(__dirname, "src/utils/"),
+			}
+		},
 		module: {
 			rules: [
 				{
 					test: /\.html$/,
 					use: ["html-loader"]
+				},
+				{
+					test: /\.s[ac]ss$/i,
+					use: ["css-to-string-loader", "css-loader", "sass-loader"]
 				},
 				{
 					test: /\.css$/i,
@@ -41,9 +52,13 @@ async function addComponentsEntries() {
 	const entries = {
 		ui: "./src/index.js"
 	};
-	const dirents = await fs.readdir("./src/components", { withFileTypes: true });
+	const dirents = await fs.readdir("./src/components", {
+		withFileTypes: true
+	});
 	for (let i = 0; i < dirents.length; i++) {
-		entries[dirents[i].name] = `./src/components/${dirents[i].name}/index.js`;
+		entries[
+			dirents[i].name
+		] = `./src/components/${dirents[i].name}/index.js`;
 	}
 	return entries;
 }

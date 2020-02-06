@@ -1,4 +1,4 @@
-import style from "./styles.css";
+import style from "./styles.scss";
 import { tagName } from "./kui-button";
 
 const template = document.createElement("template");

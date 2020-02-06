@@ -1,7 +1,7 @@
 import isString from "lodash/isString";
 
-import { applyClassName, booleanSetter } from "../../utils/wcUtils";
-import { isTrue, isValueOf, isBooleanAttribute } from "../../utils/validators";
+import { applyClassName, booleanSetter } from "Utils/wcUtils";
+import { isTrue, isValueOf, isBooleanAttribute } from "Utils/validators";
 
 const Style = {
 	Default: "kui-button-default",

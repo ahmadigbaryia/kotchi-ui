@@ -6,6 +6,13 @@ module.exports = ["inline-source-map"].map(devtool => ({
 		button: "./src/components/button/index.js",
 		icon: "./src/components/icon/index.js",
 	},
+	resolve: {
+		alias: {
+			Base: path.resolve(__dirname, "src/base/"),
+			Components: path.resolve(__dirname, "src/components/"),
+			Utils: path.resolve(__dirname, "src/utils/"),
+		}
+	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "kotchi-[name].js",

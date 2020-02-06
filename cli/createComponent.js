@@ -2,7 +2,7 @@
  * A script that auto-generate new component under src/components, with the a specific folder structure and files.
  * Input: JSON:
  *  {
- *      componentName: "STRING", //example: accordion,
+ *      name: "STRING", //example: accordion,
  *      description: "STRING",
  *      attributes:[
  *          {
