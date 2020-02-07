@@ -22,9 +22,21 @@ function registerHandlebarsHelpers() {
 		attributes,
 		options
 	) {
-		return attributes.filter(attr => attr.isBoolean).length > 0
+		return attributes.filter(attr => attr.type.toLowerCase() === "boolean").length > 0
 			? options.fn(this)
 			: "";
+	});
+	Handlebars.registerHelper("isBoolean", function(
+		type,
+		options
+	) {
+		return type.toLowerCase() === "boolean" ? options.fn(this) : "";
+	});
+	Handlebars.registerHelper("notBoolean", function(
+		type,
+		options
+	) {
+		return type.toLowerCase() !== "boolean" ? options.fn(this) : "";
 	});
 	Handlebars.registerHelper("hasRegularAttribute", function(
 		attributes,
@@ -33,6 +45,9 @@ function registerHandlebarsHelpers() {
 		return attributes.filter(attr => !attr.isBoolean).length > 0
 			? options.fn(this)
 			: "";
+	});
+	Handlebars.registerHelper("joinParams", function(params) {
+		return params.join(", ");
 	});
 }
 
@@ -103,6 +118,33 @@ async function generateDocs({
 	targetComponentPath,
 	templatesPath
 }) {
+	generateDocsConfiguration({
+		componentConfig,
+		targetComponentPath,
+		templatesPath
+	});
+	generateDocsBasicExample({
+		componentConfig,
+		targetComponentPath,
+		templatesPath
+	});
+	generateDocsAttributesConfigurations({
+		componentConfig,
+		targetComponentPath,
+		templatesPath
+	});
+	generateDocsAttributesExample({
+		componentConfig,
+		targetComponentPath,
+		templatesPath
+	});
+}
+
+async function generateDocsConfiguration({
+	componentConfig,
+	targetComponentPath,
+	templatesPath
+}) {
 	const resourceTemplatePath = `${templatesPath}/docs.template`;
 	const resourceOutputPath = `${targetComponentPath}${path.sep}docs${path.sep}`;
 	const resourceOutputFileName = "configuration.json";
@@ -113,6 +155,56 @@ async function generateDocs({
 		componentConfig
 	});
 }
+
+async function generateDocsBasicExample({
+	componentConfig,
+	targetComponentPath,
+	templatesPath
+}) {
+	const resourceTemplatePath = `${templatesPath}/basic-example-docs.template`;
+	const resourceOutputPath = `${targetComponentPath}${path.sep}docs${path.sep}`;
+	const resourceOutputFileName = "basic-examples.html";
+	generateResource({
+		resourceTemplatePath,
+		resourceOutputPath,
+		resourceOutputFileName,
+		componentConfig
+	});
+}
+
+async function generateDocsAttributesConfigurations({
+	componentConfig,
+	targetComponentPath,
+	templatesPath
+}) {
+	const resourceTemplatePath = `${templatesPath}/attributes-docs.template`;
+	const resourceOutputPath = `${targetComponentPath}${path.sep}docs${path.sep}`;
+	const resourceOutputFileName = "attributes-configurations.html";
+	generateResource({
+		resourceTemplatePath,
+		resourceOutputPath,
+		resourceOutputFileName,
+		componentConfig
+	});
+}
+async function generateDocsAttributesExample({
+	componentConfig,
+	targetComponentPath,
+	templatesPath
+}) {
+	componentConfig.attributes.forEach((attribute)=>{
+		const resourceTemplatePath = `${templatesPath}/attribute-docs.template`;
+		const resourceOutputPath = `${targetComponentPath}${path.sep}docs${path.sep}`;
+		const resourceOutputFileName = `${attribute.name}-example.html`;
+		generateResource({
+			resourceTemplatePath,
+			resourceOutputPath,
+			resourceOutputFileName,
+			componentConfig: attribute
+		});
+	});
+}
+
 async function generateComponentConfig({
 	componentConfig,
 	targetComponentPath,
@@ -180,7 +272,7 @@ async function generateComponentStyle({
 }) {
 	const resourceTemplatePath = `${templatesPath}/style.template`;
 	const resourceOutputPath = `${targetComponentPath}${path.sep}`;
-	const resourceOutputFileName = "style.css";
+	const resourceOutputFileName = "style.scss";
 	generateResource({
 		resourceTemplatePath,
 		resourceOutputPath,

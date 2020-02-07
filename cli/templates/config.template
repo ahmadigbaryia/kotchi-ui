@@ -1,7 +1,7 @@
 //Here you can add and export any enums you find useful for this component
 {{#hasBooleanAttribute attributes}}
-import { booleanSetter } from "../../utils/wcUtils";
-import { isBooleanAttribute } from "../../utils/validators";
+import { booleanSetter } from "Utils/wcUtils";
+import { isBooleanAttribute } from "Utils/validators";
 {{/hasBooleanAttribute}}
 
 const attributesConfig = {
@@ -16,11 +16,11 @@ const attributesConfig = {
 //	},
 {{#each attributes}}
 	"{{name}}": {
-		{{#if isBoolean}}
+		{{#isBoolean type}}
 		defaultValue: false,
 		setter: booleanSetter,
 		validators: [isBooleanAttribute],
-		{{/if}}
+		{{/isBoolean}}
 		attributeChangedHandler: function({ oldValue, newValue, component }) {}
 	},
 {{/each}}

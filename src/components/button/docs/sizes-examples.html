@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <template id="preview">
 	<style>
-                kui-button[kui-size="kui-button-block"] {
-                        --margin-top: 10px;
-                        --margin-bottom: 10px;
-                }
-        </style>
-	<kui-button kui-style="kui-button-default" kui-outline kui-size="kui-button-small">Small Default outline button</kui-button>
-	<kui-button kui-style="kui-button-primary" kui-disabled kui-size="kui-button-large">Large Primary disabled button</kui-button>
-	<kui-button kui-style="kui-button-info" kui-size="kui-button-block">Full width button</kui-button>
-</template>
-<template id="markup">
-<kui-button kui-style="kui-button-default" kui-outline kui-size="kui-button-small">Small Default outline button</kui-button>
-<kui-button kui-style="kui-button-primary" kui-disabled kui-size="kui-button-large">Large Primary disabled button</kui-button>
-<kui-button kui-style="kui-button-info" kui-size="kui-button-block">Full width button</kui-button>
+		kui-button[kui-size="kui-button-block"] {
+			--margin-top: 10px;
+			--margin-bottom: 10px;
+		}
+	</style>
+	<kui-button
+		kui-style="kui-button-default"
+		kui-outline
+		kui-size="kui-button-small"
+		kui-text="Small Default outline button"
+	></kui-button>
+	<kui-button
+		kui-style="kui-button-primary"
+		kui-disabled
+		kui-size="kui-button-large"
+		kui-text="Large Primary disabled button"
+	></kui-button>
+	<kui-button
+		kui-style="kui-button-info"
+		kui-size="kui-button-block"
+		kui-text="Full width button"
+	></kui-button>
 </template>

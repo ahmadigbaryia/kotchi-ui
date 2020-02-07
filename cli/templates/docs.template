@@ -3,6 +3,26 @@
     "category": "components",
 	"title": "{{componentName name}}",
 	"tagName": "{{tagName name}}",
-	"subtitle": "",
-	"cards": []
+	"subtitle": "{{description}}",
+	"cards": [
+		{
+			"id": "basic-examples",
+			"title": "Basic Examples",
+			"subtitle": "Basic examples on how to use {{tagName name}} with different variations",
+			"contents": "basic-examples.html"
+		},
+		{{#each attributes}}
+		{
+			"id": "{{name}}-example",
+			"title": "{{componentName name}}",
+			"subtitle": "TODO:: Add few words descriping this attribute",
+			"contents": "{{name}}-example.html"
+		},
+		{{/each}}
+		{
+			"id": "attributes-configurations",
+			"title": "Attributes Configurations",
+			"contents": "attributes-configurations.html"
+		}
+	]
 }

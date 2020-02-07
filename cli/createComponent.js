@@ -2,26 +2,31 @@
  * A script that auto-generate new component under src/components, with the a specific folder structure and files.
  * Input: JSON:
  *  {
- *      name: "STRING", //example: accordion,
+ *      name: "STRING", //without kui- prefix
  *      description: "STRING",
- *      attributes:[
- *          {
- *              name: "STRING",
- *              description: "STRING"
- *          }
- *      ]
+ *      attributes: [{
+ *          name: "STRING", // strongly recommended to start with 'kui-'
+ *          description: "STRING"
+ *      }],
+ * 		publicAPI: [{
+ * 			name: "STRING",
+ *          params: [..."STRING"]
+ * 		}]
  *  }
+ * 
  * Output: Folder with the following structure and initial files 
 src/components/COMPONENT_NAME/
 ├── __tests__/
 │   └── kui-COMPONENT_NAME.test.js
 ├── docs/
+|   ├── basic-examples.html
+|   ├── attributes-configurations.html
 │   └── configuration.json
 ├── config.js
 ├── index.js
 ├── kui-COMPONENT_NAME.js
 ├── README.md
-├── styles.css
+├── style.scss
 └── template.html
 */
 

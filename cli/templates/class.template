@@ -1,9 +1,9 @@
 import keys from "lodash/keys";
 
-import BaseElement from "../../baseElement";
+import BaseElement from "Base/baseElement";
 import attributesConfig from "./config";
 import templateConfig from "./template";
-import { defineCustomElement } from "../../utils/wcUtils";
+import { defineCustomElement } from "Utils/wcUtils";
 
 const tagName = "{{tagName name}}";
 
@@ -28,5 +28,10 @@ class {{className name}} extends BaseElement {
 			{{className name}}.defined = true;
 		}
 	}
+	{{#each publicAPI}}
+	{{name}}({{joinParams params}}) {
+		// auto-generated method
+	}
+	{{/each}}
 }
 export { {{className name}} as default, tagName };

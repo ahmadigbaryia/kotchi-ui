@@ -1,4 +1,4 @@
-import style from "./styles.css";
+import style from "./style.scss";
 import { tagName } from "./";
 
 const template = document.createElement("template");
@@ -7,6 +7,7 @@ template.innerHTML = `
 		${style}
 	</style>
     <!-- YOUR HTML TEMPLATE GOES HERE -->
+	<h1>&lt;{{tagName name}}&gt;</h1>
 `;
 
 //This is for cross-browser compatibility 

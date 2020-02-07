@@ -66,7 +66,7 @@
                     <h1 id="content_title">Icon <code class="info-tag-name">&lt;kui-icon&gt;</code></h1>
                     <small id="content_subtitle">You can place KotchiUI Font Awesome icons just about anywhere in the page</small>
                 </header>
-                <div id="cards_container"><body><div class="card">
+                <div id="cards_container"><body><div class="card" id="attributes-configurations">
     <div class="card-body">
         <h4 class="card-title">Attributes Configurations</h4>
         <h6 class="card-subtitle">Kotchi UI Font Awesome icons are very flexable to configure and control</h6>
@@ -85,55 +85,55 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>kui-label</td>
+				<td><a href="#basic-examples">kui-label</a></td>
 				<td>String</td>
 				<td></td>
 				<td>The icon's label - used also for screen readers</td>
 			</tr>
 			<tr>
-				<td>kui-icon</td>
+				<td><a href="#basic-examples">kui-icon</a></td>
 				<td>String</td>
 				<td></td>
 				<td>The icon to be used from the available, <a href="https://fontawesome.com/icons?d=gallery" target="_blank">For More information on the Font Awesome website</a></td>
 			</tr>
 			<tr>
-				<td>kui-size</td>
+				<td><a href="#kui-size-example">kui-size</a></td>
 				<td>KUIIcon.Size</td>
 				<td>KUIIcon.Size.Normal</td>
 				<td>The size of the icon, relative to the inherited font-size style value, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons">For More information on the Font Awesome website</a> </td>
 			</tr>
 			<tr>
-				<td>kui-fixed-width</td>
+				<td><a href="#kui-fixed-width-example">kui-fixed-width</a></td>
 				<td>Boolean</td>
 				<td>false</td>
 				<td>Apply the fixed width style on the icon, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons">For More information on the Font Awesome website</a></td>
 			</tr>
 			<tr>
-				<td>kui-bordered</td>
+				<td><a href="#kui-bordered-example">kui-bordered</a></td>
 				<td>Boolean</td>
 				<td>false</td>
 				<td>Adds a border arround the icon, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons">For More information on the Font Awesome website</a></td>
 			</tr>
 			<tr>
-				<td>kui-pulled</td>
+				<td><a href="#kui-pulled-example">kui-pulled</a></td>
 				<td>KUIIcon.PullDirection</td>
 				<td>None</td>
 				<td>Pull quotes or article icons, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons">For More information on the Font Awesome website</a></td>
 			</tr>
 			<tr>
-				<td>kui-animate</td>
+				<td><a href="#kui-animate-example">kui-animate</a></td>
 				<td>KUIIcon.Animate</td>
 				<td>None</td>
 				<td>Makes the icon spin or have it rotate with 8 steps, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/animating-icons">For More information on the Font Awesome website</a></td>
 			</tr>
 			<tr>
-				<td>kui-rotate</td>
+				<td><a href="#kui-rotate-example">kui-rotate</a></td>
 				<td>KUIIcon.Rotate</td>
 				<td>None</td>
 				<td>Rotates the Icon with the given angel, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/rotating-icons">For More information on the Font Awesome website</a></td>
 			</tr>
 			<tr>
-				<td>kui-flip</td>
+				<td><a href="#kui-rotate-example">kui-flip</a></td>
 				<td>KUIIcon.Flip</td>
 				<td>None</td>
 				<td>Flips the Icon with the desired direction, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/rotating-icons">For More information on the Font Awesome website</a></td>
@@ -158,9 +158,9 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="basic-examples">
     <div class="card-body">
-        <h4 class="card-title">Basic Usage</h4>
+        <h4 class="card-title">Basic Examples</h4>
         <h6 class="card-subtitle">KotchiUI Font Awesome icons are accessable, fully controled as regular font awesome icons</h6>
         <div id="additional_info">
 	<p>
@@ -180,9 +180,9 @@
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-3x" kui-label="Take a picture"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fab fa-android" kui-size="fa-3x" kui-label="I use Android"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fab fa-apple" kui-size="fa-3x" kui-label="And I prefare Apple products"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-3x" kui-label="Take a picture"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fab fa-android" kui-size="fa-3x" kui-label="I use Android"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fab fa-apple" kui-size="fa-3x" kui-label="And I prefare Apple products"&gt;&lt;/kui-icon&gt;
 </code>
                     </pre>
                 </div>
@@ -196,7 +196,7 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-size-example">
     <div class="card-body">
         <h4 class="card-title">Sizing Icons</h4>
         <h6 class="card-subtitle">KotchiUI gives some basic controls for sizing icons in the context of your page’s UI.</h6>
@@ -224,14 +224,16 @@
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-xs"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-sm"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-lg"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-2x"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-3x"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-5x"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-7x"&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-10x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-xs"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-sm"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-sm"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size=""&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-lg"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-2x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-3x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-5x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-7x"&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-camera" kui-size="fa-10x"&gt;&lt;/kui-icon&gt;
 </code>
                     </pre>
                 </div>
@@ -245,7 +247,7 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-fixed-width-example">
     <div class="card-body">
         <h4 class="card-title">Fixed Width Icons</h4>
         <h6 class="card-subtitle">Need to vertically align a series of icons, like in a list or navigation menu? We’ve included a fixed-width support styling for just those cases.</h6>
@@ -272,13 +274,13 @@
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;div style="font-size: 2rem;"&gt;
-	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skating" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Skating&lt;/div&gt;
-	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Skiing&lt;/div&gt;
-	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing-nordic" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Nordic Skiing&lt;/div&gt;
-	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowboarding" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Snowboarding&lt;/div&gt;
-	&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowplow" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Snowplow&lt;/div&gt;
-&lt;/div&gt;
+	&lt;div style="font-size: 2rem;"&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skating" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Skating&lt;/div&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Skiing&lt;/div&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing-nordic" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Nordic Skiing&lt;/div&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowboarding" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Snowboarding&lt;/div&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowplow" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Snowplow&lt;/div&gt;
+	&lt;/div&gt;
 </code>
                     </pre>
                 </div>
@@ -292,7 +294,7 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-size-example">
     <div class="card-body">
         <h4 class="card-title">Pulled Icons</h4>
         <h6 class="card-subtitle">Occasionally you might want to wrap text around an icon.</h6>
@@ -314,12 +316,12 @@
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;kui-icon kui-icon="fas fa-quote-left" kui-size="fa-2x" kui-pulled="fa-pull-left"&gt;&lt;/kui-icon&gt;
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae neque at
-nulla interdum gravida. Maecenas tempor viverra varius. Aenean vitae
-facilisis odio. Pellentesque faucibus vitae neque sit amet accumsan.
-Phasellus mattis mi nec ligula scelerisque faucibus et id purus. Vestibulum
-convallis, dolor ut malesuada dignissim.
+	&lt;kui-icon kui-icon="fas fa-quote-left" kui-size="fa-2x" kui-pulled="fa-pull-left"&gt;&lt;/kui-icon&gt;
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae neque at
+	nulla interdum gravida. Maecenas tempor viverra varius. Aenean vitae
+	facilisis odio. Pellentesque faucibus vitae neque sit amet accumsan.
+	Phasellus mattis mi nec ligula scelerisque faucibus et id purus. Vestibulum
+	convallis, dolor ut malesuada dignissim.
 </code>
                     </pre>
                 </div>
@@ -333,7 +335,7 @@ convallis, dolor ut malesuada dignissim.
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-bordered-example">
     <div class="card-body">
         <h4 class="card-title">Bordered Icons</h4>
         <h6 class="card-subtitle">Occasionally you might want to give icons some visual distinction with a border.</h6>
@@ -350,8 +352,8 @@ convallis, dolor ut malesuada dignissim.
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;kui-icon kui-icon="fas fa-arrow-left" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
-&lt;kui-icon kui-icon="fas fa-arrow-right" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-arrow-left" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-arrow-right" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
 </code>
                     </pre>
                 </div>
@@ -365,7 +367,7 @@ convallis, dolor ut malesuada dignissim.
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-animate-example">
     <div class="card-body">
         <h4 class="card-title">Animating Icons</h4>
         <h6 class="card-subtitle">Enable animation on icons to simulate loading or communicating state</h6>
@@ -392,14 +394,14 @@ convallis, dolor ut malesuada dignissim.
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;div style="font-size: 3rem;"&gt;
-	&lt;kui-icon kui-icon="fas fa-spinner" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-circle-notch" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-sync" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-cog" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-spinner" kui-animate="fa-pulse"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-stroopwafel" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
-&lt;/div&gt;
+	&lt;div style="font-size: 3rem;"&gt;
+		&lt;kui-icon kui-icon="fas fa-spinner" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-circle-notch" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-sync" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-cog" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-spinner" kui-animate="fa-pulse"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-stroopwafel" kui-animate="fa-spin"&gt;&lt;/kui-icon&gt;
+	  &lt;/div&gt;
 </code>
                     </pre>
                 </div>
@@ -413,7 +415,7 @@ convallis, dolor ut malesuada dignissim.
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-rotate-example">
     <div class="card-body">
         <h4 class="card-title">Rotating and Flipping Icons</h4>
         <h6 class="card-subtitle">Sometimes you need to rotate, flip, or mirror an icon for it to work in your project or design.</h6>
@@ -437,15 +439,15 @@ convallis, dolor ut malesuada dignissim.
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;div style="font-size: 3rem;"&gt;
-	&lt;kui-icon kui-icon="fas fa-snowboarding"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-90"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-180"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-270"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-horizontal"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-vertical"&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-both"&gt;&lt;/kui-icon&gt;
-&lt;/div&gt;
+	&lt;div style="font-size: 3rem;"&gt;
+		&lt;kui-icon kui-icon="fas fa-snowboarding"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-90"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-180"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-snowboarding" kui-rotate="fa-rotate-270"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-horizontal"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-vertical"&gt;&lt;/kui-icon&gt;
+		&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-both"&gt;&lt;/kui-icon&gt;
+	&lt;/div&gt;
 </code>
                     </pre>
                 </div>

@@ -27,9 +27,9 @@ describe("Make sure component is created", () => {
 describe("Testing <{{tagName name}}> attributes", () => {
 	describe.each([
 		{{#each attributes}}
-		{{#unless this.isBoolean}}
+		{{#notBoolean type}}
 		["{{name}}", "{{toProperty name}}", ""],
-		{{/unless}}
+		{{/notBoolean}}
 		{{/each}}
 	])("Testing %s attribute", (attributeName, propertyName, otherValue)=>{
 		test(`Updating ${propertyName} property updates the attribute with the same value`, () => {
@@ -45,10 +45,10 @@ describe("Testing <{{tagName name}}> attributes", () => {
 	//Boolean attributes
 	describe.each([
 		{{#each attributes}}
-		{{#if this.isBoolean}}
+		{{#isBoolean type}}
 		["{{name}}", "{{toProperty name}}", true], 
 		["{{name}}", "{{toProperty name}}", false],
-		{{/if}}
+		{{/isBoolean}}
 		{{/each}}		
 	])("Testing %s attribute", (attributeName, propertyName, value) => {
 		test(`Set ${propertyName} property to ${value} -> ${value ? "adds" : "removes"} '${attributeName}' attribute to the <{{tagName name}}> element`, () => {
@@ -61,13 +61,9 @@ describe("Testing <{{tagName name}}> attributes", () => {
 		});
 	});
 	{{/hasBooleanAttribute}}
-//Invalid values
+//Test invalid values by ensuring that the change handler is never called
 //	describe.each([
-//		{{#each attributes}}
-//		{{#unless this.isBoolean}}
-//		["{{name}}", "{{toProperty name}}", "INVALID_VALUE"],
-//		{{/unless}}
-//		{{/each}}
+//		["ATTRIBUTE_NAME", "PROPERTY_NAME", "INVALID_VALUE"],
 //	])("Testing invalid value handeling for %s", (attributeName, propertyName, invalidValue) => {
 //		test(`Tesing invalid value for ${attributeName} attribute`, () => {
 //			const spy = jest.spyOn({{varName name}}.attributesConfig[attributeName], "attributeChangedHandler");
@@ -83,16 +79,15 @@ describe("Testing <{{tagName name}}> attributes", () => {
 //		});
 //	});
 });
+
 // Test the public API
-//describe("Test public API", () => {
-//	test("make sure addClickHandler is a public function", () => {
-//		expect(typeof kuiButton.addClickHandler).toBe("function");
-//	});
-//	test("make sure addClickHandler adds a click listener on the button", () => {
-//		const handler = jest.fn();
-//		const clickEvent = new MouseEvent("click");
-//		kuiButton.addClickHandler(handler);
-//		kuiButton.elements.button.dispatchEvent(clickEvent);
-//		expect(handler).toHaveBeenCalledTimes(1);
-//	});
-//});
+describe("Test public API", () => {
+	describe("Make sure the methods are defined on the instance", () => {
+		{{#each publicAPI}}
+		test("make sure {{name}} function is actually defined on the class instance", () => {
+			expect(typeof {{varName ../name}}.{{name}}).toBe("function");
+		});
+		{{/each}}
+	});
+	// Test each and every public API method by ensuring it works as expected
+});

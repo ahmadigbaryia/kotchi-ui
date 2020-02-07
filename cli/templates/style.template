@@ -1,1 +1,8 @@
 /* Add your styles here for {{tagName name}}, use CSS variable as much as possible */
+@use '../../base/commons';
+
+:host {
+	/* Add your variables here, don't forget to give the ability for users to override them */
+	
+    @extend %shared-variables;
+}

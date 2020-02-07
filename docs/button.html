@@ -66,7 +66,7 @@
                     <h1 id="content_title">Button <code class="info-tag-name">&lt;kui-button&gt;</code></h1>
                     <small id="content_subtitle">Use Kotchi UI custom buttons that are built upon Bootstrap’s button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</small>
                 </header>
-                <div id="cards_container"><body><div class="card">
+                <div id="cards_container"><body><div class="card" id="attributes-configurations">
     <div class="card-body">
         <h4 class="card-title">Attributes Configurations</h4>
         <h6 class="card-subtitle">Kotchi UI buttons are very flexable to configure and control</h6>
@@ -86,31 +86,31 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>kui-text</td>
+				<td><a href="#basic-examples">kui-text</a></td>
 				<td>String</td>
 				<td></td>
 				<td>The text of the button</td>
 			</tr>
 			<tr>
-				<td>kui-style</td>
+				<td><a href="#basic-examples">kui-style</a></td>
 				<td>Style</td>
 				<td>Style.Default (kui-button-default)</td>
 				<td>Applies a different look to the button</td>
 			</tr>
 			<tr>
-				<td>kui-outline</td>
+				<td><a href="#kui-outline-example">kui-outline</a></td>
 				<td>Boolean</td>
 				<td>false</td>
 				<td>Applies the outline style to the button</td>
 			</tr>
 			<tr>
-				<td>kui-disabled</td>
+				<td><a href="#kui-disabled-example">kui-disabled</a></td>
 				<td>Boolean</td>
 				<td>false</td>
 				<td>Applies the disabled state to the button</td>
 			</tr>
 			<tr>
-				<td>kui-size</td>
+				<td><a href="#kui-size-example">kui-size</a></td>
 				<td>Size</td>
 				<td>Size.Normal (no class needed)</td>
 				<td>Applies a different size to the button</td>
@@ -135,7 +135,7 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="basic-examples">
     <div class="card-body">
         <h4 class="card-title">Basic Examples</h4>
         <h6 class="card-subtitle">With Kotchi UI you can easily create buttons with configurable predefined styles</h6>
@@ -143,9 +143,9 @@
         <div class="example-container">
             <div class="example-preview">
 	<kui-button kui-style="kui-button-default">Default</kui-button>
-	<kui-button kui-style="kui-button-primary">Primary</kui-button>
-	<kui-button kui-style="kui-button-secondary">Secondary</kui-button>
-	<kui-button kui-style="kui-button-info">Information</kui-button>
+	<kui-button kui-style="kui-button-primary" kui-text="Primary"></kui-button>
+	<kui-button kui-style="kui-button-secondary" kui-text="Secondary"></kui-button>
+	<kui-button kui-style="kui-button-info" kui-text="Information"></kui-button>
 	<kui-button kui-style="kui-button-dangerous">Dangerous</kui-button>
 	<kui-button kui-style="kui-button-success">Success</kui-button>
 	<kui-button kui-style="kui-button-warning">Warning</kui-button>
@@ -154,14 +154,14 @@
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;kui-button kui-style="kui-button-default"&gt;Default&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-primary"&gt;Primary&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-secondary"&gt;Secondary&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-info"&gt;Information&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-dangerous"&gt;Dangerous&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-success"&gt;Success&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-warning"&gt;Warning&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-link"&gt;Link&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-default"&gt;Default&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-primary" kui-text="Primary"&gt;&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-secondary" kui-text="Secondary"&gt;&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-info" kui-text="Information"&gt;&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-dangerous"&gt;Dangerous&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-success"&gt;Success&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-warning"&gt;Warning&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-link"&gt;Link&lt;/kui-button&gt;
 </code>
                     </pre>
                 </div>
@@ -175,7 +175,7 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-outline-example">
     <div class="card-body">
         <h4 class="card-title">Outline buttons</h4>
         <h6 class="card-subtitle">In need of a button, but not the hefty background colors they bring? add the <code>kui-outline</code> attribute to remove all background images and colors on any button.</h6>
@@ -193,13 +193,13 @@
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;kui-button kui-style="kui-button-default" kui-outline=""&gt;Default&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-primary" kui-outline=""&gt;Primary&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-secondary" kui-outline=""&gt;Secondary&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-info" kui-outline=""&gt;Information&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-dangerous" kui-outline=""&gt;Dangerous&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-success" kui-outline=""&gt;Success&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-warning" kui-outline=""&gt;Warning&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-default" kui-outline=""&gt;Default&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-primary" kui-outline=""&gt;Primary&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-secondary" kui-outline=""&gt;Secondary&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-info" kui-outline=""&gt;Information&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-dangerous" kui-outline=""&gt;Dangerous&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-success" kui-outline=""&gt;Success&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-warning" kui-outline=""&gt;Warning&lt;/kui-button&gt;
 </code>
                     </pre>
                 </div>
@@ -213,7 +213,7 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-disabled-example">
     <div class="card-body">
         <h4 class="card-title">Disabled state</h4>
         <h6 class="card-subtitle">Make buttons look inactive by adding the kui-disabled boolean attribute to any <code>&lt;kui-button&gt;</code> element.</h6>
@@ -226,8 +226,8 @@
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;kui-button kui-style="kui-button-default" kui-outline="" kui-disabled=""&gt;Default outline disabled&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-primary" kui-disabled=""&gt;Primary disabled&lt;/kui-button&gt;
+        &lt;kui-button kui-style="kui-button-default" kui-outline="" kui-disabled=""&gt;Default outline disabled&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-primary" kui-disabled=""&gt;Primary disabled&lt;/kui-button&gt;
 </code>
                     </pre>
                 </div>
@@ -241,7 +241,7 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="kui-size-example">
     <div class="card-body">
         <h4 class="card-title">Button Different Sizes</h4>
         <h6 class="card-subtitle">In need for different button sizes, no worries we have 4 different sizes for your convenient.</h6>
@@ -249,21 +249,27 @@
         <div class="example-container">
             <div class="example-preview">
 	<style>
-                kui-button[kui-size="kui-button-block"] {
-                        --margin-top: 10px;
-                        --margin-bottom: 10px;
-                }
-        </style>
-	<kui-button kui-style="kui-button-default" kui-outline="" kui-size="kui-button-small">Small Default outline button</kui-button>
-	<kui-button kui-style="kui-button-primary" kui-disabled="" kui-size="kui-button-large">Large Primary disabled button</kui-button>
-	<kui-button kui-style="kui-button-info" kui-size="kui-button-block">Full width button</kui-button>
+		kui-button[kui-size="kui-button-block"] {
+			--margin-top: 10px;
+			--margin-bottom: 10px;
+		}
+	</style>
+	<kui-button kui-style="kui-button-default" kui-outline="" kui-size="kui-button-small" kui-text="Small Default outline button"></kui-button>
+	<kui-button kui-style="kui-button-primary" kui-disabled="" kui-size="kui-button-large" kui-text="Large Primary disabled button"></kui-button>
+	<kui-button kui-style="kui-button-info" kui-size="kui-button-block" kui-text="Full width button"></kui-button>
 </div>
             <div class="example-markup-container">
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
-&lt;kui-button kui-style="kui-button-default" kui-outline="" kui-size="kui-button-small"&gt;Small Default outline button&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-primary" kui-disabled="" kui-size="kui-button-large"&gt;Large Primary disabled button&lt;/kui-button&gt;
-&lt;kui-button kui-style="kui-button-info" kui-size="kui-button-block"&gt;Full width button&lt;/kui-button&gt;
+	&lt;style&gt;
+		kui-button[kui-size="kui-button-block"] {
+			--margin-top: 10px;
+			--margin-bottom: 10px;
+		}
+	&lt;/style&gt;
+	&lt;kui-button kui-style="kui-button-default" kui-outline="" kui-size="kui-button-small" kui-text="Small Default outline button"&gt;&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-primary" kui-disabled="" kui-size="kui-button-large" kui-text="Large Primary disabled button"&gt;&lt;/kui-button&gt;
+	&lt;kui-button kui-style="kui-button-info" kui-size="kui-button-block" kui-text="Full width button"&gt;&lt;/kui-button&gt;
 </code>
                     </pre>
                 </div>
@@ -277,10 +283,10 @@
         </div>
     </div>
 </div>
-</body><body><div class="card">
+</body><body><div class="card" id="css-variables-example">
     <div class="card-body">
-        <h4 class="card-title">Style Configurations</h4>
-        <h6 class="card-subtitle">Styling Kotchi UI buttons is very configurable with CSS variables</h6>
+        <h4 class="card-title">CSS Variables</h4>
+        <h6 class="card-subtitle">The <code>&lt;kui-button&gt;</code> style is configurable via CSS variables, here is a list of all available variables with the default values</h6>
         <div id="additional_info">
 	<p>
 		Here is a list of all the available CSS variables that can be modified
