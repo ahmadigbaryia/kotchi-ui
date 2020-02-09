@@ -1,0 +1,17 @@
+{
+	"name": "section",
+	"description": "Section is a content container that has a title and body, can be a child of accordion, list, menu",
+	"attributes": [
+		{
+			"name": "kui-title",
+			"type": "String",
+			"description": "The title of the section"
+		},
+		{
+			"name": "kui-icon",
+			"type": "String",
+			"description": "The icon to be displayed at the begining of the header of the section"
+		}
+	],
+    "allowedParents": ["kui-accordion"]
+}

@@ -33,7 +33,7 @@ const attributesConfig = {
 		defaultValue: Style.Default,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { button } = component.elements;
-			const defaultValue = attributesConfig["kui-style"].default;
+			const defaultValue = attributesConfig["kui-style"].defaultValue;
 			applyClassName({ oldValue, newValue, element: button, defaultValue });
 		},
 		validators: [isString, isValueOf(Style)]
@@ -42,7 +42,7 @@ const attributesConfig = {
 		defaultValue: Size.Normal,
 		attributeChangedHandler: function({ oldValue, newValue, component }) {
 			const { button } = component.elements;
-			const defaultValue = attributesConfig["kui-size"].default;
+			const defaultValue = attributesConfig["kui-size"].defaultValue;
 			applyClassName({ oldValue, newValue, element: button, defaultValue });
 		},
 		validators: [isString, isValueOf(Size)]

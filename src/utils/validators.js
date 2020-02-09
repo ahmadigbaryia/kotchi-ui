@@ -1,7 +1,7 @@
-/** 
+/**
  * Initialy we use the lodash library for validations and utility functions, but if there is something
- * specific we add it here 
-*/
+ * specific we add it here
+ */
 import _isString from "lodash/isString";
 
 /**
@@ -9,14 +9,20 @@ import _isString from "lodash/isString";
  * @param {Any} str the value to test
  */
 export function isTrue(str) {
-	return str === true || (!!str && _isString(str) && str.toLowerCase() === "true");
+	return (
+		str === true ||
+		(!!str && _isString(str) && str.toLowerCase() === "true")
+	);
 }
 /**
  * Check if the value is a string representation of the Boolean.FALSE
  * @param {Any} str the value to test
  */
 export function isFalse(str) {
-	return str === false || (!!str && _isString(str) && str.toLowerCase() === "false");
+	return (
+		str === false ||
+		(!!str && _isString(str) && str.toLowerCase() === "false")
+	);
 }
 /**
  * Check if the value is represents a boolean value of an attribute empty string, true/false

@@ -1,0 +1,32 @@
+{
+    "id": "kui-section",
+    "category": "components",
+	"title": "Section",
+	"tagName": "kui-section",
+	"subtitle": "Section is a content container that has a title and body, can be a child of accordion, list, menu",
+	"cards": [
+		{
+			"id": "basic-examples",
+			"title": "Basic Examples",
+			"subtitle": "Basic examples on how to use kui-section with different variations",
+			"contents": "basic-examples.html"
+		},
+		{
+			"id": "kui-title-example",
+			"title": "Kui Title",
+			"subtitle": "TODO:: Add few words descriping this attribute",
+			"contents": "kui-title-example.html"
+		},
+		{
+			"id": "kui-icon-example",
+			"title": "Kui Icon",
+			"subtitle": "TODO:: Add few words descriping this attribute",
+			"contents": "kui-icon-example.html"
+		},
+		{
+			"id": "attributes-configurations",
+			"title": "Attributes Configurations",
+			"contents": "attributes-configurations.html"
+		}
+	]
+}

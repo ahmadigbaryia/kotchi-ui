@@ -47,7 +47,7 @@ function registerHandlebarsHelpers() {
 			: "";
 	});
 	Handlebars.registerHelper("joinParams", function(params) {
-		return params.join(", ");
+		return params ? params.join(", ") : "";
 	});
 }
 

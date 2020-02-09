@@ -31,8 +31,8 @@ describe("Testing <kui-button> attributes", () => {
 		["kui-size", "kuiSize", KUIButton.Size.Normal, KUIButton.Size.Large]
 	])("Testing %s attribute", (attributeName, propertyName, defaultValue, otherValue)=>{
 		test(`Make sure the ${attributeName} attribute has the default value set`, () => {
-			expect(kuiButton[propertyName]).toBe(defaultValue);
 			expect(kuiButton.getAttribute(attributeName)).toBe(defaultValue);		
+			expect(kuiButton[propertyName]).toBe(defaultValue);
 		});
 		test(`Updating ${propertyName} property updates the attribute with the same value`, () => {
 			kuiButton[propertyName] = otherValue;

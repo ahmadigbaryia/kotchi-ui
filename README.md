@@ -5,7 +5,7 @@ Each KotchiUI component is a web component that is treated as a native HTML elem
 The components have public API to access the composing inner elements and to control the style via CSS variables.
 
 # Components
-  - Alerts (Soon, contribute)
+  - Alerts (Soon, [contribute][contribute-alert] to get it faster ;) )
   - Accordion (Soon)
   - Badge (Soon)
   - Breadcrumb (Soon)
@@ -94,3 +94,4 @@ MIT
 
 
 [contribute]: https://ahmadigbaryia.github.io/kotchi-ui/button.html
+[contribute-alert]: https://github.com/ahmadigbaryia/kotchi-ui/issues/1#issue-560871056

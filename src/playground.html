@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>KotchiUI - Playground</title>
+		<!-- Polyfill for older browsers and those who don't support web components -->
+		<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.4.0/webcomponents-loader.js"></script>
+	</head>
+	<body>
+		<div>
+			<h5>Actions</h5>
+			<kui-button kui-style="kui-button-primary" kui-size="kui-button-small">Get all sections</kui-button>
+			<kui-button kui-style="kui-button-primary" kui-size="kui-button-small">Get expanded sections</kui-button>
+			<kui-button kui-style="kui-button-primary" kui-size="kui-button-small">Get collapsed sections</kui-button>
+			<kui-button kui-style="kui-button-primary" kui-size="kui-button-small">Collapse all sections</kui-button>
+			<kui-button kui-style="kui-button-primary" kui-size="kui-button-small">Expand all sections</kui-button>
+			<kui-button kui-style="kui-button-primary" kui-size="kui-button-small">Collapse section 2</kui-button>
+			<kui-button kui-style="kui-button-primary" kui-size="kui-button-small">Expand section 2</kui-button>
+		</div>
+		<kui-accordion>
+			<kui-section kui-title="Section 1" kui-icon="fas fa-camera">
+				<h1>Section 1</h1>
+				<p>This is section 1 body</p>
+			</kui-section>
+			<kui-section>
+				<h1>Section 2</h1>
+				<p>This is section 2 body</p>
+			</kui-section>
+			<kui-section>
+				<h1>Section 3</h1>
+				<p>This is section 3 body</p>
+			</kui-section>
+		</kui-accordion>
+
+		<div>
+			<h5>Output</h5>
+			<pre></pre>
+		</div>
+	</body>
+</html>

@@ -1,16 +1,16 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = ["inline-source-map"].map(devtool => ({
 	mode: "development",
 	entry: {
-		ui: "./src/index.js",
-		button: "./src/components/button/index.js",
-		icon: "./src/components/icon/index.js",
+		ui: "./src/index.js"
 	},
 	resolve: {
 		alias: {
 			Base: path.resolve(__dirname, "src/base/"),
 			Components: path.resolve(__dirname, "src/components/"),
-			Utils: path.resolve(__dirname, "src/utils/"),
+			Utils: path.resolve(__dirname, "src/utils/")
 		}
 	},
 	output: {
@@ -30,9 +30,24 @@ module.exports = ["inline-source-map"].map(devtool => ({
 				use: ["html-loader"]
 			},
 			{
+				test: /\.s[ac]ss$/i,
+				use: ["css-to-string-loader", "css-loader", "sass-loader"]
+			},
+			{
 				test: /\.css$/i,
 				use: ["css-to-string-loader", "css-loader"]
 			}
 		]
-	}
+	},
+	devServer: {
+		contentBase: path.join(__dirname, "dist"),
+		compress: true,
+		port: 9000
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			title: "Playground",
+			template: "./src/playground.html",
+		})
+	]
 }));
