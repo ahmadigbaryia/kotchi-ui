@@ -1,0 +1,98 @@
+{
+	"name": "accordion",
+    "description": "Accordion component is used to show (and hide) HTML contents",
+    "allowedChildren": ["kui-section"],
+	"attributes": [
+		{
+			"name": "kui-toggle",
+			"type": "Boolean",
+			"defaultValue": "false",
+			"description": "Forces the accordion to toggle the visible section - keeping at most one section visible at a time"
+		},
+		{
+			"name": "kui-collapse-icon",
+			"type": "String",
+			"defaultValue": "fas fa-arrow-up",
+			"description": "The icon to be displayed to collapse the section, it'll be rotated 180 degrees for expand icon"
+		}
+	],
+	"publicAPI": [
+		{
+			"name": "addSectionExpandChangedHandler",
+			"params": [
+				{
+                    "name": "handler",
+                    "type": "Function",
+					"description": "The handler to be triggered when the event occur"
+				}
+			],
+			"description": "Add a handler for when a section becomes visible or hidden",
+			"returns": { "type": "Function", "description": "The handler" }
+		},
+		{
+			"name": "removeSectionExpandChangedHandler",
+			"params": [
+				{
+					"name": "handler",
+					"type": "Function",
+					"description": "The handler to be removed"
+				}
+			],
+			"description": "Removes the given handler from the component"
+		},
+		{
+			"name": "getAllSections",
+			"description": "Get all the accordion's sections components",
+			"returns": {
+				"type": "Array",
+				"description": "All the sections as component instances"
+			}
+		},
+		{
+			"name": "getExpandedSections",
+			"description": "Get only the accordion's expanded sections components",
+			"returns": {
+				"type": "Array",
+				"description": "The expanded sections as component instances"
+			}
+		},
+		{
+			"name": "getCollapsedSections",
+			"description": "Get only the accordion's collapsed sections components",
+			"returns": {
+				"type": "Array",
+				"description": "The collapsed sections as component instances"
+			}
+		},
+		{
+			"name": "collapseAllSections",
+			"description": "Collapse all the accordion's sections"
+		},
+		{
+			"name": "expandAllSections",
+			"description": "Expand all the accordion's sections"
+		},
+		{
+			"name": "expandSection",
+			"params": [
+				{
+					"name": "sectionId",
+					"type": "[String|Number]",
+					"description": "The [section id|order] to be expanded"
+				}
+			],
+			"description": "Expand the given section"
+		},
+		{
+			"name": "collapseSection",
+			"params": [
+				{
+					"name": "sectionId",
+					"type": "[String|Number]",
+					"description": "The [section id|order] to be collapsed"
+				}
+			],
+			"description": "Collapse the given section"
+		}
+	]
+}

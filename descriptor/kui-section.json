@@ -1,0 +1,47 @@
+{
+	"name": "section",
+	"description": "Flexible and extensible content container with multiple variants and options",
+	"attributes": [
+		{
+			"name": "kui-title",
+			"type": "String",
+			"description": "The section title"
+		},
+		{
+			"name": "kui-icon",
+			"type": "String",
+			"description": "The section icon"
+		},
+		{
+			"name": "kui-style",
+			"type": "String",
+			"description": "The style of the section [Default, Primary, Success, Info, Warning and Danger]"
+		},
+		{
+			"name": "kui-collapsable",
+			"type": "String",
+			"default": "Header",
+			"description": "If presented then the section will be collapsable by either 'Header' or 'Icon'"
+		}
+    ],
+    "events": [
+        {
+            "name": "expand-changed",
+            "description": "Fired whenever the section is collapsed or expanded"
+        }
+    ],
+	"slots": [
+		{
+			"name": "kui-actions",
+			"description": "the header actions container"
+		},
+		{
+			"name": "",
+			"description": "the default slot which is the section's body container"
+		},
+		{
+			"name": "kui-footer",
+			"description": "the footer container"
+		}
+	]
+}

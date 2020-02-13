@@ -5,6 +5,7 @@
  */
 function validateChildren({ element, allowedChildren, tagName }) {
 	const childrenTypes = [];
+	const children = [];
 	const assignedNodes = element
 		.assignedNodes()
 		.filter(node => node.nodeType === 1); //Only element nodes are relavant
@@ -16,19 +17,24 @@ function validateChildren({ element, allowedChildren, tagName }) {
 				throw new Error(
 					`${tagName} element accepts only [${acs}] elements as children, but it has ${childTagName}`
 				);
-			} else if (childrenTypes.indexOf(childTagName) === -1) {
-				childrenTypes.push(childTagName);
+			} else {
+				if (childrenTypes.indexOf(childTagName) === -1) {
+					childrenTypes.push(childTagName);
+				}
+				children.push(assignedNodes[i]);
 			}
 		}
 	}
-	return childrenTypes;
+	return { childrenTypes, children };
 }
 
-function registerChildren({ usedTypes = [], definedCallback }) {
-	if (usedTypes.length > 0) {
+function registerChildren({ childrenTypes = [], definedCallback }) {
+	if (childrenTypes.length > 0) {
 		const whenDefinedPromises = [];
-		for (let i = 0; i < usedTypes.length; i++) {
-			whenDefinedPromises.push(customElements.whenDefined(usedTypes[i]));
+		for (let i = 0; i < childrenTypes.length; i++) {
+			whenDefinedPromises.push(
+				customElements.whenDefined(childrenTypes[i])
+			);
 		}
 		Promise.all(whenDefinedPromises).then(() => definedCallback());
 	}
@@ -53,10 +59,22 @@ function validateParent({ element, allowedParents, tagName }) {
 	}
 }
 
+function dispatchEvent({ element, eventName, data }) {
+	element.dispatchEvent(
+		new CustomEvent(eventName, {
+			detail: { element, ...data },
+			bubbles: true // important, the default is false, we need this to pierce the shadow dom boundaries
+		})
+	);
+}
+
 export const containerHelper = {
 	validateChildren,
 	registerChildren
 };
 export const containedHelper = {
 	validateParent
+};
+export const elementHelper = {
+	dispatchEvent
 };

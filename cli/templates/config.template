@@ -4,6 +4,16 @@ import { booleanSetter } from "Utils/wcUtils";
 import { isBooleanAttribute } from "Utils/validators";
 {{/hasBooleanAttribute}}
 
+const tagName = "{{tagName name}}";
+
+{{#if events}}
+const Events = {
+	{{#each events}}
+	{{componentName name}}: "{{tagName ../name}}:{{name}}",
+	{{/each}}
+};
+{{/if}}
+
 const attributesConfig = {
 //	"ATTRIBUTE_NAME": {
 //		defaultValue: "",
@@ -16,14 +26,16 @@ const attributesConfig = {
 //	},
 {{#each attributes}}
 	"{{name}}": {
+		{{#if defaultValue}}
+		defaultValue: "{{defaultValue}}",
+		{{/if}}
 		{{#isBoolean type}}
-		defaultValue: false,
 		setter: booleanSetter,
 		validators: [isBooleanAttribute],
 		{{/isBoolean}}
-		attributeChangedHandler: function({ oldValue, newValue, component }) {}
+		attributeChangedHandler: function({ component, oldValue, newValue }) {}
 	},
 {{/each}}
 };
 
-export {attributesConfig as default};
+export {attributesConfig as default, tagName{{#if events}}, Events{{/if}} };

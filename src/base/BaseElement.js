@@ -3,7 +3,7 @@ import {
 	buildComponentContents,
 	changeHandlerWrapper
 } from "Utils/wcUtils";
-import { containerHelper, containedHelper } from "Utils/ElementHelper";
+import { containerHelper, containedHelper } from "Utils/elementHelper";
 
 class BaseElement extends HTMLElement {
 	constructor({ templateConfig, attributesConfig, useShadow = true }) {
@@ -38,14 +38,14 @@ class BaseElement extends HTMLElement {
 
 	connectedCallback({ element, allowedChildren = [], allowedParents = [] } = {}) {
 		if (allowedChildren.length > 0) {
-			const usedTypes = containerHelper.validateChildren({
+			const { childrenTypes, children } = containerHelper.validateChildren({
 				element,
 				allowedChildren,
 				tagName: this.tagName
 			});
 			containerHelper.registerChildren({
-				usedTypes,
-				definedCallback: this.childrenDefinedCallback.bind(this)
+				childrenTypes,
+				definedCallback: this.childrenDefinedCallback.bind(this, {children})
 			});
 		}
 		if (allowedParents.length > 0) {

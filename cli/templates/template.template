@@ -8,6 +8,9 @@ template.innerHTML = `
 	</style>
     <!-- YOUR HTML TEMPLATE GOES HERE -->
 	<h1>&lt;{{tagName name}}&gt;</h1>
+	{{#each slots}}
+	<slot name="{{name}}"><!-- {{description}} --></slot>
+	{{/each}}
 `;
 
 //This is for cross-browser compatibility 

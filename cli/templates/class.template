@@ -1,11 +1,17 @@
 import keys from "lodash/keys";
 
 import BaseElement from "Base/baseElement";
-import attributesConfig from "./config";
+import attributesConfig, { tagName } from "./config";
 import templateConfig from "./template";
 import { defineCustomElement } from "Utils/wcUtils";
 
-const tagName = "{{tagName name}}";
+
+{{#if allowedChildren}}
+const allowedChildren = [{{{joinArray allowedChildren}}}];
+{{/if}}
+{{#if allowedParents}}
+const allowedParents = [{{{joinArray allowedParents}}}];
+{{/if}}
 
 /**
  * {{componentName name}} element
@@ -28,7 +34,44 @@ class {{className name}} extends BaseElement {
 			{{className name}}.defined = true;
 		}
 	}
+
+	{{#if allowedParents}}
+	connectedCallback() {
+		super.connectedCallback({
+			element: this,
+			allowedParents
+		});
+	}
+	{{/if}}
+	{{#if allowedChildren}}
+	connectedCallback() {
+		super.connectedCallback({
+			element: this.elements.YOUR_CONTAINER_ELEMENT, //TODO: change it to your container element
+			allowedChildren
+		});
+	}
+
+	childrenDefinedCallback({ children = [] } = {}) {
+		this.childrenMap = {};
+		this.children = children;
+		for (let i = 0; i < children.length; i++) {
+			const childNode = children[i];
+			const childNodeId = childNode.getAttribute("id") || `childNode_${i}`;
+			this.childrenMap[childNodeId] = childNode;
+		}
+	}
+	{{/if}}
 	{{#each publicAPI}}
+	/**
+	 * {{{description}}}
+	 {{#each params}}
+	 * @param { {{type}} } {{name}}		{{{description}}}
+	 {{/each}}
+	 {{#if returns}}
+	 * @returns {{#if returns.type}}{ {{returns.type}} }{{/if}} {{{returns.description}}}
+	 {{/if}}
+	 * @memberof {{className ../name}}
+	 */
 	{{name}}({{joinParams params}}) {
 		// auto-generated method
 	}

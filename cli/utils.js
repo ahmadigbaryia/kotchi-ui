@@ -5,14 +5,19 @@ const path = require("path");
 const _startCase = require("lodash/startCase");
 const _camelCase = require("lodash/camelCase");
 const _kebabCase = require("lodash/kebabCase");
+const _startCaseNoSpace = function(str) {
+	return _startCase(str).replace(/\s/, "");
+};
+
+
 
 function registerHandlebarsHelpers() {
-	Handlebars.registerHelper("componentName", _startCase);
+	Handlebars.registerHelper("componentName", _startCaseNoSpace);
 	Handlebars.registerHelper("className", function(componentName) {
-		return `KUI${_startCase(componentName)}`;
+		return `KUI${_startCaseNoSpace(componentName)}`;
 	});
 	Handlebars.registerHelper("varName", function(componentName) {
-		return `kui${_startCase(componentName)}`;
+		return `kui${_startCaseNoSpace(componentName)}`;
 	});
 	Handlebars.registerHelper("tagName", function(componentName) {
 		return `kui-${_kebabCase(componentName)}`;
@@ -22,20 +27,15 @@ function registerHandlebarsHelpers() {
 		attributes,
 		options
 	) {
-		return attributes.filter(attr => attr.type.toLowerCase() === "boolean").length > 0
+		return attributes.filter(attr => attr.type.toLowerCase() === "boolean")
+			.length > 0
 			? options.fn(this)
 			: "";
 	});
-	Handlebars.registerHelper("isBoolean", function(
-		type,
-		options
-	) {
+	Handlebars.registerHelper("isBoolean", function(type, options) {
 		return type.toLowerCase() === "boolean" ? options.fn(this) : "";
 	});
-	Handlebars.registerHelper("notBoolean", function(
-		type,
-		options
-	) {
+	Handlebars.registerHelper("notBoolean", function(type, options) {
 		return type.toLowerCase() !== "boolean" ? options.fn(this) : "";
 	});
 	Handlebars.registerHelper("hasRegularAttribute", function(
@@ -46,8 +46,25 @@ function registerHandlebarsHelpers() {
 			? options.fn(this)
 			: "";
 	});
-	Handlebars.registerHelper("joinParams", function(params) {
-		return params ? params.join(", ") : "";
+	Handlebars.registerHelper("joinArray", function(arr) {
+		let str = "";
+		if (arr) {
+			for(let i=0; i < arr.length - 1; i++) {
+				str += `"${arr[i]}", `;
+			}
+			str += `"${arr[arr.length - 1]}"`;
+		}
+		return str;
+	});
+	Handlebars.registerHelper("joinParams", function(arr) {
+		let str = "";
+		if (arr) {
+			for(let i=0; i < arr.length - 1; i++) {
+				str += `${arr[i].name}, `;
+			}
+			str += `${arr[arr.length - 1].name}`;
+		}
+		return str;
 	});
 }
 
@@ -192,7 +209,7 @@ async function generateDocsAttributesExample({
 	targetComponentPath,
 	templatesPath
 }) {
-	componentConfig.attributes.forEach((attribute)=>{
+	componentConfig.attributes.forEach(attribute => {
 		const resourceTemplatePath = `${templatesPath}/attribute-docs.template`;
 		const resourceOutputPath = `${targetComponentPath}${path.sep}docs${path.sep}`;
 		const resourceOutputFileName = `${attribute.name}-example.html`;
