@@ -1,42 +1,34 @@
 # KotchiUI
-KotchiUI is a lightweight UI kit that can be used with any framework on any browser, it's fully accessabile and mobile compatible.
-Each KotchiUI component is a web component that is treated as a native HTML element.
+KotchiUI is a lightweight UI kit that can be integrated with any javascript framework on any browser, it's fully accessabile and mobile compatible.
+
+The components are built using the browser's native custom elements interface, so that Each KotchiUI component is treated as a native HTML element.
 
 The components have public API to access the composing inner elements and to control the style via CSS variables.
 
+# Purpose 
+
+The main idea behind KotchiUI is to provide a UI kit that is [future compatible][presentation-link], that can be used in any project and being megrated in the future to newer or different framework with minimal efforts.
+
+The KotchiUI kit is an open source project with MIT license, any [contribution][contribution-guide] is welcomed.
+
+
 # Components
+The first version of KotchiUI will include the following components
   - Alerts (Soon, [contribute][contribute-alert] to get it faster ;) )
   - Accordion (Soon)
-  - Badge (Soon)
-  - Breadcrumb (Soon)
   - [Button](https://ahmadigbaryia.github.io/kotchi-ui/button.html)
   - Button Group (Soon)
-  - Cards (Soon)
   - Checkbox (Soon)
-  - Carousel (Soon)
+  - Data table (Soon)
   - Dropdowns (Soon)
   - [FontAwesome Icon](https://ahmadigbaryia.github.io/kotchi-ui/icon.html)
-  - Forms (Soon)
-  - Grid (Soon)
-  - Input Group (Soon)
-  - Images (Soon)
-  - Figures (Soon)
-  - List Group (Soon)
+  - Forms and from input (Soon)
   - Modal (Soon)
-  - Navs (Soon)
-  - Navbar (Soon)
-  - Overlays (Soon)
-  - Pagination (Soon)
-  - Popovers (Soon)
-  - Progress (Soon)
   - Radio Button (Soon)
-  - Spinners (Soon)
+  - Section (AKA Cards or panels) (Soon)
   - Switch (Soon)
-  - Table (Soon)
   - Tabs (Soon)
-  - Tooltips (Soon)
   - Toasts (Soon)
-
 
 # Used Technology
 KotchiUI is built with [Web Component technology](https://www.webcomponents.org/) using the native browser API, the elements are extendable and configurable.

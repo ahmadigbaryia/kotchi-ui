@@ -72,9 +72,7 @@ describe("Testing <kui-button> attributes", () => {
 	});
 	describe.each([
 		["kui-outline", "kuiOutline", "invalid"], 
-		["kui-disabled", "kuiDisabled", "invalid"],
-		["kui-style", "kuiStyle", "invalid" ],
-		["kui-size", "kuiSize", "invalid"]
+		["kui-disabled", "kuiDisabled", "invalid"]
 	])("Testing invalid value handeling for %s", (attributeName, propertyName, invalidValue) => {
 		test(`Tesing invalid value for ${attributeName} attribute`, () => {
 			const spy = jest.spyOn(kuiButton.attributesConfig[attributeName], "attributeChangedHandler");
@@ -86,6 +84,20 @@ describe("Testing <kui-button> attributes", () => {
 			const spy = jest.spyOn(kuiButton.attributesConfig[attributeName], "attributeChangedHandler");
 			kuiButton[propertyName] = invalidValue;
 			expect(spy).not.toHaveBeenCalled();
+			spy.mockRestore();
+		});
+	});
+	describe.each([
+		["kui-style", "kuiStyle", "invalid" ],
+		["kui-size", "kuiSize", "invalid"]
+	])("Testing invalid value handeling for %s", (attributeName, propertyName, invalidValue) => {
+		test(`Tesing invalid value for ${attributeName} attribute`, () => {
+			const spy = jest.spyOn(kuiButton.attributesConfig[attributeName], "attributeChangedHandler");
+			const oldValue = kuiButton.getAttribute(attributeName);
+			kuiButton.setAttribute(attributeName, invalidValue);
+			expect(spy).toHaveBeenCalledWith(expect.objectContaining({
+				newValue: oldValue
+			}));
 			spy.mockRestore();
 		});
 	});

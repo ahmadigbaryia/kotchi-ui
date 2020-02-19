@@ -7,18 +7,25 @@ template.innerHTML = `
 		${style}
 	</style>
 	<div class="kui-section">
-		<div class="kui-section__title-container">
-			<kui-icon id="section-icon"></kui-icon>
-			<h1 id="section-title" class="kui-section__title"></h1>
-			<kui-icon id="section-expander-icon"></kui-icon>
+		<div class="section-title-container">
+			<h1 class="section-title">
+				<kui-icon id="section-icon"></kui-icon>
+				<span></span>
+			</h1>
+			<div class="section-actions-container">
+				<slot name="section-actions"></slot>
+			</div>
 		</div>
-		<div class="kui-section__body">
+		<div class="section-body-container">
 			<slot></slot>
 		</div>
 	</div>
 `;
 
-//This is for cross-browser compatibility 
+const collapseActionIconTemplate = document.createElement("template");
+collapseActionIconTemplate.innerHTML = "<kui-icon id=\"section-collapse-icon\" kui-icon=\"fas fa-angle-up\"></kui-icon>";
+
+//This is for cross-browser compatibility
 window.ShadyCSS && window.ShadyCSS.prepareTemplate(template, tagName);
 
 export default {
@@ -26,9 +33,13 @@ export default {
 	selectors: {
 		section: "div.kui-section",
 		sectionIcon: "#section-icon",
-		sectionTitle: "#section-title",
-		sectionExpanderIcon: "#section-expander-icon",
-		sectionBody: "div.kui-section__body",
-		sectionTitleContainer: "div.kui-section__title-container",
-	}
+		sectionTitle: "h1.section-title>span",
+		sectionBody: "div.section-body-container",
+		sectionTitleContainer: "div.section-title-container",
+		sectionActions: "slot[name=\"section-actions\"]",
+		sectionActionsContainer: "div.section-actions-container",
+		collapseSectionIcon: "#section-collapse-icon"
+		
+	},
+	collapseActionIconTemplate
 };

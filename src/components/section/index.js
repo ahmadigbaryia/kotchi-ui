@@ -1,3 +1,3 @@
-import KUISection, { tagName } from "./kui-section";
+import KUISection, { tagName, Events } from "./kui-section";
 KUISection.defineCustomElement();
-export { KUISection as default, tagName };
+export { KUISection as default, tagName, Events };

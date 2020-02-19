@@ -1,7 +1,10 @@
+import _toCamelCase from "lodash/camelCase";
+
 import {
 	buildShadowRoot,
 	buildComponentContents,
-	changeHandlerWrapper
+	changeHandlerWrapper,
+	setDefaultValues
 } from "Utils/wcUtils";
 import { containerHelper, containedHelper } from "Utils/elementHelper";
 
@@ -22,7 +25,7 @@ class BaseElement extends HTMLElement {
 		const { tagName, attributesConfig } = this;
 		const attributeChangedHandler =
 			attributesConfig[attribute] &&
-			attributesConfig[attribute].attributeChangedHandler;
+			attributesConfig[attribute].attributeChangedHandler || (() => {});
 		if (attributeChangedHandler) {
 			changeHandlerWrapper({
 				attributesConfig,
@@ -55,6 +58,7 @@ class BaseElement extends HTMLElement {
 				tagName: this.tagName
 			});
 		}
+		setDefaultValues(this);
 	}
 }
 

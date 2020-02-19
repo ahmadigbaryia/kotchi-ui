@@ -58,21 +58,24 @@
 			<kui-section
 				kui-title="Section 1"
 				kui-icon="fas fa-camera"
-				kui-expand
+				kui-collapsable="kui-collapsable-by-header"
 			>
 				<p>This is section 1 body</p>
+				<div slot="section-actions">
+					<kui-icon kui-icon="fas fa-camera"></kui-icon>
+				</div>
 			</kui-section>
 			<kui-section
 				kui-title="Section 2"
 				kui-icon="fas fa-anchor"
-				kui-expand
+				kui-collapsable="kui-collapsable-by-header"
 			>
 				<p>This is section 2 body</p>
 			</kui-section>
 			<kui-section
 				kui-title="Section 3"
 				kui-icon="fas fa-apple-alt"
-				kui-expand
+				kui-collapsable="kui-collapsable-by-header"
 			>
 				<p>This is section 3 body</p>
 			</kui-section>
@@ -149,15 +152,15 @@
 				expandSectionAction.addClickHandler(() => {
 					accordion.expandSection(1);
 				});
-				const handler1 = accordion.addSectionExpandedHandler(({detail}) => {
+				const handler1 = accordion.addSectionExpandChangedHandler(({detail}) => {
 					console.log("Handler 1: " + detail.component.elements.sectionTitle.innerHTML);
 				});
-				const handler2 = accordion.addSectionExpandedHandler(({detail}) => {
+				const handler2 = accordion.addSectionExpandChangedHandler(({detail}) => {
 					console.log("Handler 2: " + detail.component.elements.sectionBody.innerHTML);
 				});
 				setTimeout(() => {
 					console.log("Removing handler2");
-					accordion.removeSectionExpandedHandler(handler2);
+					accordion.removeSectionExpandChangedHandler(handler2);
 					console.log("Changing the collapse icon");
 					accordion.setAttribute("kui-collapse-icon", "fas fa-angle-double-up");
 				}, 5 * 1000);

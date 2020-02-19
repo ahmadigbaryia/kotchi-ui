@@ -203,3 +203,12 @@ export function applyClassName({
 		classList.add.apply(classList, defaultValue.split(" "));
 	}
 }
+
+export function setDefaultValues(component){
+	for (const key of Object.keys(component.attributesConfig)) {
+		const val = component.attributesConfig[key];
+		if(Object.prototype.hasOwnProperty.call(val, "defaultValue")){
+			component[_toCamelCase(key)];
+		}
+	}
+}

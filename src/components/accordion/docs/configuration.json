@@ -13,21 +13,15 @@
 		},
 		{
 			"id": "kui-toggle-example",
-			"title": "Kui Toggle",
+			"title": "KuiToggle",
 			"subtitle": "TODO:: Add few words descriping this attribute",
 			"contents": "kui-toggle-example.html"
 		},
 		{
 			"id": "kui-collapse-icon-example",
-			"title": "Kui Collapse Icon",
+			"title": "KuiCollapse Icon",
 			"subtitle": "TODO:: Add few words descriping this attribute",
 			"contents": "kui-collapse-icon-example.html"
-		},
-		{
-			"id": "kui-expand-icon-example",
-			"title": "Kui Expand Icon",
-			"subtitle": "TODO:: Add few words descriping this attribute",
-			"contents": "kui-expand-icon-example.html"
 		},
 		{
 			"id": "attributes-configurations",

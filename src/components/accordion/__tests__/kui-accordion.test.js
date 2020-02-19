@@ -21,13 +21,11 @@ describe("Make sure component is created", () => {
 	test("Make sure component attributes are also reflected on object properties", () => {
 		expect("kuiToggle" in kuiAccordion).toBe(true);
 		expect("kuiCollapseIcon" in kuiAccordion).toBe(true);
-		expect("kuiExpandIcon" in kuiAccordion).toBe(true);
 	});
 });
 describe("Testing <kui-accordion> attributes", () => {
 	describe.each([
 		["kui-collapse-icon", "kuiCollapseIcon", ""],
-		["kui-expand-icon", "kuiExpandIcon", ""],
 	])("Testing %s attribute", (attributeName, propertyName, otherValue)=>{
 		test(`Updating ${propertyName} property updates the attribute with the same value`, () => {
 			kuiAccordion[propertyName] = otherValue;
@@ -74,11 +72,20 @@ describe("Testing <kui-accordion> attributes", () => {
 // Test the public API
 describe("Test public API", () => {
 	describe("Make sure the methods are defined on the instance", () => {
-		test("make sure setSectionExpandedHandler function is actually defined on the class instance", () => {
-			expect(typeof kuiAccordion.setSectionExpandedHandler).toBe("function");
+		test("make sure addSectionExpandChangedHandler function is actually defined on the class instance", () => {
+			expect(typeof kuiAccordion.addSectionExpandChangedHandler).toBe("function");
+		});
+		test("make sure removeSectionExpandChangedHandler function is actually defined on the class instance", () => {
+			expect(typeof kuiAccordion.removeSectionExpandChangedHandler).toBe("function");
+		});
+		test("make sure getAllSections function is actually defined on the class instance", () => {
+			expect(typeof kuiAccordion.getAllSections).toBe("function");
 		});
 		test("make sure getExpandedSections function is actually defined on the class instance", () => {
 			expect(typeof kuiAccordion.getExpandedSections).toBe("function");
+		});
+		test("make sure getCollapsedSections function is actually defined on the class instance", () => {
+			expect(typeof kuiAccordion.getCollapsedSections).toBe("function");
 		});
 		test("make sure collapseAllSections function is actually defined on the class instance", () => {
 			expect(typeof kuiAccordion.collapseAllSections).toBe("function");

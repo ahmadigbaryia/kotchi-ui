@@ -7,7 +7,7 @@ template.innerHTML = `
 		${style}
 	</style>
 	<div class="kui-accordion">
-	<slot></slot>
+		<slot></slot>
 	</div>
 `;
 

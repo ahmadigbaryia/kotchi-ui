@@ -21,12 +21,16 @@ describe("Make sure component is created", () => {
 	test("Make sure component attributes are also reflected on object properties", () => {
 		expect("kuiTitle" in kuiSection).toBe(true);
 		expect("kuiIcon" in kuiSection).toBe(true);
+		expect("kuiStyle" in kuiSection).toBe(true);
+		expect("kuiCollapsable" in kuiSection).toBe(true);
 	});
 });
 describe("Testing <kui-section> attributes", () => {
 	describe.each([
 		["kui-title", "kuiTitle", ""],
 		["kui-icon", "kuiIcon", ""],
+		["kui-style", "kuiStyle", ""],
+		["kui-collapsable", "kuiCollapsable", ""],
 	])("Testing %s attribute", (attributeName, propertyName, otherValue)=>{
 		test(`Updating ${propertyName} property updates the attribute with the same value`, () => {
 			kuiSection[propertyName] = otherValue;

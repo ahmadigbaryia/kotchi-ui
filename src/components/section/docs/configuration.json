@@ -3,7 +3,7 @@
     "category": "components",
 	"title": "Section",
 	"tagName": "kui-section",
-	"subtitle": "Section is a content container that has a title and body, can be a child of accordion, list, menu",
+	"subtitle": "Flexible and extensible content container with multiple variants and options",
 	"cards": [
 		{
 			"id": "basic-examples",
@@ -13,15 +13,27 @@
 		},
 		{
 			"id": "kui-title-example",
-			"title": "Kui Title",
+			"title": "KuiTitle",
 			"subtitle": "TODO:: Add few words descriping this attribute",
 			"contents": "kui-title-example.html"
 		},
 		{
 			"id": "kui-icon-example",
-			"title": "Kui Icon",
+			"title": "KuiIcon",
 			"subtitle": "TODO:: Add few words descriping this attribute",
 			"contents": "kui-icon-example.html"
+		},
+		{
+			"id": "kui-style-example",
+			"title": "KuiStyle",
+			"subtitle": "TODO:: Add few words descriping this attribute",
+			"contents": "kui-style-example.html"
+		},
+		{
+			"id": "kui-collapsable-example",
+			"title": "KuiCollapsable",
+			"subtitle": "TODO:: Add few words descriping this attribute",
+			"contents": "kui-collapsable-example.html"
 		},
 		{
 			"id": "attributes-configurations",

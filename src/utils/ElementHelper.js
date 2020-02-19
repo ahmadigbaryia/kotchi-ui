@@ -6,9 +6,9 @@
 function validateChildren({ element, allowedChildren, tagName }) {
 	const childrenTypes = [];
 	const children = [];
-	const assignedNodes = element
-		.assignedNodes()
-		.filter(node => node.nodeType === 1); //Only element nodes are relavant
+	
+	const assignedNodes = !element.assignedNodes ? [] : 
+		element.assignedNodes().filter(node => node.nodeType === 1); //Only element nodes are relavant
 	if (assignedNodes.length > 0) {
 		for (let i = 0; i < assignedNodes.length; i++) {
 			let childTagName = assignedNodes[i].tagName.toLowerCase();
