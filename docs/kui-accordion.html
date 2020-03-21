@@ -73,11 +73,7 @@
         <div id="additional_info"></div>
         <div class="example-container">
             <div class="example-preview">
-                <kui-accordion>
-                    <kui-section>
-                        Hello
-                    </kui-section>
-                </kui-accordion>
+	<!-- Add few basic examples for the component -->
 </div>
             <div class="example-markup-container">
                 <div class="example-markup">
@@ -98,7 +94,7 @@
 </div>
 </body><body><div class="card" id="kui-toggle-example">
     <div class="card-body">
-        <h4 class="card-title">Kui Toggle</h4>
+        <h4 class="card-title">KuiToggle</h4>
         <h6 class="card-subtitle">TODO:: Add few words descriping this attribute</h6>
         <div id="additional_info">
 	<p>
@@ -128,7 +124,7 @@
 </div>
 </body><body><div class="card" id="kui-collapse-icon-example">
     <div class="card-body">
-        <h4 class="card-title">Kui Collapse Icon</h4>
+        <h4 class="card-title">KuiCollapse Icon</h4>
         <h6 class="card-subtitle">TODO:: Add few words descriping this attribute</h6>
         <div id="additional_info">
 	<p>
@@ -143,36 +139,6 @@
                 <div class="example-markup">
                     <pre class="language-html">                        <code class="language-html">
 	&lt;!-- Add few examples for kui-collapse-icon usage in the component --&gt;
-</code>
-                    </pre>
-                </div>
-                <div class="example-markup-actions">
-                <!--
-                    <button class="markup-copy-action">Copy</button>
-                    <button class="markup-view-action">View in Codepen</button>
-                -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</body><body><div class="card" id="kui-expand-icon-example">
-    <div class="card-body">
-        <h4 class="card-title">Kui Expand Icon</h4>
-        <h6 class="card-subtitle">TODO:: Add few words descriping this attribute</h6>
-        <div id="additional_info">
-	<p>
-		<!-- Add more details and explanation about kui-expand-icon and how it effects the component -->
-	</p>
-</div>
-        <div class="example-container">
-            <div class="example-preview">
-	<!-- Add few examples for kui-expand-icon usage in the component -->
-</div>
-            <div class="example-markup-container">
-                <div class="example-markup">
-                    <pre class="language-html">                        <code class="language-html">
-	&lt;!-- Add few examples for kui-expand-icon usage in the component --&gt;
 </code>
                     </pre>
                 </div>
@@ -208,19 +174,13 @@
 				<td><a href="#kui-toggle-example">kui-toggle</a></td>
 				<td>Boolean</td>
 				<td></td>
-				<td>Should the sections be toggled keeping one section visible at a time</td>
+				<td>Forces the accordion to toggle the visible section - keeping at most one section visible at a time</td>
 			</tr>
 			<tr>
 				<td><a href="#kui-collapse-icon-example">kui-collapse-icon</a></td>
 				<td>String</td>
 				<td></td>
-				<td>The icon to be displayed to collapse the section</td>
-			</tr>
-			<tr>
-				<td><a href="#kui-expand-icon-example">kui-expand-icon</a></td>
-				<td>String</td>
-				<td></td>
-				<td>The icon to be displayed to expand the section</td>
+				<td>The icon to be displayed to collapse the section, it'll be rotated 180 degrees for expand icon</td>
 			</tr>
 		</tbody>
 	</table>
