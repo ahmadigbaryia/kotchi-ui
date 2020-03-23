@@ -190,7 +190,7 @@ export function applyClassName({
 	oldValue,
 	newValue,
 	element,
-	defaultValue = ""
+	defaultValue
 }) {
 	const { classList } = element;
 	if (newValue) {
@@ -200,7 +200,8 @@ export function applyClassName({
 		classList.add.apply(classList, newValue.split(" "));
 	} else if (oldValue) {
 		classList.remove.apply(classList, oldValue.split(" "));
-		classList.add.apply(classList, defaultValue.split(" "));
+		if(defaultValue)
+			classList.add.apply(classList, defaultValue.split(" "));
 	}
 }
 

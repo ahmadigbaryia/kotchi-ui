@@ -8,10 +8,10 @@ template.innerHTML = `
 	</style>
 	<div class="kui-section">
 		<div class="section-title-container">
-			<h1 class="section-title">
+			<button aria-expanded="true" class="section-title">
 				<kui-icon id="section-icon"></kui-icon>
 				<span></span>
-			</h1>
+			</button>
 			<div class="section-actions-container">
 				<slot name="section-actions"></slot>
 			</div>
@@ -33,7 +33,7 @@ export default {
 	selectors: {
 		section: "div.kui-section",
 		sectionIcon: "#section-icon",
-		sectionTitle: "h1.section-title>span",
+		sectionTitle: "button.section-title>span",
 		sectionBody: "div.section-body-container",
 		sectionTitleContainer: "div.section-title-container",
 		sectionActions: "slot[name=\"section-actions\"]",
