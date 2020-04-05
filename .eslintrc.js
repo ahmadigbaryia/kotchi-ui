@@ -8,7 +8,10 @@ module.exports = {
 	},
 	extends: ["eslint:recommended"],
 	parserOptions: {
-		sourceType: "module"
+		sourceType: "module",
+		ecmaFeatures: {
+			experimentalDecorators: true
+		}
 	},
 	rules: {
 		indent: ["error", "tab"],

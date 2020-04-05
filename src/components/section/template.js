@@ -7,7 +7,7 @@ template.innerHTML = `
 		${style}
 	</style>
 	<div class="kui-section">
-		<div class="section-title-container">
+		<div class="kui-section__header-container">
 			<button aria-expanded="true" class="section-title">
 				<kui-icon id="section-icon"></kui-icon>
 				<span></span>

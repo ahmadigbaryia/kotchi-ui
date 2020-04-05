@@ -7,6 +7,13 @@ import templateConfig from "./template";
 import { defineCustomElement } from "Utils/wcUtils";
 import { elementHelper } from "Utils/elementHelper";
 
+function logTime(target, name, descriptor) {
+	const x = Date.now();
+	descriptor.value.apply(this, ...args);
+	console.log((Date.now() - x) + "ms");
+	return descriptor;
+}
+
 function collapseExpandHandler(icon) {
 	if (icon.getAttribute("kui-rotate") === KUIIcon.Rotate.Rotate180) {
 		icon.removeAttribute("kui-rotate");
@@ -51,6 +58,7 @@ class KUISection extends BaseElement {
 				templateConfig.selectors.sectionActionsContainer
 			)
 		};
+		
 		this.expandHandler = function(e) {
 			const target = e.currentTarget;
 			if (target === this.elements.sectionTitleContainer ) {
@@ -85,6 +93,7 @@ class KUISection extends BaseElement {
 			KUISection.defined = true;
 		}
 	}
+	@logTime
 	addCollapseAction() {
 		this.elements.sectionActionsContainer.appendChild(
 			templateConfig.collapseActionIconTemplate.cloneNode(true).content,
@@ -95,6 +104,7 @@ class KUISection extends BaseElement {
 		);
 		icon.addEventListener("click", this.expandHandler);
 	}
+	@logTime
 	removeCollapseAction() {
 		const icon = this.elements.sectionActionsContainer.querySelector(
 			templateConfig.selectors.collapseSectionIcon
@@ -102,9 +112,11 @@ class KUISection extends BaseElement {
 		icon.removeEventListener("click", this.expandHandler);
 		icon.remove();
 	}
+	@logTime
 	addCollapseHeaderBehavior() {
 		this.elements.sectionTitleContainer.addEventListener("click", this.expandHandler);
 	}
+	@logTime
 	removeCollapseHeaderBehavior() {
 		this.elements.sectionTitleContainer.removeEventListener("click", this.expandHandler);
 	}
