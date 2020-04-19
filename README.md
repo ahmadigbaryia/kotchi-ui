@@ -43,17 +43,17 @@ npm i kotchi-ui
 
 In the view file, where you want to add the component
 ```js
-import "kotchi-ui";
+import { KUIButton } "kotchi-ui";
 
 //Some where in your script, when the html variable gets rendered
 //the KotchiUI custom element is 
-const html = `<kui-button id="myButton" kui-style="kui-button-primary">My Button</kui-button>`;
+const html = `<kui-button id="myButton" kui-style="${KUIButton.Style.Primary}">My Button</kui-button>`;
 ```
 If you want to save up on bundle size you can be more specific and only import the desored component
 ```js
-import "kotchi-ui/kui-button";
+import KUIButton from "kotchi-ui/kui-button";
 //....
-const html = `<kui-button id="myButton" kui-style="kui-button-primary">My Button</kui-button>`;
+const html = `<kui-button id="myButton" kui-style="${KUIButton.Style.Primary}">My Button</kui-button>`;
 ```
 Once the component is rendered, it's public API is accessabe along with the inner HTML elements, you can have a look at the public API and the exposed inner HTML element on each components README or documentation page.
 
@@ -62,7 +62,7 @@ To use with Native JS and HTML5 projects, just add the following two lines in th
 ```html
 <!-- Polyfill for older browsers and those who don't support web components -->
 <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.4.0/webcomponents-loader.js"></script>
-<script src="https://raw.githubusercontent.com/ahmadigbaryia/kotchi-ui/master/dist/kotchi-ui.js"></script>
+<script src="https://unpkg.com/kotchi-ui/kotchi-ui.js"></script>
 ```
 and then somewhere in your <body> section you can add the KotchiUI components, for example:
 ```html

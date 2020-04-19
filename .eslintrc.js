@@ -1,4 +1,5 @@
 module.exports = {
+	parser: "babel-eslint",
 	env: {
 		browser: true,
 		es2020: true,
@@ -10,12 +11,15 @@ module.exports = {
 	parserOptions: {
 		sourceType: "module",
 		ecmaFeatures: {
-			experimentalDecorators: true
-		}
+			experimentalDecorators: true,
+		},
 	},
 	rules: {
 		indent: ["error", "tab"],
 		quotes: ["error", "double"],
-		semi: ["error", "always"]
-	}
+		semi: ["error", "always"],
+	},
+	globals: {
+		logger: "readonly",
+	},
 };
