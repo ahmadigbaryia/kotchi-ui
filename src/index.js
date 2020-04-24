@@ -1,4 +1,4 @@
-import "./utils/loggerInit";
+import "./core/utils/loggerInit";
 import buildP1 from "./demo/page1_1";
 import buildP2 from "./demo/page1_2";
 

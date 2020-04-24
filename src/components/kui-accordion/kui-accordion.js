@@ -1,10 +1,10 @@
 import _isUndefined from "lodash/isUndefined";
-import { Types, typeValidator, isTrueAttribute } from "../../validators";
+import { Types, typeValidator, isTrueAttribute } from "../../core/validators";
 import {
 	booleanSetter,
 	booleanGetter,
 	useShadowDom,
-} from "../../utils/customElementUtils";
+} from "../../core/utils/customElementUtils";
 import templateGenerator from "./template";
 import { Events as KUISectionEvents } from "../kui-section";
 
@@ -13,7 +13,7 @@ import {
 	attribute,
 	attributeValidator,
 	attributeChangeHandler,
-} from "../../decorators";
+} from "../../core";
 
 const tagName = "kui-accordion";
 

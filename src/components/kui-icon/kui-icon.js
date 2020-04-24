@@ -1,9 +1,9 @@
-import { Types, typeValidator } from "../../validators";
+import { Types, typeValidator } from "../../core/validators";
 import {
 	booleanSetter,
 	booleanGetter,
 	useShadowDom,
-} from "../../utils/customElementUtils";
+} from "../../core/utils/customElementUtils";
 import templateGenerator, { screanReaderCreator } from "./template";
 
 import {
@@ -12,7 +12,7 @@ import {
 	attributeValidator,
 	attributeChangeHandler,
 	applyStyle,
-} from "../../decorators";
+} from "../../core";
 
 const tagName = "kui-icon";
 const faVersion = "5.11.2";

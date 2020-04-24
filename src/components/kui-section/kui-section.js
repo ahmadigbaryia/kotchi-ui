@@ -1,9 +1,9 @@
-import { Types, typeValidator } from "../../validators";
+import { Types, typeValidator } from "../../core/validators";
 import {
 	useShadowDom,
 	booleanSetter,
 	booleanGetter,
-} from "../../utils/customElementUtils";
+} from "../../core/utils/customElementUtils";
 import templateGenerator from "./template";
 
 import {
@@ -13,7 +13,7 @@ import {
 	attributeChangeHandler,
 	attributeValidator,
 	applyStyle,
-} from "../../decorators";
+} from "../../core";
 
 const tagName = "kui-section";
 

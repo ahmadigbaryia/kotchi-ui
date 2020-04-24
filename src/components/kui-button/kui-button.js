@@ -1,10 +1,10 @@
 import _isFunction from "lodash/isFunction";
-import { Types, typeValidator } from "../../validators";
+import { Types, typeValidator, isTrueAttribute } from "../../core/validators";
 import {
 	booleanSetter,
 	booleanGetter,
 	useShadowDom,
-} from "../../utils/customElementUtils";
+} from "../../core/utils/customElementUtils";
 import templateGenerator from "./template";
 
 import {
@@ -13,23 +13,21 @@ import {
 	attributeValidator,
 	attributeChangeHandler,
 	applyStyle,
-} from "../../decorators";
+} from "../../core";
 
 const tagName = "kui-button";
 
 const Style = {
-	Default: `${tagName}-default`,
 	Primary: `${tagName}-primary`,
 	Secondary: `${tagName}-secondary`,
 	Information: `${tagName}-info`,
-	Dangerous: `${tagName}-dangerous`,
+	Danger: `${tagName}-danger`,
 	Warning: `${tagName}-warning`,
 	Success: `${tagName}-success`,
 	Link: `${tagName}-link`,
 };
 
 const Size = {
-	Normal: "",
 	Small: `${tagName}-small`,
 	Large: `${tagName}-large`,
 	Block: `${tagName}-block`,
@@ -42,11 +40,11 @@ const Size = {
 class KUIButton extends HTMLElement {
 	@attributeValidator([typeValidator(Style)])
 	@attribute
-	kuiStyle = Style.Default;
+	kuiStyle = Style.Secondary;
 
 	@attributeValidator([typeValidator(Size)])
 	@attribute
-	kuiSize = Size.Normal;
+	kuiSize;
 
 	@attributeValidator([typeValidator(Types.Boolean)])
 	@attribute({ setter: booleanSetter, getter: booleanGetter })
@@ -67,15 +65,20 @@ class KUIButton extends HTMLElement {
 
 	@attributeChangeHandler
 	@applyStyle("button")
-	kuiStyleChangeHandler() {}
+	kuiStyleChangeHandler({newValue, oldValue}) {
+		if(isTrueAttribute(this.kuiOutline)) {
+			this.applyOutlineButtonStyle(true, newValue, oldValue);
+		}
+	}
 
 	@attributeChangeHandler
 	@applyStyle("button")
 	kuiSizeChangeHandler() {}
 
 	@attributeChangeHandler
-	@applyStyle({ element: "button", className: "outline" })
-	kuiOutlineChangeHandler() {}
+	kuiOutlineChangeHandler({newValue}) {
+		this.applyOutlineButtonStyle(isTrueAttribute(newValue), this.kuiStyle);
+	}
 
 	@attributeChangeHandler
 	@applyStyle({
@@ -84,6 +87,21 @@ class KUIButton extends HTMLElement {
 		attributeName: "disabled",
 	})
 	kuiDisabledChangeHandler() {}
+
+	applyOutlineButtonStyle(outline, newStyle, oldStyle) {
+		const newOutlineStyle = newStyle.replace(`${tagName}-`, "");
+		if(outline) {
+			this.elements.button.classList.add(`${tagName}-outline-${newOutlineStyle}`);
+			this.elements.button.classList.remove(newStyle);
+		} else {
+			this.elements.button.classList.remove(`${tagName}-outline-${newOutlineStyle}`);
+			this.elements.button.classList.add(newStyle);
+		}
+		if(oldStyle) {
+			const oldOutlineStyle = oldStyle.replace(`${tagName}-`, "");
+			this.elements.button.classList.remove(`${tagName}-outline-${oldOutlineStyle}`);
+		}
+	}
 
 	addClickHandler(handler) {
 		if (_isFunction(handler)) {
