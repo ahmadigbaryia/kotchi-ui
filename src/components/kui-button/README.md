@@ -1,6 +1,7 @@
 # kui-button
-kui-button is a button that has predefined styles and sizes to serve different semantic purposes with few extras.
+`kui-button` is a button that has predefined styles and sizes to serve different semantic purposes with few extras.
 
+For more information and examples, visit the [demo](https://ahmadigbaryia.github.io/kotchi-ui/button.html) pages.
 
 ## Attributes
 name           | type            | default value             | description

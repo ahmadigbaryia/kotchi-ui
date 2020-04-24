@@ -36,7 +36,6 @@ const Rotate = {
 	Rotate270: "fa-rotate-270",
 };
 const Size = {
-	Normal: "",
 	XSmall: "fa-xs",
 	Small: "fa-sm",
 	Large: "fa-lg",
@@ -68,7 +67,7 @@ class KUIIcon extends HTMLElement {
 
 	@attributeValidator([typeValidator(Size)])
 	@attribute
-	kuiSize = Size.Normal;
+	kuiSize;
 
 	@attributeValidator([typeValidator(Types.Boolean)])
 	@attribute({ setter: booleanSetter, getter: booleanGetter })
@@ -76,7 +75,7 @@ class KUIIcon extends HTMLElement {
 
 	@attributeValidator([typeValidator(Types.Boolean)])
 	@attribute({ setter: booleanSetter, getter: booleanGetter })
-	kuiBoardered = false;
+	kuiBordered = false;
 
 	@attributeValidator([typeValidator(PullDirection)])
 	@attribute
