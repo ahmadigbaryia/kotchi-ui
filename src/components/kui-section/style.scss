@@ -1,25 +1,80 @@
+@use "sass:map";
 
-.kui-section {
+@import "../../core/scss/functions";
+@import "../../core/scss/variables";
+@import "../../core/scss/mixins";
+@import "../../core/scss/utilities/background";
+@import "../../core/scss/utilities/borders";
+@import "../../core/scss/utilities/display";
+@import "../../core/scss/utilities/text";
+
+@import "../../core/scss/card";
+
+:host {
+	/* Variables */
+	--margin-bottom: var(--kui-section-margin-bottom, #{map.get($spacers, 2)});
 }
-.kui-section__header {
+
+.card {
+	margin-bottom: var(--margin-bottom);
 }
-.kui-section__header-title-and-icon-container {
+
+.card-header {
+	display: flex;
+	justify-content: space-between;
+	user-select: none;
 }
-.kui-section__header-icon {
-    
+.card-body {
+	overflow: scroll;
 }
-.kui-section__header-icon.visible {
-    
+
+.card-header__title-and-icon-container {
+	display: flex;
 }
-.kui-section__header-title {
+
+.card-header__icon {
+	padding-right: map.get($spacers, 1);
 }
-.kui-section__header-actions {
+.card-header__icon.hide {
+	display: none;
 }
-.kui-section__header-action {
-    display: none;
+.card-header__action {
+	display: none;
 }
-.kui-section__header-action.visible {
-    display: inline-block;
+.card-header__action.visible {
+	display: inline-block;
 }
-.kui-section__contents {
+
+#contents-container {
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+
+:host(.fullscreen) {
+	z-index: 2030;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+	margin-bottom: 0;
+}
+
+.card.fullscreen {
+	height: calc(100% - 2px);
+}
+.fullscreen #contents-container {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	max-height: unset;
+}
+.fullscreen .card-body {
+	flex-grow: 1;
+}
+
+:host-context(kui-accordion) {
+	--kui-section-margin-bottom: 0rem;
 }

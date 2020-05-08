@@ -1,21 +1,11 @@
 import { Types, typeValidator } from "../../core/validators";
-import {
-	booleanSetter,
-	booleanGetter,
-	useShadowDom,
-} from "../../core/utils/customElementUtils";
+import { booleanSetter, booleanGetter, useShadowDom } from "../../core/utils/customElementUtils";
 import templateGenerator, { screanReaderCreator } from "./template";
 
-import {
-	kuiCustomElement,
-	attribute,
-	attributeValidator,
-	attributeChangeHandler,
-	applyStyle,
-} from "../../core";
+import { kuiCustomElement, attribute, attributeValidator, attributeChangeHandler, applyStyle } from "../../core";
 
 const tagName = "kui-icon";
-const faVersion = "5.11.2";
+const faVersion = "5.13.0";
 
 const Animate = {
 	Spin: "fa-spin",
@@ -34,6 +24,7 @@ const Rotate = {
 	Rotate90: "fa-rotate-90",
 	Rotate180: "fa-rotate-180",
 	Rotate270: "fa-rotate-270",
+	Rotate360: "fa-rotate-360",
 };
 const Size = {
 	XSmall: "fa-xs",

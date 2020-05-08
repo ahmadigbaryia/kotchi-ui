@@ -1,7 +1,4 @@
-import {
-	getAttributeDefault,
-	validateAttributeValue,
-} from "../utils/customElementData";
+import { getAttributeDefault, validateAttributeValue } from "../utils/customElementData";
 
 export default function attributeChangeHandler(target, name, descriptor) {
 	let originalMethod = descriptor.value;
@@ -16,7 +13,7 @@ export default function attributeChangeHandler(target, name, descriptor) {
 				defaultValue,
 			});
 		} else {
-			logger.info("Rolling back to previous value");
+			// logger.info("Rolling back to previous value");
 			if (oldValue === null) this.removeAttribute(attribute);
 			else this.setAttribute(attribute, oldValue);
 		}

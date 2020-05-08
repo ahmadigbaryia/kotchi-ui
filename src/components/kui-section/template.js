@@ -6,25 +6,28 @@ export default function templateGenerator(tagName) {
         <style>
             ${style}
         </style>
-        <div class="kui-section">
-            <div class="kui-section__header">
-                <div class="kui-section__header-title-and-icon-container">
-                    <kui-icon class="kui-section__header-icon"></kui-icon>
-                    <h1 class="kui-section__header-title"></h1>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header__title-and-icon-container" data-toggle="collapse" data-target="#contents-container">
+                    <kui-icon class="card-header__icon"></kui-icon>
+                    <span class="card-header__title"></span>
                 </div>
-                <div class="kui-section__header-actions">
-                    <a id="collapseAction" class="kui-section__header-action">
-                        <kui-icon kui-icon="fa fa-chevron-up"></kui-icon>
+                <div class="card-header__actions">
+                    <a class="card-header__action">
+                        <kui-icon id="collapseAction" kui-icon="fas fa-chevron-down"></kui-icon>
                     </a>
-                    <a id="fullScreenAction" class="kui-section__header-action">
-                        <kui-icon kui-icon="fa fa-expand"></kui-icon>
+                    <a class="card-header__action">
+                        <kui-icon id="fullScreenAction" kui-icon="fas fa-expand-alt"></kui-icon>
                     </a>
-                    <a id="closeAction" class="kui-section__header-action">
-                        <kui-icon kui-icon="fa fa-times"></kui-icon>
+                    <a class="card-header__action">
+                        <kui-icon id="closeAction" kui-icon="fas fa-times"></kui-icon>
                     </a>
                 </div>
             </div>
-            <slot class="kui-section__contents"></slot>
+            <div id="contents-container">
+                <div class="card-body"><slot id="contentsSlot"></slot></div>
+                <div class="card-footer d-none"><slot id="footerSlot" name="footer"></slot></div>
+            </div>
         </div>
     `;
 
@@ -33,15 +36,17 @@ export default function templateGenerator(tagName) {
 	return {
 		template,
 		selectors: {
-			section: "div.kui-section",
-			header: "div.kui-section__header",
-			headerIcon: "div.kui-section__header-icon",
-			headerTitle: "h1.kui-section__header-title",
-			headerActions: "div.kui-section__header-actions",
-			collapseAction: "a#collapseAction",
-			fullScreenAction: "a#fullScreenAction",
-			closeAction: "a#closeAction",
-			contents: "slot.kui-section__contents",
+			section: ".card",
+			header: ".card-header",
+			headerIcon: ".card-header__icon",
+			headerTitle: ".card-header__title",
+			headerActions: ".card-header__actions",
+			collapseAction: "#collapseAction",
+			fullScreenAction: "#fullScreenAction",
+			closeAction: "#closeAction",
+			contentsContainer: "#contents-container",
+			contents: "#contentsSlot",
+			footer: "#footerSlot",
 		},
 	};
 }

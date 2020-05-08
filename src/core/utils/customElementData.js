@@ -1,17 +1,13 @@
 const _data = {};
 
-export function setAttributeValidators({
-	tagName,
-	attribute,
-	validators = [],
-}) {
+export function setAttributeValidators({ tagName, attribute, validators = [] }) {
 	const attributeData = getAttributeData({ tagName, attribute });
 	attributeData.validators = validators;
 }
 
 export function validateAttributeValue({ tagName, attribute, value }) {
 	const { validators } = getAttributeData({ tagName, attribute });
-	logger.info(`${tagName} attributeValidator: ${attribute}=${value}`);
+	// logger.info(`${tagName} attributeValidator: ${attribute}=${value}`);
 	let isValid = true;
 	for (let i = 0; i < validators.length; i++) {
 		if (!validators[i](value)) {

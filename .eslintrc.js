@@ -8,6 +8,7 @@ module.exports = {
 		amd: true,
 	},
 	extends: ["eslint:recommended"],
+//	extends: ["plugin:prettier/recommended"],
 	parserOptions: {
 		sourceType: "module",
 		ecmaFeatures: {

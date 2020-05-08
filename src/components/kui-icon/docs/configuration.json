@@ -24,22 +24,10 @@
 			"contents": "size-example.html"
 		},
 		{
-			"id": "kui-fixed-width-example",
-			"title": "Fixed Width Icons",
-			"subtitle": "Need to vertically align a series of icons, like in a list or navigation menu? We’ve included a fixed-width support styling for just those cases.",
-			"contents": "fixed-width-example.html"
-		},
-		{
-			"id": "kui-size-example",
+			"id": "kui-pulled-example",
 			"title": "Pulled Icons",
 			"subtitle": "Occasionally you might want to wrap text around an icon.",
 			"contents": "pulled-example.html"
-		},
-		{
-			"id": "kui-bordered-example",
-			"title": "Bordered Icons",
-			"subtitle": "Occasionally you might want to give icons some visual distinction with a border.",
-			"contents": "bordered-example.html"
 		},
 		{
 			"id": "kui-animate-example",
@@ -52,6 +40,18 @@
 			"title": "Rotating and Flipping Icons",
 			"subtitle": "Sometimes you need to rotate, flip, or mirror an icon for it to work in your project or design.",
 			"contents": "rotating-example.html"
+		},
+		{
+			"id": "kui-fixed-width-example",
+			"title": "Fixed Width Icons",
+			"subtitle": "Need to vertically align a series of icons, like in a list or navigation menu? We’ve included a fixed-width support styling for just those cases.",
+			"contents": "fixed-width-example.html"
+		},
+		{
+			"id": "kui-bordered-example",
+			"title": "Bordered Icons",
+			"subtitle": "Occasionally you might want to give icons some visual distinction with a border.",
+			"contents": "bordered-example.html"
 		}
 	]
 }

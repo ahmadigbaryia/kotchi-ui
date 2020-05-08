@@ -1,1 +1,1 @@
-require('js-logger').useDefaults();
+require("js-logger").useDefaults();

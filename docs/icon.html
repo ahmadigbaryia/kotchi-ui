@@ -56,7 +56,7 @@
                             <ul id="components_menu" style="display: block;">
                                 <!-- Example -->
                                 <!--  <li id="button"><a href="button.html">Button</a></li> -->
-                            <li id="button" class=""><a href="button.html">Button <code class="info-tag-name">&lt;kui-button&gt;</code></a></li><li id="icon" class=" navigation__sub--active"><a href="icon.html">Icon <code class="info-tag-name">&lt;kui-icon&gt;</code></a></li></ul>
+                            <li id="accordion" class=""><a href="accordion.html">Accordion <code class="info-tag-name">&lt;kui-accordion&gt;</code></a></li><li id="button" class=""><a href="button.html">Button <code class="info-tag-name">&lt;kui-button&gt;</code></a></li><li id="icon" class=" navigation__sub--active"><a href="icon.html">Icon <code class="info-tag-name">&lt;kui-icon&gt;</code></a></li><li id="section" class=""><a href="section.html">Section <code class="info-tag-name">&lt;kui-section&gt;</code></a></li></ul>
                         </li>
                     </ul>
                 </div>
@@ -103,18 +103,6 @@
 				<td>The size of the icon, relative to the inherited font-size style value, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons">more information.</a> </td>
 			</tr>
 			<tr>
-				<td><a href="#kui-fixed-width-example">kui-fixed-width</a></td>
-				<td>Boolean</td>
-				<td>false</td>
-				<td>Apply the fixed width style on the icon, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons">more information.</a></td>
-			</tr>
-			<tr>
-				<td><a href="#kui-bordered-example">kui-bordered</a></td>
-				<td>Boolean</td>
-				<td>false</td>
-				<td>Adds a border arround the icon, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons">more information.</a></td>
-			</tr>
-			<tr>
 				<td><a href="#kui-pulled-example">kui-pull</a></td>
 				<td>KUIIcon.PullDirection</td>
 				<td></td>
@@ -137,6 +125,18 @@
 				<td>KUIIcon.Flip</td>
 				<td></td>
 				<td>Flips the Icon with the desired direction, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/rotating-icons">more information.</a></td>
+            </tr>
+            <tr>
+				<td><a href="#kui-fixed-width-example">kui-fixed-width</a></td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>Apply the fixed width style on the icon, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons">more information.</a></td>
+			</tr>
+			<tr>
+				<td><a href="#kui-bordered-example">kui-bordered</a></td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>Adds a border arround the icon, <a href="https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons">more information.</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -247,54 +247,7 @@
         </div>
     </div>
 </div>
-</body><body><div class="card" id="kui-fixed-width-example">
-    <div class="card-body">
-        <h4 class="card-title">Fixed Width Icons</h4>
-        <h6 class="card-subtitle">Need to vertically align a series of icons, like in a list or navigation menu? We’ve included a fixed-width support styling for just those cases.</h6>
-        <div id="additional_info">
-	<p>
-		set the attribute kui-fixed-width to true on the kui-icon element to set
-		one or more icons to the same fixed width. This is great to use when
-		varying icon widths (e.g. a tall but skinny icon atop a wide but short
-		icon) would throw off vertical alignment. For clarity in the following
-		example, we've added a background color on the icon so you can see the
-		fixed width and also bumped up the font-size of the parent element.
-	</p>
-</div>
-        <div class="example-container">
-            <div class="example-preview">
-	<div style="font-size: 2rem;">
-		<div><kui-icon kui-icon="fas fa-skating" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Skating</div>
-		<div><kui-icon kui-icon="fas fa-skiing" kui-fixed-width="" style="background:SkyBlue"></kui-icon> Skiing</div>
-		<div><kui-icon kui-icon="fas fa-skiing-nordic" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Nordic Skiing</div>
-		<div><kui-icon kui-icon="fas fa-snowboarding" kui-fixed-width="" style="background:SkyBlue"></kui-icon> Snowboarding</div>
-		<div><kui-icon kui-icon="fas fa-snowplow" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Snowplow</div>
-	</div>
-</div>
-            <div class="example-markup-container">
-                <div class="example-markup">
-                    <pre class="language-html">                        <code class="language-html">
-	&lt;div style="font-size: 2rem;"&gt;
-		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skating" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Skating&lt;/div&gt;
-		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Skiing&lt;/div&gt;
-		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing-nordic" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Nordic Skiing&lt;/div&gt;
-		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowboarding" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Snowboarding&lt;/div&gt;
-		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowplow" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Snowplow&lt;/div&gt;
-	&lt;/div&gt;
-</code>
-                    </pre>
-                </div>
-                <div class="example-markup-actions">
-                <!--
-                    <button class="markup-copy-action">Copy</button>
-                    <button class="markup-view-action">View in Codepen</button>
-                -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</body><body><div class="card" id="kui-size-example">
+</body><body><div class="card" id="kui-pulled-example">
     <div class="card-body">
         <h4 class="card-title">Pulled Icons</h4>
         <h6 class="card-subtitle">Occasionally you might want to wrap text around an icon.</h6>
@@ -322,38 +275,6 @@
 	facilisis odio. Pellentesque faucibus vitae neque sit amet accumsan.
 	Phasellus mattis mi nec ligula scelerisque faucibus et id purus. Vestibulum
 	convallis, dolor ut malesuada dignissim.
-</code>
-                    </pre>
-                </div>
-                <div class="example-markup-actions">
-                <!--
-                    <button class="markup-copy-action">Copy</button>
-                    <button class="markup-view-action">View in Codepen</button>
-                -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</body><body><div class="card" id="kui-bordered-example">
-    <div class="card-body">
-        <h4 class="card-title">Bordered Icons</h4>
-        <h6 class="card-subtitle">Occasionally you might want to give icons some visual distinction with a border.</h6>
-        <div id="additional_info">
-	<p>
-		When using <code>kui-bordered</code> attribute the icon is given a border.
-	</p>
-</div>
-        <div class="example-container">
-            <div class="example-preview">
-	<kui-icon kui-icon="fas fa-arrow-left" kui-size="fa-2x" kui-bordered=""></kui-icon>
-	<kui-icon kui-icon="fas fa-arrow-right" kui-size="fa-2x" kui-bordered=""></kui-icon>
-</div>
-            <div class="example-markup-container">
-                <div class="example-markup">
-                    <pre class="language-html">                        <code class="language-html">
-	&lt;kui-icon kui-icon="fas fa-arrow-left" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
-	&lt;kui-icon kui-icon="fas fa-arrow-right" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
 </code>
                     </pre>
                 </div>
@@ -448,6 +369,85 @@
 		&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-vertical"&gt;&lt;/kui-icon&gt;
 		&lt;kui-icon kui-icon="fas fa-snowboarding" kui-flip="fa-flip-both"&gt;&lt;/kui-icon&gt;
 	&lt;/div&gt;
+</code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card" id="kui-fixed-width-example">
+    <div class="card-body">
+        <h4 class="card-title">Fixed Width Icons</h4>
+        <h6 class="card-subtitle">Need to vertically align a series of icons, like in a list or navigation menu? We’ve included a fixed-width support styling for just those cases.</h6>
+        <div id="additional_info">
+	<p>
+		set the attribute kui-fixed-width to true on the kui-icon element to set
+		one or more icons to the same fixed width. This is great to use when
+		varying icon widths (e.g. a tall but skinny icon atop a wide but short
+		icon) would throw off vertical alignment. For clarity in the following
+		example, we've added a background color on the icon so you can see the
+		fixed width and also bumped up the font-size of the parent element.
+	</p>
+</div>
+        <div class="example-container">
+            <div class="example-preview">
+	<div style="font-size: 2rem;">
+		<div><kui-icon kui-icon="fas fa-skating" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Skating</div>
+		<div><kui-icon kui-icon="fas fa-skiing" kui-fixed-width="" style="background:SkyBlue"></kui-icon> Skiing</div>
+		<div><kui-icon kui-icon="fas fa-skiing-nordic" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Nordic Skiing</div>
+		<div><kui-icon kui-icon="fas fa-snowboarding" kui-fixed-width="" style="background:SkyBlue"></kui-icon> Snowboarding</div>
+		<div><kui-icon kui-icon="fas fa-snowplow" kui-fixed-width="" style="background:DodgerBlue"></kui-icon> Snowplow</div>
+	</div>
+</div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
+	&lt;div style="font-size: 2rem;"&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skating" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Skating&lt;/div&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Skiing&lt;/div&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-skiing-nordic" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Nordic Skiing&lt;/div&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowboarding" kui-fixed-width="" style="background:SkyBlue"&gt;&lt;/kui-icon&gt; Snowboarding&lt;/div&gt;
+		&lt;div&gt;&lt;kui-icon kui-icon="fas fa-snowplow" kui-fixed-width="" style="background:DodgerBlue"&gt;&lt;/kui-icon&gt; Snowplow&lt;/div&gt;
+	&lt;/div&gt;
+</code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card" id="kui-bordered-example">
+    <div class="card-body">
+        <h4 class="card-title">Bordered Icons</h4>
+        <h6 class="card-subtitle">Occasionally you might want to give icons some visual distinction with a border.</h6>
+        <div id="additional_info">
+	<p>
+		When using <code>kui-bordered</code> attribute the icon is given a border.
+	</p>
+</div>
+        <div class="example-container">
+            <div class="example-preview">
+	<kui-icon kui-icon="fas fa-arrow-left" kui-size="fa-2x" kui-bordered=""></kui-icon>
+	<kui-icon kui-icon="fas fa-arrow-right" kui-size="fa-2x" kui-bordered=""></kui-icon>
+</div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
+	&lt;kui-icon kui-icon="fas fa-arrow-left" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
+	&lt;kui-icon kui-icon="fas fa-arrow-right" kui-size="fa-2x" kui-bordered=""&gt;&lt;/kui-icon&gt;
 </code>
                     </pre>
                 </div>

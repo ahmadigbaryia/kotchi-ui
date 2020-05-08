@@ -1,30 +1,21 @@
-import { Types, typeValidator } from "../../core/validators";
-import {
-	useShadowDom,
-	booleanSetter,
-	booleanGetter,
-} from "../../core/utils/customElementUtils";
-import templateGenerator from "./template";
+import KUIIcon from "../kui-icon";
 
-import {
-	kuiCustomElement,
-	kuiEventEmetter,
-	attribute,
-	attributeChangeHandler,
-	attributeValidator,
-	applyStyle,
-} from "../../core";
+import templateGenerator from "./template";
+import { Types, typeValidator, isTrueAttribute } from "../../core/validators";
+import { useShadowDom, booleanSetter, booleanGetter, getSlotNodes } from "../../core/utils/customElementUtils";
+import { kuiCustomElement, kuiEventEmetter, attribute, attributeChangeHandler, attributeValidator } from "../../core";
 
 const tagName = "kui-section";
 
 const Style = {
-	Default: `${tagName}-default`,
-	Primary: `${tagName}-primary`,
-	Secondary: `${tagName}-secondary`,
-	Information: `${tagName}-info`,
-	Dangerous: `${tagName}-dangerous`,
-	Warning: `${tagName}-warning`,
-	Success: `${tagName}-success`,
+	Primary: "primary",
+	Secondary: "secondary",
+	Information: "info",
+	Danger: "danger",
+	Warning: "warning",
+	Success: "success",
+	Light: "light",
+	Dark: "dark",
 };
 
 const Events = {
@@ -32,8 +23,8 @@ const Events = {
 };
 
 const CollapseBy = {
-	ByHeader: `${tagName}-collapse-by-header`,
-	ByIcon: `${tagName}-collapse-by-icon`,
+	ByHeader: "header",
+	ByIcon: "icon",
 };
 
 /**
@@ -52,7 +43,7 @@ class KUISection extends HTMLElement {
 
 	@attributeValidator([typeValidator(Style)])
 	@attribute
-	kuiStyle = Style.Default;
+	kuiStyle = Style.Light;
 
 	@attributeValidator([typeValidator(CollapseBy)])
 	@attribute
@@ -60,52 +51,76 @@ class KUISection extends HTMLElement {
 
 	@attributeValidator([typeValidator(Types.Boolean)])
 	@attribute({ setter: booleanSetter, getter: booleanGetter })
-	kuiAllowFullScreen = false;
+	kuiAllowFullscreen = false;
 
 	@attributeValidator([typeValidator(Types.Boolean)])
 	@attribute({ setter: booleanSetter, getter: booleanGetter })
 	kuiClosable = false;
 
+	@attributeValidator([typeValidator(Types.Boolean)])
+	@attribute({ setter: booleanSetter, getter: booleanGetter })
+	kuiCollapsed = false;
+
+	@attributeValidator([typeValidator(Types.Boolean)])
+	@attribute({ setter: booleanSetter, getter: booleanGetter })
+	kuiOutline = false;
+
 	constructor() {
 		super();
 		const { template, selectors } = templateGenerator.call(this, tagName);
 		useShadowDom({ host: this, template });
+		this.initElements({ selectors });
+		this.bindHandlers();
+		this._expanded = true;
+	}
+
+	initElements({ selectors }) {
 		this.elements = {
 			section: this.shadowRoot.querySelector(selectors.section),
 			header: this.shadowRoot.querySelector(selectors.header),
 			headerIcon: this.shadowRoot.querySelector(selectors.headerIcon),
 			headerTitle: this.shadowRoot.querySelector(selectors.headerTitle),
-			actionsContainer: this.shadowRoot.querySelector(
-				selectors.actionsContainer
-			),
-			collapseAction: this.shadowRoot.querySelector(
-				selectors.collapseAction
-			),
-			fullScreenAction: this.shadowRoot.querySelector(
-				selectors.fullScreenAction
-			),
+			collapseAction: this.shadowRoot.querySelector(selectors.collapseAction),
+			fullScreenAction: this.shadowRoot.querySelector(selectors.fullScreenAction),
 			closeAction: this.shadowRoot.querySelector(selectors.closeAction),
+			contentsContainer: this.shadowRoot.querySelector(selectors.contentsContainer),
 			contents: this.shadowRoot.querySelector(selectors.contents),
+			footer: this.shadowRoot.querySelector(selectors.footer),
 		};
 	}
 
+	bindHandlers() {
+		this.headerClickHandler = this.headerClickHandler.bind(this);
+		this.expandClickHandler = this.expandClickHandler.bind(this);
+		this.fullScreenClickHandler = this.fullScreenClickHandler.bind(this);
+		this.closeClickHandler = this.closeClickHandler.bind(this);
+	}
+
 	connectedCallback() {
-		this.elements.header.addEventListener(
-			"click",
-			this.headerClickHandler.bind(this)
-		);
-		this.elements.collapseAction.addEventListener(
-			"click",
-			this.expandClickHandler.bind(this)
-		);
-		this.elements.fullScreenAction.addEventListener(
-			"click",
-			this.fullScreenClickHandler.bind(this)
-		);
-		this.elements.closeAction.addEventListener(
-			"click",
-			this.closeClickHandler.bind(this)
-		);
+		this.updateFooterVisibility();
+		this.elements.footer.addEventListener("slotchange", () => {
+			this.updateFooterVisibility();
+		});
+	}
+
+	disconnectedCallback() {
+		this.elements.closeAction.removeEventListener("click", this.closeClickHandler);
+		this.elements.fullScreenAction.removeEventListener("click", this.fullScreenClickHandler);
+		this.elements.collapseAction.removeEventListener("click", this.expandClickHandler);
+		this.elements.header.removeEventListener("click", this.headerClickHandler);
+	}
+
+	updateFooterVisibility() {
+		const { footer } = this.elements;
+		if (getSlotNodes(footer).length === 0) {
+			footer.parentNode.classList.add("d-none");
+		} else {
+			footer.parentNode.classList.remove("d-none");
+		}
+		if (this._expanded) {
+			const { contentsContainer } = this.elements;
+			contentsContainer.style.maxHeight = contentsContainer.scrollHeight + "px";
+		}
 	}
 
 	@attributeChangeHandler
@@ -115,69 +130,144 @@ class KUISection extends HTMLElement {
 
 	@attributeChangeHandler
 	kuiHeaderIconChangeHandler({ newValue }) {
-		this.elements.headerIcon.kuiIcon = newValue;
+		if (!newValue) {
+			this.elements.headerIcon.classList.add("hide");
+		} else {
+			this.elements.headerIcon.classList.remove("hide");
+			this.elements.headerIcon.kuiIcon = newValue;
+		}
 	}
 
 	@attributeChangeHandler
-	@applyStyle("section")
-	kuiStyleChangeHandler() {}
+	kuiStyleChangeHandler() {
+		this.applySectionStyle();
+	}
+
+	@attributeChangeHandler
+	kuiOutlineChangeHandler() {
+		this.applySectionStyle();
+	}
+
+	applySectionStyle() {
+		//cleanup previous value
+		this.elements.section.className = "card";
+		this.elements.header.className = "card-header";
+		if (this.kuiOutline) {
+			this.elements.section.classList.add(`border-${this.kuiStyle}`);
+			this.elements.header.classList.add(`bg-${this.kuiStyle}`);
+			if (this.kuiStyle !== Style.Light) {
+				this.elements.header.classList.add("text-white");
+			}
+		} else {
+			this.elements.section.classList.add(`bg-${this.kuiStyle}`);
+			if (this.kuiStyle !== Style.Light) {
+				this.elements.section.classList.add("text-white");
+			}
+		}
+	}
 
 	@attributeChangeHandler
 	kuiCollapseByChangeHandler({ newValue }) {
 		if (newValue === CollapseBy.ByHeader) {
-			this.elements.collapseAction.classList.remove("visible");
+			this.elements.collapseAction.parentNode.classList.remove("visible");
+			this.elements.collapseAction.removeEventListener("click", this.expandClickHandler);
+			this.elements.header.addEventListener("click", this.headerClickHandler);
+		} else if (newValue === CollapseBy.ByIcon) {
+			this.elements.collapseAction.parentNode.classList.add("visible");
+			this.elements.collapseAction.addEventListener("click", this.expandClickHandler);
+			this.elements.header.removeEventListener("click", this.headerClickHandler);
 		} else {
-			this.elements.collapseAction.classList.add("visible");
+			this.elements.collapseAction.parentNode.classList.remove("visible");
+			this.elements.collapseAction.removeEventListener("click", this.expandClickHandler);
+			this.elements.header.removeEventListener("click", this.headerClickHandler);
 		}
 	}
 
 	@attributeChangeHandler
-	@applyStyle({ element: "fullScreenAction", className: "visible" })
-	kuiAllowFullScreenChangeHandler() {}
+	kuiAllowFullscreenChangeHandler({ newValue }) {
+		if (isTrueAttribute(newValue)) {
+			this.elements.fullScreenAction.parentNode.classList.add("visible");
+			this.elements.fullScreenAction.addEventListener("click", this.fullScreenClickHandler);
+		} else {
+			this.elements.fullScreenAction.parentNode.classList.remove("visible");
+			this.elements.fullScreenAction.removeEventListener("click", this.fullScreenClickHandler);
+		}
+	}
 
 	@attributeChangeHandler
-	@applyStyle({ element: "closeAction", className: "visible" })
-	kuiClosableChangeHandler() {}
-
-	closeClickHandler() {
-		if (this.kuiClosable) {
-			//Delete the panel from the DOM after releasing all resources
-			logger.info("Closing the section");
+	kuiClosableChangeHandler({ newValue }) {
+		if (isTrueAttribute(newValue)) {
+			this.elements.closeAction.parentNode.classList.add("visible");
+			this.elements.closeAction.addEventListener("click", this.closeClickHandler);
+		} else {
+			this.elements.closeAction.parentNode.classList.remove("visible");
+			this.elements.closeAction.removeEventListener("click", this.closeClickHandler);
 		}
+	}
+
+	@attributeChangeHandler
+	kuiCollapsedChangeHandler({ newValue, oldValue }) {
+		if (isTrueAttribute(newValue)) {
+			this.collapse();
+		} else if (isTrueAttribute(oldValue)) {
+			this.expand();
+		}
+	}
+
+	closeClickHandler(e) {
+		e.stopPropagation();
+		// logger.info("Removing the section from the page");
+		this.parentNode.removeChild(this);
 	}
 
 	headerClickHandler() {
-		if (this.kuiCollapseBy === CollapseBy.ByHeader) {
-			this.changeCollapsingState();
-		}
+		// logger.info("Header clicked, changing visibility state");
+		this.changeCollapsingState();
 	}
 
 	expandClickHandler() {
-		if (this.kuiCollapseBy === CollapseBy.ByIcon) {
-			this.changeCollapsingState();
-		}
+		// logger.info("Icon clicked, changing visibility state");
+		this.changeCollapsingState();
 	}
 
 	changeCollapsingState() {
-		const expanded =
-			this.elements.section.className.indexOf("kui-collapsed") === -1;
-		this.elements.section.classList.toggle("kui-collapsed");
-		this.trigger(Events.ExpandChanged, expanded);
+		const { section } = this.elements;
+		if (section.className.indexOf("kui-collapsed") === -1) {
+			this.kuiCollapsed = true;
+		} else {
+			this.kuiCollapsed = false;
+		}
 	}
 
-	collapse() {
+	collapse(tiggerEvent = true) {
+		this._expanded = false;
 		this.elements.section.classList.add("kui-collapsed");
-		this.trigger(Events.ExpandChanged, false);
+		this.elements.collapseAction.kuiRotate = KUIIcon.Rotate.Rotate180;
+		this.elements.contentsContainer.style.maxHeight = null;
+		if (tiggerEvent) this.trigger(Events.ExpandChanged, false);
 	}
 
-	expand() {
+	expand(tiggerEvent = true) {
+		this._expanded = true;
 		this.elements.section.classList.remove("kui-collapsed");
-		this.trigger(Events.ExpandChanged, true);
+		this.elements.collapseAction.kuiRotate = KUIIcon.Rotate.Rotate360;
+		const { contentsContainer } = this.elements;
+		contentsContainer.style.maxHeight = contentsContainer.scrollHeight + "px";
+		if (tiggerEvent) this.trigger(Events.ExpandChanged, true);
 	}
 
-	fullScreenClickHandler() {
-		if (this.kuiAllowFullScreen) {
-			logger.info("Going fullscreen");
+	fullScreenClickHandler(e) {
+		e.stopPropagation();
+		// logger.info("Going fullscreen");
+		this.classList.toggle("fullscreen");
+		this.elements.section.classList.toggle("fullscreen");
+		const { contentsContainer } = this.elements;
+		if (this.className.indexOf("fullscreen") === -1) {
+			contentsContainer.style.maxHeight = contentsContainer.scrollHeight + "px";
+			this.elements.fullScreenAction.kuiIcon = "fas fa-expand-alt";
+		} else {
+			contentsContainer.style.maxHeight = "initial";
+			this.elements.fullScreenAction.kuiIcon = "fas fa-compress-alt";
 		}
 	}
 
