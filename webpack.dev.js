@@ -36,7 +36,29 @@ module.exports = ["inline-source-map"].map(devtool => ({
 			{
 				test: /\.css$/i,
 				use: ["css-to-string-loader", "css-loader"]
-			}
+			},
+			{
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-env"],
+						plugins: [
+							"@babel/plugin-proposal-object-rest-spread",
+							[
+								"@babel/plugin-proposal-decorators",
+								{ legacy: true },
+							],
+							[
+								"@babel/plugin-proposal-class-properties",
+								{ loose: true },
+							],
+							["js-logger", { "format": { "separator": "/", "project": false } }]
+						],
+					},
+				},
+			},
 		]
 	},
 	devServer: {

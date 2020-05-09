@@ -1,4 +1,5 @@
 module.exports = {
+	parser: "babel-eslint",
 	env: {
 		browser: true,
 		es2020: true,
@@ -7,15 +8,19 @@ module.exports = {
 		amd: true,
 	},
 	extends: ["eslint:recommended"],
+//	extends: ["plugin:prettier/recommended"],
 	parserOptions: {
 		sourceType: "module",
 		ecmaFeatures: {
-			experimentalDecorators: true
-		}
+			experimentalDecorators: true,
+		},
 	},
 	rules: {
-		indent: ["error", "tab"],
+		indent: ["error", "tab", { "SwitchCase": 1 }],
 		quotes: ["error", "double"],
-		semi: ["error", "always"]
-	}
+		semi: ["error", "always"],
+	},
+	globals: {
+		logger: "readonly",
+	},
 };

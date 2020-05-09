@@ -1,0 +1,618 @@
+<!DOCTYPE html><html lang="en"><head>
+        <title>Kotchi UI - Section &lt;kui-section&gt;</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Vendor styles  -->
+        <link rel="stylesheet" href="vendors/animate.css/animate.min.css">
+        <link rel="stylesheet" href="vendors/jquery-scrollbar/jquery.scrollbar.css">
+        <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+        
+        <!-- App styles -->
+        <link rel="stylesheet" href="css/prism.css">
+        <link rel="stylesheet" href="css/docs.app.min.css">
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+
+    <body data-ma-theme="green">
+        <main class="main">
+            <div class="page-loader">
+                <div class="page-loader__spinner">
+                    <svg viewBox="25 25 50 50">
+                        <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <header class="header">
+                <div class="navigation-trigger hidden-xl-up" data-ma-action="aside-open" data-ma-target=".sidebar">
+                    <div class="navigation-trigger__inner">
+                        <i class="navigation-trigger__line"></i>
+                        <i class="navigation-trigger__line"></i>
+                        <i class="navigation-trigger__line"></i>
+                    </div>
+                </div>
+
+                <div class="header__logo hidden-sm-down">
+                    <h1><a id="main_header_link" href="index.html">Kotchi UI Documentation</a></h1>
+                </div>
+            </header>
+            
+            <!-- Main Menu -->
+            <aside class="sidebar">
+                <div class="scrollbar-inner">
+                    <ul class="navigation">
+                        <!-- add "navigation__sub--active" class name to the active <li> element-->
+                        <li id="getting_started" class="navigation__sub navigation__sub--toggled">
+                            <a href="index.html"><i class="zmdi zmdi-home"></i> Getting Started</a>
+                            <ul id="getting_started_menu" style="display: block;">
+                                <!-- add "navigation__active" class name to the active <li> element-->
+                                <!-- Example -->
+                                <!-- <li id="introduction"><a href="index.html">Introduction</a></li> -->
+                            </ul>
+                        </li>
+                        <li id="components" class="navigation__sub navigation__sub--toggled navigation__sub--active">
+                            <a href=""><i class="zmdi zmdi-widgets"></i>Components</a>
+                            <ul id="components_menu" style="display: block;">
+                                <!-- Example -->
+                                <!--  <li id="button"><a href="button.html">Button</a></li> -->
+                            <li id="accordion" class=""><a href="accordion.html">Accordion <code class="info-tag-name">&lt;kui-accordion&gt;</code></a></li><li id="button" class=""><a href="button.html">Button <code class="info-tag-name">&lt;kui-button&gt;</code></a></li><li id="icon" class=""><a href="icon.html">Icon <code class="info-tag-name">&lt;kui-icon&gt;</code></a></li><li id="section" class=" navigation__sub--active"><a href="section.html">Section <code class="info-tag-name">&lt;kui-section&gt;</code></a></li></ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <section class="content">
+                <header class="content__title">
+                    <h1 id="content_title">Section <code class="info-tag-name">&lt;kui-section&gt;</code></h1>
+                    <small id="content_subtitle"><code>&lt;kui-section&gt;</code> provide a flexible and extensible content container with multiple variants and options</small>
+                </header>
+                <div id="cards_container"><body><div class="card" id="example-attributes">
+    <div class="card-body">
+        <h4 class="card-title">Attributes Configurations</h4>
+        <h6 class="card-subtitle">Configure <code>&lt;kui-section&gt;</code> through the following attributes</h6>
+        <div id="additional_info">
+	<p>Below is a list of the available attributes for configuring <code>&lt;kui-section&gt;</code></p>
+	<table class="table table-bordered">
+		<thead>
+			<tr class="text-uppercase">
+				<th>Attribute</th>
+				<th>Type</th>
+				<th>Default value</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="#example-basic">kui-header-title</a></td>
+				<td>String</td>
+				<td></td>
+				<td>The section title</td>
+			</tr>
+			<tr>
+				<td><a href="#example-basic">kui-header-icon</a></td>
+				<td>String</td>
+				<td></td>
+				<td>The section icon</td>
+			</tr>
+			<tr>
+				<td><a href="#example-style">kui-style</a></td>
+				<td>KUISectopn.Style</td>
+				<td>KUISectopn.Style.Light</td>
+				<td>Predefined styles that serves different semantic purposes</td>
+			</tr>
+			<tr>
+				<td><a href="#example-style">kui-outline</a></td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>Should the section style be outlined</td>
+			</tr>
+			<tr>
+				<td><a href="#example-collapse">kui-collapse-by</a></td>
+				<td>KUISection.CollapseBy</td>
+				<td></td>
+				<td>Defines how the section can be collapsed</td>
+			</tr>
+			<tr>
+				<td><a href="#example-collapse">kui-collapsed</a></td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>Should the section be collapsed by default</td>
+			</tr>
+			<tr>
+				<td><a href="#example-close">kui-closable</a></td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>Should the section be closable by showing the close action</td>
+			</tr>
+			<tr>
+				<td><a href="#example-fullscreen">kui-allow-fullscreen</a></td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>Should the section be expanded to fullscreen by showing a fullscreen action</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+        <div class="example-container" style="display: none;">
+            <div class="example-preview"></div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html"></code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card" id="example-basic">
+    <div class="card-body">
+        <h4 class="card-title">Basic Examples</h4>
+        <h6 class="card-subtitle">The basic usage of <code>&lt;kui-section&gt;</code> is to provide a container for your contents</h6>
+        <div id="additional_info"></div>
+        <div class="example-container">
+            <div class="example-preview">
+	<kui-section kui-header-title="at auctor" kui-header-icon="fas fa-award">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Augue lacus viverra vitae congue.
+		</p>
+	</kui-section>
+	<kui-section kui-header-title="mauris pharetra">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+		</p>
+		<div slot="footer">Lorem ipsum dolor sit amet</div>
+	</kui-section>
+</div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
+	&lt;kui-section kui-header-title="at auctor" kui-header-icon="fas fa-award"&gt;
+		&lt;p&gt;
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Augue lacus viverra vitae congue.
+		&lt;/p&gt;
+	&lt;/kui-section&gt;
+	&lt;kui-section kui-header-title="mauris pharetra"&gt;
+		&lt;p&gt;
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+		&lt;/p&gt;
+		&lt;div slot="footer"&gt;Lorem ipsum dolor sit amet&lt;/div&gt;
+	&lt;/kui-section&gt;
+</code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card" id="example-style">
+    <div class="card-body">
+        <h4 class="card-title">Section styles</h4>
+        <h6 class="card-subtitle"><code>&lt;kui-section&gt;</code> include various options for customizing their backgrounds, borders, and color</h6>
+        <div id="additional_info"></div>
+        <div class="example-container">
+            <div class="example-preview">
+	<div style="display: flex;">
+		<kui-section kui-style="primary" kui-header-title="fermentum et">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="secondary" kui-header-title="at auctor">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="info" kui-header-title="mauris pharetra">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+			</p>
+		</kui-section>
+		<kui-section kui-style="warning" kui-header-title="sit amet">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="danger" kui-header-title="mauris augue">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+			</p>
+		</kui-section>
+		<kui-section kui-style="success" kui-header-title="ullamcorper malesuada">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="light" kui-header-title="vel turpis">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="dark" kui-header-title="aliquet nibh">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+	</div>
+	<h3>Using outlined style</h3>
+	<div style="display: flex;">
+		<kui-section kui-style="primary" kui-outline="" kui-header-title="fermentum et">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="secondary" kui-outline="" kui-header-title="at auctor">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="info" kui-outline="" kui-header-title="mauris pharetra">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+			</p>
+		</kui-section>
+		<kui-section kui-style="warning" kui-outline="" kui-header-title="sit amet">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="danger" kui-outline="" kui-header-title="mauris augue">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+			</p>
+		</kui-section>
+		<kui-section kui-style="success" kui-outline="" kui-header-title="ullamcorper malesuada">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="light" kui-outline="" kui-header-title="vel turpis">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+		<kui-section kui-style="dark" kui-outline="" kui-header-title="aliquet nibh">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			</p>
+		</kui-section>
+	</div>
+</div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
+	&lt;div style="display: flex;"&gt;
+		&lt;kui-section kui-style="primary" kui-header-title="fermentum et"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="secondary" kui-header-title="at auctor"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="info" kui-header-title="mauris pharetra"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="warning" kui-header-title="sit amet"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="danger" kui-header-title="mauris augue"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="success" kui-header-title="ullamcorper malesuada"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="light" kui-header-title="vel turpis"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="dark" kui-header-title="aliquet nibh"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+	&lt;/div&gt;
+	&lt;h3&gt;Using outlined style&lt;/h3&gt;
+	&lt;div style="display: flex;"&gt;
+		&lt;kui-section kui-style="primary" kui-outline="" kui-header-title="fermentum et"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="secondary" kui-outline="" kui-header-title="at auctor"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="info" kui-outline="" kui-header-title="mauris pharetra"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="warning" kui-outline="" kui-header-title="sit amet"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="danger" kui-outline="" kui-header-title="mauris augue"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="success" kui-outline="" kui-header-title="ullamcorper malesuada"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="light" kui-outline="" kui-header-title="vel turpis"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+		&lt;kui-section kui-style="dark" kui-outline="" kui-header-title="aliquet nibh"&gt;
+			&lt;p&gt;
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua. Augue lacus viverra vitae congue.
+			&lt;/p&gt;
+		&lt;/kui-section&gt;
+	&lt;/div&gt;
+</code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card" id="example-collapse">
+    <div class="card-body">
+        <h4 class="card-title">Section visibility</h4>
+        <h6 class="card-subtitle">Control <code>&lt;kui-section&gt;</code> visibility by collapsing the contents and expanding</h6>
+        <div id="additional_info"></div>
+        <div class="example-container">
+            <div class="example-preview">
+	<kui-section kui-header-title="Collapsed by default" kui-header-icon="fas fa-award" kui-collapsed="" kui-collapse-by="header">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Augue lacus viverra vitae congue.
+		</p>
+	</kui-section>
+	<kui-section kui-header-title="Collapsible Section" kui-header-icon="fas fa-award" kui-collapse-by="icon">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+		</p>
+		<div slot="footer">Lorem ipsum dolor sit amet</div>
+	</kui-section>
+</div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
+	&lt;kui-section kui-header-title="Collapsed by default" kui-header-icon="fas fa-award" kui-collapsed="" kui-collapse-by="header"&gt;
+		&lt;p&gt;
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Augue lacus viverra vitae congue.
+		&lt;/p&gt;
+	&lt;/kui-section&gt;
+	&lt;kui-section kui-header-title="Collapsible Section" kui-header-icon="fas fa-award" kui-collapse-by="icon"&gt;
+		&lt;p&gt;
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.
+		&lt;/p&gt;
+		&lt;div slot="footer"&gt;Lorem ipsum dolor sit amet&lt;/div&gt;
+	&lt;/kui-section&gt;
+</code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card" id="example-fullscreen">
+    <div class="card-body">
+        <h4 class="card-title">Fullscreen Mode</h4>
+        <h6 class="card-subtitle"><code>&lt;kui-section&gt;</code> can be expanded to fill the screen for maximum visibility</h6>
+        <div id="additional_info"></div>
+        <div class="example-container">
+            <div class="example-preview">
+	<kui-section kui-header-title="Fullscreen section" kui-header-icon="fas fa-award" kui-allow-fullscreen="">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Augue lacus viverra vitae congue.
+		</p>
+	</kui-section>
+</div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
+	&lt;kui-section kui-header-title="Fullscreen section" kui-header-icon="fas fa-award" kui-allow-fullscreen=""&gt;
+		&lt;p&gt;
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Augue lacus viverra vitae congue.
+		&lt;/p&gt;
+	&lt;/kui-section&gt;
+</code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body><body><div class="card" id="example-close">
+    <div class="card-body">
+        <h4 class="card-title">Closing the section</h4>
+        <h6 class="card-subtitle"><code>&lt;kui-section&gt;</code> can be closed and removed from the page</h6>
+        <div id="additional_info">
+	<p>
+		Use kui-closable to allow users to close the section, but once the section is closed it can't be restored.
+	</p>
+</div>
+        <div class="example-container">
+            <div class="example-preview">
+	<kui-section kui-style="primary" kui-header-title="fermentum et" kui-closable="">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Augue lacus viverra vitae congue.
+		</p>
+	</kui-section>
+</div>
+            <div class="example-markup-container">
+                <div class="example-markup">
+                    <pre class="language-html">                        <code class="language-html">
+	&lt;kui-section kui-style="primary" kui-header-title="fermentum et" kui-closable=""&gt;
+		&lt;p&gt;
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Augue lacus viverra vitae congue.
+		&lt;/p&gt;
+	&lt;/kui-section&gt;
+</code>
+                    </pre>
+                </div>
+                <div class="example-markup-actions">
+                <!--
+                    <button class="markup-copy-action">Copy</button>
+                    <button class="markup-view-action">View in Codepen</button>
+                -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body></div>
+                <footer class="footer hidden-xs-down">
+                    <p>© Kotchi UI. All rights reserved.</p>
+                    <ul class="nav footer__nav">
+                        <a class="nav-link" href="">Github Page</a>
+                        <a class="nav-link" href="">Issues</a>
+                        <a class="nav-link" href="">Release Notes</a>
+                        <a class="nav-link" href="">Contacts</a>
+                    </ul>
+                </footer>
+            </section>
+        </main>
+
+        <!-- Older IE warning message -->
+            <!--[if IE]>
+                <div class="ie-warning">
+                    <h1>Warning!!</h1>
+                    <p>You are using an outdated version of Internet Explorer, please upgrade to any of the following web browsers to access this website.</p>
+
+                    <div class="ie-warning__downloads">
+                        <a href="http://www.google.com/chrome">
+                            <img src="img/browsers/chrome.png" alt="">
+                        </a>
+
+                        <a href="https://www.mozilla.org/en-US/firefox/new">
+                            <img src="img/browsers/firefox.png" alt="">
+                        </a>
+
+                        <a href="http://www.opera.com">
+                            <img src="img/browsers/opera.png" alt="">
+                        </a>
+
+                        <a href="https://support.apple.com/downloads/safari">
+                            <img src="img/browsers/safari.png" alt="">
+                        </a>
+
+                        <a href="https://www.microsoft.com/en-us/windows/microsoft-edge">
+                            <img src="img/browsers/edge.png" alt="">
+                        </a>
+
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="img/browsers/ie.png" alt="">
+                        </a>
+                    </div>
+                    <p>Sorry for the inconvenience!</p>
+                </div>
+            <![endif]-->
+
+        <!-- Javascript -->
+        <!-- Vendors -->
+        <script src="vendors/jquery/jquery.min.js"></script>
+        <script src="vendors/popper.js/popper.min.js"></script>
+        <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendors/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="vendors/jquery-scrollLock/jquery-scrollLock.min.js"></script>
+
+        <!-- App functions and actions -->
+        <script src="js/docs.app.min.js"></script>
+        <script src="js/prism.js"></script>
+        <!-- Add your project code script here -->
+        <script id="project_entrypoint" src="js/app.min.js"></script>
+        
+    
+</body></html>
