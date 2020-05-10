@@ -12,7 +12,7 @@
 		"build-docs": "docs-builder --projectName \"Kotchi UI\" --scriptPath \"dist/kotchi-ui.js\"",
 		"prepack": "node .build/prepack.js",
 		"postpack": "node .build/postpack.js",
-		"test": "jest --env=jest-environment-happy-dom -i",
+		"test": "jest --config .jest/jest.config.js --env=jest-environment-happy-dom -i",
 		"create-component": "node cli/createComponent.js"
 	},
 	"author": "Ahmad Igbariya <ahmad.rida.igbariya@gmail.com>",

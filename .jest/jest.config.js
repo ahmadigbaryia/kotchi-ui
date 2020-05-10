@@ -13,13 +13,13 @@ module.exports = {
 
 	// A map from regular expressions to module names that allow to stub out resources with a single module
 	moduleNameMapper: {
-		"\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+		"\\.(css|less|sass|scss)$": "<rootDir>/mocks/styleMock.js",
 		"^Utils(.*)$": "<rootDir>/src/utils/$1",
 		"^Base(.*)$": "<rootDir>/src/base/$1",
 		"^Components(.*)$": "<rootDir>/src/components/$1",
 	},
-
 	// The test environment that will be used for testing
 	testEnvironment: "jest-environment-happy-dom",
-	setupFilesAfterEnv: ["<rootDir>/__mocks__/jest-preload.js"]
+	setupFilesAfterEnv: ["<rootDir>/mocks/jest-preload.js"],
+	roots: ["<rootDir>/../src/"],
 };
