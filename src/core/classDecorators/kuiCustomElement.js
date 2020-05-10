@@ -88,8 +88,8 @@ function syncAttributes(tagName) {
 
 function handleParents({ tagName, allowedParents }) {
 	if (allowedParents.length > 0) {
-		// logger.info(tagName);
-		// logger.info(allowedParents);
+		logger.info(tagName);
+		logger.info(allowedParents);
 	}
 }
 function handleChildren({ tagName, allowedChildren, callback }) {
