@@ -1,5 +1,9 @@
 {
-    "compilerOptions": {
-        "experimentalDecorators": true
-    }
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "umd",
+		"moduleResolution": "node",
+		"experimentalDecorators": true
+	},
+	"include": ["src/**/*"]
 }
