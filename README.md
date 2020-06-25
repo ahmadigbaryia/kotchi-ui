@@ -1,3 +1,7 @@
+|⚠️ 🚧 **Please note**: This repo has moved to https://github.com/kotchi-ui/kotchi-ui-kit, and no longer maintaned here ⚠️ 🚧|
+|----|
+
+
 # KotchiUI
 KotchiUI is a lightweight UI kit that can be integrated with any javascript framework on any browser, it's fully accessabile and mobile compatible.
 
